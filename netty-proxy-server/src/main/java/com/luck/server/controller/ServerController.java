@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ServerController {
 
     @GetMapping("/version")
-    public Result version(){
+    public Result version() {
         return ResultFactory.successOf("服务端端版本");
     }
 }
