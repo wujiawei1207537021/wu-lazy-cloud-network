@@ -1,5 +1,8 @@
 package com.luck.client;
 
+import org.springframework.boot.SpringApplication;
+
+
 public class ClientStart {
 
     public static void main(String[] args) throws Exception {
