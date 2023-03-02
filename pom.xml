@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.wu</groupId>
-    <artifactId>netty-proxy</artifactId>
+    <artifactId>lazy-netty-proxy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>netty-proxy</name>
     <description>netty-proxy</description>
@@ -20,9 +20,9 @@
     </properties>
 
     <modules>
-        <module>netty-proxy-common</module>
-        <module>netty-proxy-server</module>
-        <module>netty-proxy-client</module>
+        <module>lazy-netty-proxy-common</module>
+        <module>lazy-netty-proxy-server</module>
+        <module>lazy-netty-proxy-client</module>
     </modules>
 
     <dependencies>
