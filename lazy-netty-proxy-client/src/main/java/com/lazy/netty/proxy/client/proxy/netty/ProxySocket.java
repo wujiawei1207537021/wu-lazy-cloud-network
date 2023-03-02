@@ -1,6 +1,7 @@
 package com.lazy.netty.proxy.client.proxy.netty;
 
-import com.luck.msg.MyMsg;
+
+import com.lazy.netty.proxy.msg.MyMsg;
 import com.lazy.netty.proxy.msg.MyMsgDecoder;
 import com.lazy.netty.proxy.msg.MyMsgEncoder;
 import io.netty.bootstrap.Bootstrap;

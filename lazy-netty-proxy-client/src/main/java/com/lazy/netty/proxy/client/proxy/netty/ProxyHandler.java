@@ -1,6 +1,7 @@
 package com.lazy.netty.proxy.client.proxy.netty;
 
-import com.luck.msg.MyMsg;
+
+import com.lazy.netty.proxy.msg.MyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

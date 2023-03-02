@@ -1,13 +1,13 @@
 package com.lazy.netty.proxy.client.proxy.config;
 
+import com.lazy.netty.proxy.msg.constant.ProxyConfigConstant;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "spring.lazy.proxy")
+@ConfigurationProperties(prefix = ProxyConfigConstant.PREFIX)
 public class ClientProxyConfigurationProperties {
 
 

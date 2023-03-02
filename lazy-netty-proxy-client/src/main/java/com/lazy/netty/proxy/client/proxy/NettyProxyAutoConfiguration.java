@@ -3,6 +3,7 @@ package com.lazy.netty.proxy.client.proxy;
 import com.lazy.netty.proxy.client.proxy.config.ClientProxyConfigurationProperties;
 import com.lazy.netty.proxy.client.proxy.netty.Constant;
 import com.lazy.netty.proxy.client.proxy.netty.ProxySocket;
+import jakarta.annotation.PostConstruct;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,9 @@ public class NettyProxyAutoConfiguration {
         this.clientProxyConfigurationProperties = clientProxyConfigurationProperties;
     }
 
-    @Bean
-    public Thread xx() {
-        return new Thread(() -> {
+    @PostConstruct
+    public void xx() {
+        new Thread(() -> {
             Constant.serverIp = clientProxyConfigurationProperties.getServerIp();
             Constant.serverPort = clientProxyConfigurationProperties.getServerPort();
             Constant.realPort = serverProperties.getPort();
@@ -32,7 +33,7 @@ public class NettyProxyAutoConfiguration {
                 e.printStackTrace();
             }
 
-        });
+        }).run();
     }
 
 }

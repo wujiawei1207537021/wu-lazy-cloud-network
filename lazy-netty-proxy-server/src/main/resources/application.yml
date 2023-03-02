@@ -1,2 +1,6 @@
 server:
-  port: 1003
+  port: 16001
+
+spring:
+  lazy:
+    proxy: 16002
