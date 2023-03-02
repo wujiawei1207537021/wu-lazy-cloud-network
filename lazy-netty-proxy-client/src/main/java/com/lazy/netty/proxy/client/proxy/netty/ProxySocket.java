@@ -1,6 +1,8 @@
 package com.lazy.netty.proxy.client.proxy.netty;
 
 
+import com.lazy.netty.proxy.client.proxy.handler.HeartBeatClientHandler;
+import com.lazy.netty.proxy.client.proxy.handler.ProxyHandler;
 import com.lazy.netty.proxy.msg.MyMsg;
 import com.lazy.netty.proxy.msg.MyMsgDecoder;
 import com.lazy.netty.proxy.msg.MyMsgEncoder;
@@ -61,6 +63,7 @@ public class ProxySocket {
                         pipeline.addLast(new MyMsgEncoder());
                         pipeline.addLast(new IdleStateHandler(40, 8, 0));
                         pipeline.addLast(new ProxyHandler());
+                        pipeline.addLast(new HeartBeatClientHandler());
                     }
                 });
 
@@ -68,6 +71,7 @@ public class ProxySocket {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
                 if (future.isSuccess()) {
+                    System.out.println("连接服务端成功");
                     // 客户端链接代理服务器成功
                     Channel channel = future.channel();
                     if (StringUtil.isNullOrEmpty(vid)) {
@@ -95,6 +99,20 @@ public class ProxySocket {
                             realChannel.config().setOption(ChannelOption.AUTO_READ, true);
                         }
                     }
+                } else {
+
+                    System.out.println("每隔2s重连....");
+                    future.channel().eventLoop().schedule(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            try {
+                                newConnect(null);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, 2, TimeUnit.SECONDS);
                 }
             }
         });

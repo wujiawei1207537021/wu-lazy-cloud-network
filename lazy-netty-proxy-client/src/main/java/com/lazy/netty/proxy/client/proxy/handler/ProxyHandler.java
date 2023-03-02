@@ -1,6 +1,8 @@
-package com.lazy.netty.proxy.client.proxy.netty;
+package com.lazy.netty.proxy.client.proxy.handler;
 
 
+import com.lazy.netty.proxy.client.proxy.netty.Constant;
+import com.lazy.netty.proxy.client.proxy.netty.RealSocket;
 import com.lazy.netty.proxy.msg.MyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
