@@ -13,11 +13,13 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.internal.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class ProxySocket {
     /**
      * 重连代理服务
@@ -67,6 +69,7 @@ public class ProxySocket {
                     }
                 });
 
+        log.info("连接服务端IP:{},连接服务端端口:{}",Constant.serverIp, Constant.serverPort);
         bootstrap.connect(Constant.serverIp, Constant.serverPort).addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {

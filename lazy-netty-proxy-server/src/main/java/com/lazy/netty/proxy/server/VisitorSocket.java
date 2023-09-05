@@ -9,16 +9,19 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * 访客链接socket
+ */
 public class VisitorSocket {
     private static EventLoopGroup bossGroup = new NioEventLoopGroup();
     private static EventLoopGroup workerGroup = new NioEventLoopGroup();
 
     /**
      * 启动服务代理
-     *
+     * @param visitorPort 访客代理端口
      * @throws Exception
      */
-    public static void startServer() throws Exception {
+    public static void startServer(int visitorPort) throws Exception {
 
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
@@ -30,7 +33,7 @@ public class VisitorSocket {
                         pipeline.addLast(new VisitorHandler());
                     }
                 });
-        b.bind(Constant.visitorPort).get();
+        b.bind(visitorPort).get();
 
     }
 

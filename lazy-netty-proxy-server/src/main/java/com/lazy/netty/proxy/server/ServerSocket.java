@@ -4,6 +4,7 @@ import com.lazy.netty.proxy.msg.MyMsgDecoder;
 import com.lazy.netty.proxy.msg.MyMsgEncoder;
 import com.lazy.netty.proxy.server.handler.ClientHandler;
 import com.lazy.netty.proxy.server.handler.HeartBeatServerHandler;
+import com.lazy.netty.proxy.server.handler.LazyServerIdleStateHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -21,7 +22,7 @@ public class ServerSocket {
      *
      * @throws Exception
      */
-    public static void startServer() throws Exception {
+    public static void startServer(int serverPort) throws Exception {
         try {
 
             ServerBootstrap b = new ServerBootstrap();
@@ -33,12 +34,13 @@ public class ServerSocket {
                             pipeline.addLast(new MyMsgDecoder(Integer.MAX_VALUE, 0, 4, -4, 0));
                             pipeline.addLast(new MyMsgEncoder());
                             pipeline.addLast(new IdleStateHandler(40, 10, 0));
+                            pipeline.addLast(new LazyServerIdleStateHandler(40, 10, 0));
                             pipeline.addLast(new ClientHandler());
                             pipeline.addLast(new HeartBeatServerHandler());
                         }
 
                     });
-            channelFuture = b.bind(Constant.serverPort).sync();
+            channelFuture = b.bind(serverPort).sync();
 
             channelFuture.addListener((ChannelFutureListener) channelFuture -> {
                 // 服务器已启动

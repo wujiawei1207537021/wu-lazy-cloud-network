@@ -10,8 +10,8 @@ public class ServerStart {
             Constant.serverPort = serverPort;
         }
         // 启动访客服务端，用于接收访客请求
-        VisitorSocket.startServer();
+        VisitorSocket.startServer(Constant.visitorPort);
         // 启动代理服务端，用于接收客户端请求
-        ServerSocket.startServer();
+        ServerSocket.startServer(Constant.serverPort);
     }
 }
