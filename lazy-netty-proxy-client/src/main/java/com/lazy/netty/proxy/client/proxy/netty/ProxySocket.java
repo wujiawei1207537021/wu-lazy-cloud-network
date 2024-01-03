@@ -70,53 +70,50 @@ public class ProxySocket {
                 });
 
         log.info("连接服务端IP:{},连接服务端端口:{}",Constant.serverIp, Constant.serverPort);
-        bootstrap.connect(Constant.serverIp, Constant.serverPort).addListener(new ChannelFutureListener() {
-            @Override
-            public void operationComplete(ChannelFuture future) throws Exception {
-                if (future.isSuccess()) {
-                    System.out.println("连接服务端成功");
-                    // 客户端链接代理服务器成功
-                    Channel channel = future.channel();
-                    if (StringUtil.isNullOrEmpty(vid)) {
-                        // 告诉服务端这条连接是client的连接
-                        MyMsg myMsg = new MyMsg();
-                        myMsg.setType(MyMsg.TYPE_CONNECT);
-                        myMsg.setData("client".getBytes());
-                        channel.writeAndFlush(myMsg);
+        bootstrap.connect(Constant.serverIp, Constant.serverPort).addListener((ChannelFutureListener) future -> {
+            if (future.isSuccess()) {
+                System.out.println("连接服务端成功");
+                // 客户端链接代理服务器成功
+                Channel channel = future.channel();
+                if (StringUtil.isNullOrEmpty(vid)) {
+                    // 告诉服务端这条连接是client的连接
+                    MyMsg myMsg = new MyMsg();
+                    myMsg.setType(MyMsg.TYPE_CONNECT);
+                    myMsg.setData("client".getBytes());
+                    channel.writeAndFlush(myMsg);
 
-                        Constant.proxyChannel = channel;
-                    } else {
-
-                        // 告诉服务端这条连接是vid的连接
-                        MyMsg myMsg = new MyMsg();
-                        myMsg.setType(MyMsg.TYPE_CONNECT);
-                        myMsg.setData(vid.getBytes());
-                        channel.writeAndFlush(myMsg);
-
-                        // 客户端绑定通道关系
-                        Constant.vpc.put(vid, channel);
-                        channel.attr(Constant.VID).set(vid);
-
-                        Channel realChannel = Constant.vrc.get(vid);
-                        if (null != realChannel) {
-                            realChannel.config().setOption(ChannelOption.AUTO_READ, true);
-                        }
-                    }
+                    Constant.proxyChannel = channel;
                 } else {
 
-                    System.out.println("每隔2s重连....");
-                    future.channel().eventLoop().schedule(new Runnable() {
+                    // 告诉服务端这条连接是vid的连接
+                    MyMsg myMsg = new MyMsg();
+                    myMsg.setType(MyMsg.TYPE_CONNECT);
+                    myMsg.setData(vid.getBytes());
+                    channel.writeAndFlush(myMsg);
 
-                        @Override
-                        public void run() {
-                            try {
-                                newConnect(null);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }, 2, TimeUnit.SECONDS);
+                    // 客户端绑定通道关系
+                    Constant.vpc.put(vid, channel);
+                    channel.attr(Constant.VID).set(vid);
+
+                    Channel realChannel = Constant.vrc.get(vid);
+                    if (null != realChannel) {
+                        realChannel.config().setOption(ChannelOption.AUTO_READ, true);
+                    }
                 }
+            } else {
+
+                System.out.println("每隔2s重连....");
+                future.channel().eventLoop().schedule(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        try {
+                            newConnect(null);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, 2, TimeUnit.SECONDS);
             }
         });
     }

@@ -7,7 +7,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.internal.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class RealSocket {
     static EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
@@ -41,6 +43,7 @@ public class RealSocket {
                         }
 
                     });
+            log.info("代理客户端本地端口:{}",Constant.realPort);
             bootstrap.connect("127.0.0.1", Constant.realPort).addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
