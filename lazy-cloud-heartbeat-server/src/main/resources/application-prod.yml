@@ -4,7 +4,5 @@ spring:
     username: middleground_cloud_netty_server
     password: laihui
     driver-class-name: com.mysql.cj.jdbc.Driver
-    ##druid
-    type: com.alibaba.druid.pool.DruidDataSource
   main:
     allow-bean-definition-overriding: true

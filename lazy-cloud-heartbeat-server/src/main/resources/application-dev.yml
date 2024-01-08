@@ -10,5 +10,3 @@ spring:
     username: root
     password: wujiawei
     driver-class-name: com.mysql.cj.jdbc.Driver
-    ##druid
-    type: com.alibaba.druid.pool.DruidDataSource
