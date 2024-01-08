@@ -13,7 +13,7 @@
     </parent>
 
     <groupId>top.wu2020</groupId>
-    <artifactId>lazy-cloud-network</artifactId>
+    <artifactId>wu-lazy-cloud-network</artifactId>
     <packaging>pom</packaging>
     <version>1.2.1-JDK17-SNAPSHOT</version>
     <description>云上云下</description>
@@ -21,9 +21,9 @@
 
     <modules>
         <!--    云上服务组件    -->
-        <module>lazy-cloud-heartbeat-server</module>
-        <module>lazy-cloud-heartbeat-client</module>
-        <module>lazy-cloud-heartbeat-common</module>
+        <module>wu-lazy-cloud-heartbeat-server</module>
+        <module>wu-lazy-cloud-heartbeat-client</module>
+        <module>wu-lazy-cloud-heartbeat-common</module>
     </modules>
 
     <properties>
