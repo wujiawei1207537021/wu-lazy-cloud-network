@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.internal.network.penetration.mapping;
+package wu.framework.lazy.cloud.heartbeat.server.application.command.internal.network.penetration.mapping;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.advanced;
+package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
@@ -9,7 +9,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.ServerNettyConfigApplication;
+import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
 
 import java.util.List;
 

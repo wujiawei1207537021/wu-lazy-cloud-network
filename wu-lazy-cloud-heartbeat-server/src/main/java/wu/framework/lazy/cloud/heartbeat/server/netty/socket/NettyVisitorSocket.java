@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.socket;
+package wu.framework.lazy.cloud.heartbeat.server.netty.socket;
 
 import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorContext;
 import io.netty.bootstrap.ServerBootstrap;
@@ -9,7 +9,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.filter.VisitorFilter;
+import wu.framework.lazy.cloud.heartbeat.server.netty.filter.VisitorFilter;
 
 /**
  * 访客链接socket

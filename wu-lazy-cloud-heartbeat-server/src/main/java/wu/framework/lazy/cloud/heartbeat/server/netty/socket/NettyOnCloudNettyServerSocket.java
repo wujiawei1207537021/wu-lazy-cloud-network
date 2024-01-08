@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.socket;
+package wu.framework.lazy.cloud.heartbeat.server.netty.socket;
 
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -8,7 +8,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.filter.NettyServerFilter;
+import wu.framework.lazy.cloud.heartbeat.server.netty.filter.NettyServerFilter;
 
 public class NettyOnCloudNettyServerSocket {
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();

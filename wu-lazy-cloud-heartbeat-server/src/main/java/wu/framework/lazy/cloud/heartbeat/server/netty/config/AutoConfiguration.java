@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.config;
+package wu.framework.lazy.cloud.heartbeat.server.netty.config;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.filter.NettyServerFilter;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.socket.NettyOnCloudNettyServerSocket;
+import wu.framework.lazy.cloud.heartbeat.server.netty.filter.NettyServerFilter;
+import wu.framework.lazy.cloud.heartbeat.server.netty.socket.NettyOnCloudNettyServerSocket;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

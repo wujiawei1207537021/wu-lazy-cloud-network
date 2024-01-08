@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.filter;
+package wu.framework.lazy.cloud.heartbeat.server.netty.filter;
 
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
@@ -11,7 +11,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.stereotype.Component;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.handler.NettyServerHandler;
+import wu.framework.lazy.cloud.heartbeat.server.netty.handler.NettyServerHandler;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

@@ -1,7 +1,7 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.converter;
+package wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientState;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.entity.NettyClientStateDO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.NettyClientStateDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 /**

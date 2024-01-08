@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.controller;
+package wu.framework.lazy.cloud.heartbeat.server.controller;
 
 
 

@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto;
+package wu.framework.lazy.cloud.heartbeat.server.application.dto;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;

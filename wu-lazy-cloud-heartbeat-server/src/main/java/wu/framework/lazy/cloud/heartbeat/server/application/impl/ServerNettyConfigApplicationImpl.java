@@ -1,13 +1,13 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.impl;
+package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyApplication;
 import wu.framework.lazy.cloud.heartbeat.common.constant.ClientConfigKeyUtils;
 import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.ServerNettyConfigApplication;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientState;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientStateRepository;
+import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientStateRepository;
 import lombok.extern.slf4j.Slf4j;
 
 

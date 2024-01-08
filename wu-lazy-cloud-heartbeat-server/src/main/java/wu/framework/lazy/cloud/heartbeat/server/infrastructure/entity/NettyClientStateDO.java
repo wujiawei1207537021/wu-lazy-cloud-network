@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.entity;
+package wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity;
 
 import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import com.wu.framework.inner.lazy.stereotype.*;

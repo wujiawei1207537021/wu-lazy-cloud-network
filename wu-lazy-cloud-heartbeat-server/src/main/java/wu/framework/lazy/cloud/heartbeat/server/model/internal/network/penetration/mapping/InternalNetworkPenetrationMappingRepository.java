@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.model.internal.network.penetration.mapping;
+package wu.framework.lazy.cloud.heartbeat.server.model.internal.network.penetration.mapping;
 
 import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;

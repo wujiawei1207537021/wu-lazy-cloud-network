@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.advanced;
+package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;

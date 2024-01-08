@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto;
+package wu.framework.lazy.cloud.heartbeat.server.application.dto;
 
 import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import io.swagger.v3.oas.annotations.media.Schema;

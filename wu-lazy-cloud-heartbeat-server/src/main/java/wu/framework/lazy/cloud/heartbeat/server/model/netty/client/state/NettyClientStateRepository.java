@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state;
+package wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state;
 
 import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;

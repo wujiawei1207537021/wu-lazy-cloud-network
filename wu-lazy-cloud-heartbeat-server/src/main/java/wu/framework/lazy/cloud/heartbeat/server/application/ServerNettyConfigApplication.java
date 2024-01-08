@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application;
+package wu.framework.lazy.cloud.heartbeat.server.application;
 
 /**
  * 云下心跳客户端操作nacos 配置

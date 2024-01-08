@@ -1,9 +1,9 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.filter;
+package wu.framework.lazy.cloud.heartbeat.server.netty.filter;
 
 import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.handler.VisitorHandler;
+import wu.framework.lazy.cloud.heartbeat.server.netty.handler.VisitorHandler;
 
 public class VisitorFilter extends ChannelInitializer<SocketChannel> {
     private final InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient;

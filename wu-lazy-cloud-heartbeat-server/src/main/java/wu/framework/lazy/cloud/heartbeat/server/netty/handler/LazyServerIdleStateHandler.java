@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.netty.handler;
+package wu.framework.lazy.cloud.heartbeat.server.netty.handler;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

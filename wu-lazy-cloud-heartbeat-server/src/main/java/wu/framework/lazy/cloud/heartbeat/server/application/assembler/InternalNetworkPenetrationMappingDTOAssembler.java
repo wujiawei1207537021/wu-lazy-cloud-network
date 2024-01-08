@@ -1,8 +1,8 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.assembler;
+package wu.framework.lazy.cloud.heartbeat.server.application.assembler;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.internal.network.penetration.mapping.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto.InternalNetworkPenetrationMappingDTO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
+import wu.framework.lazy.cloud.heartbeat.server.application.command.internal.network.penetration.mapping.*;
+import wu.framework.lazy.cloud.heartbeat.server.application.dto.InternalNetworkPenetrationMappingDTO;
+import wu.framework.lazy.cloud.heartbeat.server.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 /**

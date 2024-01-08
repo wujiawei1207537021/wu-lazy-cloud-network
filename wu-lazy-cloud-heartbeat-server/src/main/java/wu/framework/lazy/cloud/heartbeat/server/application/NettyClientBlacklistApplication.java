@@ -1,8 +1,8 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application;
+package wu.framework.lazy.cloud.heartbeat.server.application;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.netty.client.blacklist.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto.NettyClientBlacklistDTO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.blacklist.NettyClientBlacklist;
+import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.blacklist.*;
+import wu.framework.lazy.cloud.heartbeat.server.application.dto.NettyClientBlacklistDTO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.blacklist.NettyClientBlacklist;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;
 

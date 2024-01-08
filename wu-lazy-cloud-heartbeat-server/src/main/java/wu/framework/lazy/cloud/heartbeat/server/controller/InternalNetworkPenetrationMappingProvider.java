@@ -1,10 +1,10 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.controller;
+package wu.framework.lazy.cloud.heartbeat.server.controller;
 
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.InternalNetworkPenetrationMappingApplication;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.internal.network.penetration.mapping.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto.InternalNetworkPenetrationMappingDTO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
+import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenetrationMappingApplication;
+import wu.framework.lazy.cloud.heartbeat.server.application.command.internal.network.penetration.mapping.*;
+import wu.framework.lazy.cloud.heartbeat.server.application.dto.InternalNetworkPenetrationMappingDTO;
+import wu.framework.lazy.cloud.heartbeat.server.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
 import com.wu.framework.inner.layer.web.EasyController;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;

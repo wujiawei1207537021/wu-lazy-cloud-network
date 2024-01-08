@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.mapper;
+package wu.framework.lazy.cloud.heartbeat.server.infrastructure.mapper;
 
 /**
  * describe 内网穿透映射 

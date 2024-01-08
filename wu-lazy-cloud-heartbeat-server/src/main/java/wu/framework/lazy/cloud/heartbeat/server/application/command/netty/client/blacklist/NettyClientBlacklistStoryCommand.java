@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.netty.client.blacklist;
+package wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.blacklist;
 
 
 import com.wu.framework.response.mark.ValidType;

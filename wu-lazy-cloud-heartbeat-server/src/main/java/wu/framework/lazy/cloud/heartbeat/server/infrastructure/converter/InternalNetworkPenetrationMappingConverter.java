@@ -1,9 +1,9 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.converter;
+package wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
+import wu.framework.lazy.cloud.heartbeat.server.model.internal.network.penetration.mapping.InternalNetworkPenetrationMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.entity.InternalNetworkPenetrationMappingDO;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.InternalNetworkPenetrationMappingDO;
 /**
  * describe 内网穿透映射 
  *

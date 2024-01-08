@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.controller;
+package wu.framework.lazy.cloud.heartbeat.server.controller;
 
 
 import com.wu.framework.inner.layer.web.EasyController;
@@ -9,10 +9,10 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.NettyClientStateApplication;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.netty.client.state.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto.NettyClientStateDTO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientState;
+import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientStateApplication;
+import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.state.*;
+import wu.framework.lazy.cloud.heartbeat.server.application.dto.NettyClientStateDTO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
 
 import java.util.List;
 

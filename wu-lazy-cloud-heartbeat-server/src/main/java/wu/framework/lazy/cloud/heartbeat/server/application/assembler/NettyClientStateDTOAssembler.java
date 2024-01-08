@@ -1,8 +1,8 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.application.assembler;
+package wu.framework.lazy.cloud.heartbeat.server.application.assembler;
 
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.command.netty.client.state.*;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.application.dto.NettyClientStateDTO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientState;
+import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.state.*;
+import wu.framework.lazy.cloud.heartbeat.server.application.dto.NettyClientStateDTO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 /**

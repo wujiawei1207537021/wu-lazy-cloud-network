@@ -1,10 +1,10 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.converter;
+package wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter;
 
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.infrastructure.entity.NettyClientBlacklistDO;
-import wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.blacklist.*;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.NettyClientBlacklistDO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.blacklist.*;
 
 /**
  * describe 客户端黑名单 

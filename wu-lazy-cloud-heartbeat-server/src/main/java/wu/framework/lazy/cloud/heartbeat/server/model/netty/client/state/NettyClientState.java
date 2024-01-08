@@ -1,4 +1,4 @@
-package wu.framework.lazy.on.cloud.heartbeat.server.domain.model.netty.client.state;
+package wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state;
 
 import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
