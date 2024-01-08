@@ -2,8 +2,8 @@ package wu.framework.middleground.on.cloud.heartbeat.server.domain.application.i
 
 
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyApplication;
-import wu.framework.middleground.cloud.heartbeat.common.constant.ClientConfigKeyUtils;
-import wu.framework.middleground.cloud.heartbeat.common.enums.NettyClientStatus;
+import wu.framework.lazy.cloud.heartbeat.common.constant.ClientConfigKeyUtils;
+import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.application.ServerNettyConfigApplication;
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.model.netty.client.state.NettyClientState;

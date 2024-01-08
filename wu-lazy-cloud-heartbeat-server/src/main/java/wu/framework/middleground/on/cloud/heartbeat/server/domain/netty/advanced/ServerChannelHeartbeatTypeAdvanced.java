@@ -1,9 +1,9 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.advanced;
 
 
-import wu.framework.middleground.cloud.heartbeat.common.MessageType;
-import wu.framework.middleground.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.AbstractChannelHeartbeatTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractChannelHeartbeatTypeAdvanced;
 import io.netty.channel.Channel;
 import org.springframework.stereotype.Component;
 

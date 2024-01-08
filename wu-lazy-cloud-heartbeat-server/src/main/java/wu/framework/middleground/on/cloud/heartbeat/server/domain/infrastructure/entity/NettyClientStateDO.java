@@ -1,6 +1,6 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.infrastructure.entity;
 
-import wu.framework.middleground.cloud.heartbeat.common.enums.NettyClientStatus;
+import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import com.wu.framework.inner.lazy.stereotype.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

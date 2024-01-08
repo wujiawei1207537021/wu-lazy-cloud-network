@@ -1,6 +1,6 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.application.impl;
 
-import wu.framework.middleground.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.application.InternalNetworkPenetrationMappingApplication;
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.application.assembler.InternalNetworkPenetrationMappingDTOAssembler;
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.application.command.internal.network.penetration.mapping.*;

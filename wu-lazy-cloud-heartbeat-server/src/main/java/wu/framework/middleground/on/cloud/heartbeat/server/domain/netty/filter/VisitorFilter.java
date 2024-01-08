@@ -1,6 +1,6 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.filter;
 
-import wu.framework.middleground.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
 import wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.handler.VisitorHandler;

@@ -1,6 +1,6 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.socket;
 
-import wu.framework.middleground.cloud.heartbeat.common.NettyVisitorContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorContext;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;

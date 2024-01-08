@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import wu.framework.middleground.cloud.heartbeat.common.ChannelContext;
-import wu.framework.middleground.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
-import wu.framework.middleground.cloud.heartbeat.common.MessageType;
-import wu.framework.middleground.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
+import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;

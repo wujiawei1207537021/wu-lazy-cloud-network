@@ -1,10 +1,10 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.advanced;
 
-import wu.framework.middleground.cloud.heartbeat.common.NettyCommunicationIdContext;
-import wu.framework.middleground.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.middleground.cloud.heartbeat.common.NettyRealIdContext;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.server.AbstractReportSingleClientRealConnectTypeAdvanced;
-import wu.framework.middleground.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
+import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractReportSingleClientRealConnectTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
 import lombok.extern.slf4j.Slf4j;

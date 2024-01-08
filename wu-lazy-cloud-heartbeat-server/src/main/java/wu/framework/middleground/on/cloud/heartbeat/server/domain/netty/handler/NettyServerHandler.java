@@ -1,11 +1,11 @@
 package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.handler;
 
-import wu.framework.middleground.cloud.heartbeat.common.MessageType;
-import wu.framework.middleground.cloud.heartbeat.common.NettyCommunicationIdContext;
-import wu.framework.middleground.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.middleground.cloud.heartbeat.common.NettyRealIdContext;
-import wu.framework.middleground.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.middleground.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.channel.*;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;

@@ -2,8 +2,9 @@ package wu.framework.middleground.on.cloud.heartbeat.server.domain.netty.handler
 
 
 
+import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.middleground.cloud.heartbeat.common.*;
-import wu.framework.middleground.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
