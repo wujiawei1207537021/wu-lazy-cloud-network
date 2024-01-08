@@ -3,8 +3,8 @@ package wu.framework.lazy.cloud.heartbeat.common;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractChannelHeartbeatTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.client.*;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.server.*;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.client.*;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.server.*;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.client.*;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.server.*;
 import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
 
 /**

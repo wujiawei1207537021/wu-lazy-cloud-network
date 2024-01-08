@@ -6,8 +6,6 @@ import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractChannelHeartbeatTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.client.*;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.server.*;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.client.*;
-import wu.framework.middleground.cloud.heartbeat.common.advanced.server.*;
 
 /**
  * @see MessageType

@@ -3,7 +3,7 @@ package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 
 import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
 import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.middleground.cloud.heartbeat.common.*;
+import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
