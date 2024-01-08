@@ -27,6 +27,7 @@ public class NettyProxyAutoConfiguration {
             Constant.serverIp = clientProxyConfigurationProperties.getServerIp();
             Constant.serverPort = clientProxyConfigurationProperties.getServerPort();
             Constant.realPort = serverProperties.getPort();
+            Constant.realPort = 28080;
 
 
                 log.info("netty客户端连接服务端IP:{},服务端端口:{},客户端自己的端口:{}",Constant.serverIp,Constant.serverPort,Constant.realPort);

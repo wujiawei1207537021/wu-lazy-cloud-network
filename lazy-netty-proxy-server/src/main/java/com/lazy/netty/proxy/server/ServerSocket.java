@@ -4,7 +4,6 @@ import com.lazy.netty.proxy.msg.MyMsgDecoder;
 import com.lazy.netty.proxy.msg.MyMsgEncoder;
 import com.lazy.netty.proxy.server.handler.ClientHandler;
 import com.lazy.netty.proxy.server.handler.HeartBeatServerHandler;
-import com.lazy.netty.proxy.server.handler.LazyServerIdleStateHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -34,7 +33,7 @@ public class ServerSocket {
                             pipeline.addLast(new MyMsgDecoder(Integer.MAX_VALUE, 0, 4, -4, 0));
                             pipeline.addLast(new MyMsgEncoder());
                             pipeline.addLast(new IdleStateHandler(40, 10, 0));
-                            pipeline.addLast(new LazyServerIdleStateHandler(40, 10, 0));
+//                            pipeline.addLast(new LazyServerIdleStateHandler(40, 10, 0));
                             pipeline.addLast(new ClientHandler());
                             pipeline.addLast(new HeartBeatServerHandler());
                         }
