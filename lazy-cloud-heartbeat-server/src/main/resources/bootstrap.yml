@@ -1,0 +1,15 @@
+
+
+
+spring:
+  application:
+    name: middleground-on-cloud-heartbeat-server
+  cloud:
+    nacos:
+      server-addr: 192.168.17.221:30569
+      discovery:
+        server-addr: 192.168.17.221:30569
+#        metadata:
+#          version: 2.0
+      config:
+        server-addr: 192.168.17.221:30569

@@ -1,0 +1,9 @@
+
+server:
+  port: 6001
+
+spring:
+  profiles:
+    active: dev
+  lazy:
+    enable-auto-schema: true

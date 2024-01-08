@@ -1,0 +1,17 @@
+spring:
+  middleground:
+    netty:
+#      inet-host: 192.168.17.221
+#      inet-port: 4923
+#      inet-path: middleground-on-cloud-heartbeat-server
+      inet-host: 127.0.0.1 # 服务端地址
+      inet-port: 7001 #服务端端口
+      inet-path: middleground-on-cloud-heartbeat-server
+      client-id: local # 客户端ID
+  data:
+    redis:
+      host: 192.168.17.221
+      port: 30553
+      password: laihui
+      database: 2
+

@@ -1,68 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
+
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <artifactId>wu-framework-parent</artifactId>
+        <groupId>top.wu2020</groupId>
+        <version>1.2.1-JDK17-SNAPSHOT</version>
+        <relativePath/>
     </parent>
-    <groupId>com.wu</groupId>
-    <artifactId>netty-proxy</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>netty-proxy</name>
-    <description>netty-proxy</description>
-    <properties>
-        <java.version>19</java.version>
-    </properties>
+
+    <groupId>top.wu2020</groupId>
+    <artifactId>lazy-cloud-network</artifactId>
+    <packaging>pom</packaging>
+    <version>1.2.1-JDK17-SNAPSHOT</version>
+    <description>云上云下</description>
+
 
     <modules>
-        <module>netty-proxy-common</module>
-        <module>netty-proxy-server</module>
-        <module>netty-proxy-client</module>
+        <!--    云上服务组件    -->
+        <module>lazy-cloud-heartbeat-server</module>
+        <module>lazy-cloud-heartbeat-client</module>
+        <module>lazy-cloud-heartbeat-common</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <properties>
 
+    </properties>
+    <dependencies>
+        <!--    mapstruct    -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-mapstruct-binding</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.5.5.Final</version>
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>oss.snapshots</id>
-            <name>oss.sonatype.org</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>top.wu2020</groupId>
+                <artifactId>wu-framework-dependencies</artifactId>
+                <version>1.2.1-JDK17-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.graalvm.buildtools</groupId>
-                <artifactId>native-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
