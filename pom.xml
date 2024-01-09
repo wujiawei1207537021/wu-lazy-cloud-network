@@ -12,7 +12,6 @@
         <relativePath/>
     </parent>
 
-    <groupId>top.wu2020</groupId>
     <artifactId>wu-lazy-cloud-network</artifactId>
     <packaging>pom</packaging>
     <version>1.2.1-JDK17-SNAPSHOT</version>
