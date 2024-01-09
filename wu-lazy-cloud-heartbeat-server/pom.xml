@@ -5,7 +5,7 @@
     <parent>
         <groupId>top.wu2020</groupId>
         <artifactId>wu-lazy-cloud-network</artifactId>
-        <version>1.2.1-JDK17-SNAPSHOT</version>
+        <version>1.2.2-JDK17-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -27,7 +27,7 @@
         <dependency>
                <groupId>top.wu2020</groupId>
             <artifactId>wu-lazy-cloud-heartbeat-common</artifactId>
-            <version>1.2.1-JDK17-SNAPSHOT</version>
+            <version>1.2.2-JDK17-SNAPSHOT</version>
         </dependency>
         <!--    数据库    -->
         <dependency>
@@ -52,6 +52,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
