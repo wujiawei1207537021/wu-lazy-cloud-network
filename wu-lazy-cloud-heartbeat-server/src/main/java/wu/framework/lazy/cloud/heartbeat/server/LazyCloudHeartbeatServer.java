@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @Slf4j
 @SpringBootApplication
-public class MiddlegroundOnCloudHeartbeatServer {
+public class LazyCloudHeartbeatServer {
     public static void main(String[] args) {
-        SpringApplication.run(MiddlegroundOnCloudHeartbeatServer.class,args);
+        SpringApplication.run(LazyCloudHeartbeatServer.class,args);
     }
 }

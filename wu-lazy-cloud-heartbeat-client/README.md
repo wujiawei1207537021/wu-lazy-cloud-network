@@ -14,6 +14,7 @@ docker push docker-registry.laihui.com/middleground/middleground-under-cloud-hea
 ```
 
 
+
 ## BUILD IMAGE
 
 ```shell
@@ -24,6 +25,16 @@ docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbea
 docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
 
 ```
+
+
+### run
+```shell
+docker run -d -it --name client -e spring.middleground.netty.inet-host=124.222.48.62 -e spring.middleground.netty.inet-port=30676  -e spring.middleground.netty.client-id=node1   registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
+
+
+
+```
+
 
 ```shell
 gu install native-image
