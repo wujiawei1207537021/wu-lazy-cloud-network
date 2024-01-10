@@ -23,6 +23,9 @@
         <module>wu-lazy-cloud-heartbeat-server</module>
         <module>wu-lazy-cloud-heartbeat-client</module>
         <module>wu-lazy-cloud-heartbeat-common</module>
+
+        <!--    样例    -->
+        <module>wu-lazy-cloud-heartbeat-sample</module>
     </modules>
 
     <properties>
