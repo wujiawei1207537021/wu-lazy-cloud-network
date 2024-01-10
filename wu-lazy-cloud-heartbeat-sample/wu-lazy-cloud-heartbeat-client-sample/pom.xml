@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>top.wu2020</groupId>
-        <artifactId>wu-lazy-cloud-network</artifactId>
+        <artifactId>wu-lazy-cloud-heartbeat-sample</artifactId>
         <version>1.2.1-JDK17-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wu-lazy-cloud-heartbeat-client</artifactId>
+    <artifactId>wu-lazy-cloud-heartbeat-client-sample</artifactId>
     <description>云下心跳客户端</description>
 
     <properties>
@@ -18,24 +18,27 @@
     </properties>
 
     <dependencies>
-        <!--    通用心跳包    -->
-        <dependency>
-               <groupId>top.wu2020</groupId>
-            <artifactId>wu-lazy-cloud-heartbeat-common</artifactId>
-            <version>1.2.1-JDK17-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>2.0.33</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>top.wu2020</groupId>
-            <artifactId>wu-database-lazy-plus-starter</artifactId>
+            <artifactId>wu-lazy-cloud-heartbeat-client</artifactId>
+            <version>1.2.1-JDK17-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

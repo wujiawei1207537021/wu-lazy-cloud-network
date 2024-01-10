@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>top.wu2020</groupId>
+		<artifactId>wu-lazy-cloud-network</artifactId>
+		<version>1.2.1-JDK17-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>wu-lazy-cloud-heartbeat-sample</artifactId>
+
+	<name>wu-lazy-cloud-heartbeat-sample</name>
+	<description>wu-lazy-cloud-heartbeat-sample</description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<!--    样例    -->
+		<module>wu-lazy-cloud-heartbeat-client-sample</module>
+		<module>wu-lazy-cloud-heartbeat-server-sample</module>
+	</modules>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
