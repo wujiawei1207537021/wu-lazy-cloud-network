@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  **/
 @Data
 @Accessors(chain = true)
-@LazyTable(tableName = "netty_client_blacklist", schema = "middleground_cloud_netty_server", comment = "客户端黑名单")
+@LazyTable(tableName = "netty_client_blacklist",  comment = "客户端黑名单")
 @Schema(title = "netty_client_blacklist", description = "客户端黑名单")
 public class NettyClientBlacklistDO {
 

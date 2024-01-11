@@ -9,8 +9,8 @@ mvn native:build -Pnative
 ```
 ### 构建docker镜像
 ```shell
-docker build -t docker-registry.laihui.com/middleground/middleground-under-cloud-heartbeat-client:middleground-2.4.2-native-SNAPSHOT_latest -f Native-Dockerfile .
-docker push docker-registry.laihui.com/middleground/middleground-under-cloud-heartbeat-client:middleground-2.4.2-native-SNAPSHOT_latest
+docker build -t docker-registry.laihui.com/lazy/lazy-under-cloud-heartbeat-client:lazy-2.4.2-native-SNAPSHOT_latest -f Native-Dockerfile .
+docker push docker-registry.laihui.com/lazy/lazy-under-cloud-heartbeat-client:lazy-2.4.2-native-SNAPSHOT_latest
 ```
 
 
@@ -29,7 +29,7 @@ docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-cl
 
 ### run
 ```shell
-docker run -d -it --name client -e spring.middleground.netty.inet-host=124.222.48.62 -e spring.middleground.netty.inet-port=30676  -e spring.middleground.netty.client-id=node1   registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
+docker run -d -it --name client -e spring.lazy.netty.inet-host=124.222.48.62 -e spring.lazy.netty.inet-port=30676  -e spring.lazy.netty.client-id=node1   registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
 
 
 

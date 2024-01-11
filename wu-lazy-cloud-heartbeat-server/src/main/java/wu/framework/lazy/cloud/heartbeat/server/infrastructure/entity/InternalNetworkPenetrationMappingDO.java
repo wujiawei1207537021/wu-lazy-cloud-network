@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  **/
 @Data
 @Accessors(chain = true)
-@LazyTable(tableName = "internal_network_penetration_mapping",schema = "middleground_cloud_netty_server",comment = "内网穿透映射")
+@LazyTable(tableName = "internal_network_penetration_mapping",comment = "内网穿透映射")
 @Schema(title = "internal_network_penetration_mapping",description = "内网穿透映射")
 public class InternalNetworkPenetrationMappingDO {
 

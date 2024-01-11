@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Data
 public class NettyServerProperties {
-    public static final String PREFIX = "spring.middleground.netty";
+    public static final String PREFIX = "spring.lazy.netty";
     /**
      * 服务端地址
      */
@@ -23,7 +23,7 @@ public class NettyServerProperties {
     /**
      * 服务端path
      */
-    private String inetPath = "middleground-on-cloud-heartbeat-server";
+    private String inetPath = "lazy-cloud-heartbeat-server";
     /**
      * 客户端ID
      */

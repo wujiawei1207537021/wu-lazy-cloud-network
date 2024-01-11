@@ -1,5 +1,5 @@
 spring:
-  middleground:
+  lazy:
     netty:
 #      inet-host: 192.168.17.221
 #      inet-port: 4923
