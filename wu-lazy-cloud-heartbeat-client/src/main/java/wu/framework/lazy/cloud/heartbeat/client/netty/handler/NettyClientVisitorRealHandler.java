@@ -11,6 +11,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 客户端访客通信通道 处理器
+ */
 @Slf4j
 public class NettyClientVisitorRealHandler extends SimpleChannelInboundHandler<NettyProxyMsg> {
     private final ChannelTypeAdapter channelTypeAdapter;

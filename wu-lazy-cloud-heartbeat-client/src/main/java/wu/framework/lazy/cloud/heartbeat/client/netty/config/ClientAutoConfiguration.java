@@ -6,7 +6,6 @@ import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApp
 import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,9 +22,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Configuration
-public class AutoConfiguration implements CommandLineRunner {
+public class ClientAutoConfiguration implements CommandLineRunner {
 
-    private final ServerProperties serverProperties;
     private final NettyServerProperties nettyServerProperties;
     private final ClientNettyConfigApplication clientNettyConfigApplication;
 
@@ -35,11 +33,9 @@ public class AutoConfiguration implements CommandLineRunner {
     ThreadPoolExecutor NETTY_CLIENT_EXECUTOR = new ThreadPoolExecutor(1, 1, 200, TimeUnit.MILLISECONDS,
             new ArrayBlockingQueue<>(1));
 
-    public AutoConfiguration(ServerProperties serverProperties,
-                             NettyServerProperties nettyServerProperties,
-                             ClientNettyConfigApplication clientNettyConfigApplication,
-                             List<ChannelTypeAdvanced> channelTypeAdvancedList) {
-        this.serverProperties = serverProperties;
+    public ClientAutoConfiguration(NettyServerProperties nettyServerProperties,
+                                   ClientNettyConfigApplication clientNettyConfigApplication,
+                                   List<ChannelTypeAdvanced> channelTypeAdvancedList) {
         this.nettyServerProperties = nettyServerProperties;
         this.clientNettyConfigApplication = clientNettyConfigApplication;
         this.channelTypeAdvancedList = channelTypeAdvancedList;
@@ -47,7 +43,7 @@ public class AutoConfiguration implements CommandLineRunner {
 
 
     @Bean(destroyMethod = "shutdown")
-    public NettyClientSocket nettyServerSocket() {
+    public NettyClientSocket nettyClientSocket() {
         String inetHost = nettyServerProperties.getInetHost();
         int inetPort = nettyServerProperties.getInetPort();
         String clientId = nettyServerProperties.getClientId();
