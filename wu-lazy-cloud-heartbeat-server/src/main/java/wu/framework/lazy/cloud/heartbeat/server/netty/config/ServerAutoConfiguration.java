@@ -22,14 +22,14 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Configuration
-public class AutoConfiguration implements CommandLineRunner {
+public class ServerAutoConfiguration implements CommandLineRunner {
 
     private final ServerProperties serverProperties;
     private final NettyServerFilter nettyServerFilter;
     ThreadPoolExecutor NETTY_SERVER_EXECUTOR = new ThreadPoolExecutor(1, 1, 200, TimeUnit.MILLISECONDS,
             new ArrayBlockingQueue<>(1));
 
-    public AutoConfiguration(ServerProperties serverProperties, NettyServerFilter nettyServerFilter) {
+    public ServerAutoConfiguration(ServerProperties serverProperties, NettyServerFilter nettyServerFilter) {
         this.serverProperties = serverProperties;
         this.nettyServerFilter = nettyServerFilter;
     }

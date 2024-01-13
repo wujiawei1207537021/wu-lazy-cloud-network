@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  **/
 @Data
 @Accessors(chain = true)
-@LazyTable(tableName = "netty_client_state", schema = "middleground_cloud_netty_server", comment = "客户端状态")
+@LazyTable(tableName = "netty_client_state",  comment = "客户端状态")
 @Schema(title = "netty_client_state", description = "客户端状态")
 public class NettyClientStateDO {
 
