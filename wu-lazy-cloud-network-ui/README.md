@@ -268,6 +268,11 @@ VE_API [ fileName ][ portName ] (params,{Global:false)   //没有全局loading
 ## 声明
 
 个人开发维护! 欢迎交流学习!
+
+设置阿里云镜像仓库
+```shell
+npm config set registry http://registry.npm.taobao.org/
+```
 ```shell
 yarn run build
 
@@ -275,7 +280,7 @@ yarn run build
 
 docker login --username=1207537021@qq.com registry.cn-hangzhou.aliyuncs.com
 ```shell
-docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-smart-acw-server:ui-master .
-docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-smart-acw-server:ui-master
+docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-network-ui:ui-master .
+docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-network-ui:ui-master
 
 ```

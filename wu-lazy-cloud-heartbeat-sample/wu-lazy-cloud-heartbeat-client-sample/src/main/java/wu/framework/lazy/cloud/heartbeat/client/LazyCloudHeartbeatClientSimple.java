@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class LazyCloudHeartbeatClient {
+public class LazyCloudHeartbeatClientSimple {
     public static void main(String[] args) {
-        SpringApplication.run(LazyCloudHeartbeatClient.class,args);
+        SpringApplication.run(LazyCloudHeartbeatClientSimple.class,args);
     }
 }

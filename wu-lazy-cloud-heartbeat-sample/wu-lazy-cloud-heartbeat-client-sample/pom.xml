@@ -34,7 +34,7 @@
 <!--                    &lt;!&ndash; imageName用于设置生成的二进制文件名称 &ndash;&gt;-->
 <!--                    <imageName>${project.artifactId}</imageName>-->
 <!--                    &lt;!&ndash; mainClass用于指定main方法类路径 &ndash;&gt;-->
-<!--                    <mainClass>wu.framework.lazy.cloud.heartbeat.client.LazyCloudHeartbeatClient</mainClass>-->
+<!--                    <mainClass>wu.framework.lazy.cloud.heartbeat.client.LazyCloudHeartbeatClientSimpleSimple</mainClass>-->
 <!--                    <buildArgs>-->
 <!--                        &#45;&#45;no-fallback-->
 <!--                    </buildArgs>-->
