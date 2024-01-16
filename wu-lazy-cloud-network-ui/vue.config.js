@@ -11,7 +11,7 @@ module.exports = {
     devServer: {
         port: "28080", // 请求地址的端口号，在本项目是8080
         proxy: {
-            "/acw-server/": {
+            "/wu-lazy-cloud-network/": {
                 // 'demo'是请求地址中，以demo开头都适用这个
                 // target: "http://47.92.27.215:520/", // 真实的服务器地址
                 target: "http://127.0.0.1:6001", // 真实的服务器地址
@@ -20,7 +20,7 @@ module.exports = {
                 ws: false, // 是否启用websockets
                 // 是否重写
                 pathRewrite: {
-                    "^/acw-server": "/",
+                    "^/wu-lazy-cloud-network": "/",
                 },
             },
             "/": {
