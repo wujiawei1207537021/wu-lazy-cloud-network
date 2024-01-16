@@ -14,15 +14,16 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
- * describe 内网穿透映射 
+ * describe 内网穿透映射
  *
  * @author Jia wei Wu
  * @date 2023/12/29 05:21 下午
- * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyInfrastructurePersistence 
+ * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyInfrastructurePersistence
  **/
 @Repository
-public class InternalNetworkPenetrationMappingRepositoryImpl  implements  InternalNetworkPenetrationMappingRepository {
+public class InternalNetworkPenetrationMappingRepositoryImpl implements InternalNetworkPenetrationMappingRepository {
 
     @Resource
     LazyLambdaStream lazyLambdaStream;
@@ -30,9 +31,8 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     /**
      * describe 新增内网穿透映射
      *
-     * @param internalNetworkPenetrationMapping 新增内网穿透映射     
-     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射新增后领域对象     
-     
+     * @param internalNetworkPenetrationMapping 新增内网穿透映射
+     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射新增后领域对象
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -47,9 +47,8 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     /**
      * describe 批量新增内网穿透映射
      *
-     * @param internalNetworkPenetrationMappingList 批量新增内网穿透映射     
-     * @return {@link Result<List<InternalNetworkPenetrationMapping>>} 内网穿透映射新增后领域对象集合     
-     
+     * @param internalNetworkPenetrationMappingList 批量新增内网穿透映射
+     * @return {@link Result<List<InternalNetworkPenetrationMapping>>} 内网穿透映射新增后领域对象集合
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -64,9 +63,8 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     /**
      * describe 查询单个内网穿透映射
      *
-     * @param internalNetworkPenetrationMapping 查询单个内网穿透映射     
-     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射领域对象     
-     
+     * @param internalNetworkPenetrationMapping 查询单个内网穿透映射
+     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射领域对象
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -81,9 +79,8 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     /**
      * describe 查询多个内网穿透映射
      *
-     * @param internalNetworkPenetrationMapping 查询多个内网穿透映射     
-     * @return {@link Result<List<InternalNetworkPenetrationMapping>>} 内网穿透映射领域对象     
-     
+     * @param internalNetworkPenetrationMapping 查询多个内网穿透映射
+     * @return {@link Result<List<InternalNetworkPenetrationMapping>>} 内网穿透映射领域对象
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -98,29 +95,27 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     /**
      * describe 分页查询多个内网穿透映射
      *
-     * @param size 当前页数
-     * @param current 当前页
-     * @param internalNetworkPenetrationMapping 分页查询多个内网穿透映射     
-     * @return {@link Result<LazyPage<InternalNetworkPenetrationMapping>>} 分页内网穿透映射领域对象     
-     
+     * @param size                              当前页数
+     * @param current                           当前页
+     * @param internalNetworkPenetrationMapping 分页查询多个内网穿透映射
+     * @return {@link Result<LazyPage<InternalNetworkPenetrationMapping>>} 分页内网穿透映射领域对象
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
 
     @Override
-    public Result<LazyPage<InternalNetworkPenetrationMapping>> findPage(int size,int current,InternalNetworkPenetrationMapping internalNetworkPenetrationMapping) {
+    public Result<LazyPage<InternalNetworkPenetrationMapping>> findPage(int size, int current, InternalNetworkPenetrationMapping internalNetworkPenetrationMapping) {
         InternalNetworkPenetrationMappingDO internalNetworkPenetrationMappingDO = InternalNetworkPenetrationMappingConverter.INSTANCE.fromInternalNetworkPenetrationMapping(internalNetworkPenetrationMapping);
-        LazyPage<InternalNetworkPenetrationMapping> lazyPage = new LazyPage<>(current,size);
-        LazyPage<InternalNetworkPenetrationMapping> internalNetworkPenetrationMappingLazyPage = lazyLambdaStream.selectPage(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO),lazyPage, InternalNetworkPenetrationMapping.class);
+        LazyPage<InternalNetworkPenetrationMapping> lazyPage = new LazyPage<>(current, size);
+        LazyPage<InternalNetworkPenetrationMapping> internalNetworkPenetrationMappingLazyPage = lazyLambdaStream.selectPage(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO), lazyPage, InternalNetworkPenetrationMapping.class);
         return ResultFactory.successOf(internalNetworkPenetrationMappingLazyPage);
     }
 
     /**
      * describe 删除内网穿透映射
      *
-     * @param internalNetworkPenetrationMapping 删除内网穿透映射     
-     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射     
-     
+     * @param internalNetworkPenetrationMapping 删除内网穿透映射
+     * @return {@link Result<InternalNetworkPenetrationMapping>} 内网穿透映射
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -128,16 +123,15 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     @Override
     public Result<InternalNetworkPenetrationMapping> remove(InternalNetworkPenetrationMapping internalNetworkPenetrationMapping) {
         InternalNetworkPenetrationMappingDO internalNetworkPenetrationMappingDO = InternalNetworkPenetrationMappingConverter.INSTANCE.fromInternalNetworkPenetrationMapping(internalNetworkPenetrationMapping);
-        //  lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO));
+        lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO));
         return ResultFactory.successOf();
     }
 
     /**
      * describe 是否存在内网穿透映射
      *
-     * @param internalNetworkPenetrationMapping 内网穿透映射领域对象     
-     * @return {@link Result<Boolean>} 是否存在 true 存在，false 不存在     
-     
+     * @param internalNetworkPenetrationMapping 内网穿透映射领域对象
+     * @return {@link Result<Boolean>} 是否存在 true 存在，false 不存在
      * @author Jia wei Wu
      * @date 2023/12/29 05:21 下午
      **/
@@ -145,7 +139,7 @@ public class InternalNetworkPenetrationMappingRepositoryImpl  implements  Intern
     @Override
     public Result<Boolean> exists(InternalNetworkPenetrationMapping internalNetworkPenetrationMapping) {
         InternalNetworkPenetrationMappingDO internalNetworkPenetrationMappingDO = InternalNetworkPenetrationMappingConverter.INSTANCE.fromInternalNetworkPenetrationMapping(internalNetworkPenetrationMapping);
-        Boolean exists=lazyLambdaStream.exists(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO));
+        Boolean exists = lazyLambdaStream.exists(LazyWrappers.lambdaWrapperBean(internalNetworkPenetrationMappingDO));
         return ResultFactory.successOf(exists);
     }
 

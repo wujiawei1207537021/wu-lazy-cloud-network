@@ -1,5 +1,7 @@
 package wu.framework.lazy.cloud.heartbeat.common;
 
+import io.netty.channel.Channel;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 /**

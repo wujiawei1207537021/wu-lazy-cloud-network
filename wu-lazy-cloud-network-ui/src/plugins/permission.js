@@ -151,7 +151,7 @@ export default {
         };
         /**
          * 默认菜单
-         * @type {[{name: string, icon: string, id: number, sort: number, iframe: number, menu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, menu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, menu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, menu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, menu: string, type: number, parentCode: number, url: string}, null, null, null, null, null, null, null, null, null, null, null, null, null]}
+         * @type {[{name: string, icon: string, id: number, sort: number, iframe: number, cloudNetworkMenu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, cloudNetworkMenu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, cloudNetworkMenu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, cloudNetworkMenu: string, type: number, parentCode: number, url: string}, {name: string, icon: string, id: number, sort: number, iframe: number, cloudNetworkMenu: string, type: number, parentCode: number, url: string}, null, null, null, null, null, null, null, null, null, null, null, null, null]}
          */
         const menuList = [
             {

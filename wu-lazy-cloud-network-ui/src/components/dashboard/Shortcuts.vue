@@ -262,11 +262,11 @@ const getCpu = async () => {
     }
 };
 onMounted(async () => {
-    const { code, data } = await VE_API.system.shortcutsData();
-    if (code === 0) {
-        console.log(data);
-        shortcutsData.value = data;
-    }
+    // const { code, data } = await VE_API.system.shortcutsData();
+    // if (code === 0) {
+    //     console.log(data);
+    //     shortcutsData.value = data;
+    // }
     await getJvmInfo();
     await getCpu();
     timer.value = setTimeout(() => {

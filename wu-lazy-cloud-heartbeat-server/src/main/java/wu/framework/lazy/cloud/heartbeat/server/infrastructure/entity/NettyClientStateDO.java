@@ -61,7 +61,7 @@ public class NettyClientStateDO {
      * 暂存状态（开启、关闭）
      */
     @Schema(description = "暂存状态（开启、关闭）", name = "staging", example = "")
-    @LazyTableField(name = "staging", comment = "暂存状态（开启、关闭）", columnType = "varchar(255)")
+    @LazyTableField(name = "staging_state", comment = "暂存状态（开启、关闭）", columnType = "varchar(255)")
     private String stagingState;
 
     /**
@@ -70,5 +70,13 @@ public class NettyClientStateDO {
     @Schema(description = "修改时间", name = "updateTime", example = "")
     @LazyTableFieldUpdateTime
     private LocalDateTime updateTime;
+
+    /**
+     *
+     * 描述
+     */
+    @Schema(description ="描述",name ="describe",example = "")
+    @LazyTableField(comment = "描述")
+    private String describe;
 
 }

@@ -2,6 +2,8 @@ package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 
 
+import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorContext;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientStateApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.NettyClientStateDTOAssembler;
 import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.state.NettyClientStateStoryCommand;
@@ -135,7 +137,11 @@ public class NettyClientStateApplicationImpl implements NettyClientStateApplicat
     @Override
     public Result<NettyClientState> remove(NettyClientStateRemoveCommand nettyClientStateRemoveCommand) {
      NettyClientState nettyClientState = NettyClientStateDTOAssembler.INSTANCE.toNettyClientState(nettyClientStateRemoveCommand);
-     return nettyClientStateRepository.remove(nettyClientState);
+     // 获取当前客户端通道 而后关闭
+        String clientId = nettyClientStateRemoveCommand.getClientId();
+        // 心跳关闭
+        ChannelContext.clear(clientId);
+        return nettyClientStateRepository.remove(nettyClientState);
     }
 
 }

@@ -126,6 +126,25 @@ public class ChannelContext {
     }
 
     /**
+     * 关闭通道
+     *
+     * @param clientId 客户端ID
+     */
+    public static void clear(String clientId) {
+        ClientChannel clientChannel = get(clientId);
+        if (clientChannel != null) {
+            remove(clientId);
+            Channel channel = clientChannel.getChannel();
+            if (channel != null && channel.isActive()) {
+                channel.close();
+            }
+        } else {
+            // log warm
+            log.warn("无法通过客户ID:[{}]移除客户端", clientId);
+        }
+    }
+
+    /**
      * 通过客户端ID移除客户端通道
      *
      * @param clientId 客户端ID
@@ -137,6 +156,21 @@ public class ChannelContext {
         } else {
             // log warm
             log.warn("无法通过客户ID:[{}]移除客户端", new String(clientId));
+        }
+    }
+
+    /**
+     * 通过客户端ID移除客户端通道
+     *
+     * @param clientId 客户端ID
+     */
+    public static void remove(String clientId) {
+        ClientChannel clientChannel = get(clientId);
+        if (clientChannel != null) {
+            channelIdClientChannelDTOConcurrentHashMap.remove(clientChannel.getChannelId());
+        } else {
+            // log warm
+            log.warn("无法通过客户ID:[{}]移除客户端", clientId);
         }
     }
 

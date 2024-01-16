@@ -67,5 +67,11 @@ public class NettyClientStateQueryListCommand {
      */
     @Schema(description ="修改时间",name ="updateTime",example = "")
     private LocalDateTime updateTime;
+    /**
+     *
+     * 描述
+     */
+    @Schema(description ="描述",name ="describe",example = "")
+    private String describe;
 
 }

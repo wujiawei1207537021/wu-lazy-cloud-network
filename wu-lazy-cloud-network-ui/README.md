@@ -104,7 +104,7 @@
     │          resize.js
     │
     ├─plugins				插件目录
-    │      axios.js
+    │      axios-plus.js
     │      element.js
     │      mock.js
     │      permission.js
@@ -212,7 +212,7 @@ routes.push(route);
 
 ### 接口配置
 
-项目中对 axios 做了封装配置中添加**Global**字段用来控制是否显示全屏 load,默认为 true,如需修改添加 axios 配置可在[src\plugins\axios.js](src\plugins\axios.js)中进行
+项目中对 axios 做了封装配置中添加**Global**字段用来控制是否显示全屏 load,默认为 true,如需修改添加 axios 配置可在[src\plugins\axios-plus.js](src\plugins\axios.js)中进行
 
 #### 添加接口
 

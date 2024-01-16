@@ -1,5 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state;
 
+import com.wu.framework.inner.lazy.stereotype.LazyTableField;
 import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -67,5 +68,11 @@ public class NettyClientState {
      */
     @Schema(description ="修改时间",name ="updateTime",example = "")
     private LocalDateTime updateTime;
+    /**
+     *
+     * 描述
+     */
+    @Schema(description ="描述",name ="describe",example = "")
+    private String describe;
 
 }

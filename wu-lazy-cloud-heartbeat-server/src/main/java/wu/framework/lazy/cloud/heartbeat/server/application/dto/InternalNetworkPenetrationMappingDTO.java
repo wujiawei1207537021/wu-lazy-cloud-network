@@ -1,5 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -43,6 +44,7 @@ public class InternalNetworkPenetrationMappingDTO {
      * 
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Schema(description ="创建时间",name ="createTime",example = "")
     private LocalDateTime createTime;
 
@@ -64,6 +66,7 @@ public class InternalNetworkPenetrationMappingDTO {
      * 
      * 修改时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Schema(description ="修改时间",name ="updateTime",example = "")
     private LocalDateTime updateTime;
 

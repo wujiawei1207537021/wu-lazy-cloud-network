@@ -124,7 +124,7 @@ public class NettyClientStateRepositoryImpl implements NettyClientStateRepositor
     @Override
     public Result<NettyClientState> remove(NettyClientState nettyClientState) {
         NettyClientStateDO nettyClientStateDO = NettyClientStateConverter.INSTANCE.fromNettyClientState(nettyClientState);
-        //  lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(nettyClientStateDO));
+          lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(nettyClientStateDO));
         return ResultFactory.successOf();
     }
 

@@ -25,7 +25,7 @@
         </dependency>
         <!--    通用心跳包    -->
         <dependency>
-               <groupId>top.wu2020</groupId>
+            <groupId>top.wu2020</groupId>
             <artifactId>wu-lazy-cloud-heartbeat-common</artifactId>
             <version>1.2.2-JDK17-SNAPSHOT</version>
         </dependency>
@@ -43,9 +43,15 @@
             <groupId>top.wu2020</groupId>
             <artifactId>wu-database-lazy-plus-starter</artifactId>
         </dependency>
+        <!--    授权平台    -->
         <dependency>
             <groupId>top.wu2020</groupId>
-            <artifactId>wu-authorization-server-starter</artifactId>
+            <artifactId>wu-authorization-server-platform-starter</artifactId>
+        </dependency>
+        <!--    jvm    -->
+        <dependency>
+            <groupId>top.wu2020</groupId>
+            <artifactId>wu-jvm-server-platform-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
