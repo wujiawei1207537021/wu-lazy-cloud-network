@@ -105,10 +105,13 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
 
         String clientId = ChannelAttributeKeyUtils.getClientId(channel);
         log.info("断开客户端的连接:{}", clientId);
-        NettyProxyMsg nettyMsg = new NettyProxyMsg();
-        nettyMsg.setType(MessageType.REPORT_CLIENT_DISCONNECTION);
-        nettyMsg.setClientId(clientId);
-        channelTypeAdapter.handler(channel, nettyMsg);
-        super.channelInactive(ctx);
+        if (!ObjectUtils.isEmpty(clientId)) {
+            NettyProxyMsg nettyMsg = new NettyProxyMsg();
+            nettyMsg.setType(MessageType.REPORT_CLIENT_DISCONNECTION);
+            nettyMsg.setClientId(clientId);
+            channelTypeAdapter.handler(channel, nettyMsg);
+            super.channelInactive(ctx);
+        }
+
     }
 }
