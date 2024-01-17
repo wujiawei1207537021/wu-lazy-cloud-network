@@ -296,7 +296,7 @@ const user = {
 
 module.exports = {
     userList: {
-        url: "/wu-lazy-cloud-network/sys/user/retrieve",
+        url: "/sys/user/retrieve",
         type: "get",
         mock: true,
         response: (opt) => {
@@ -307,27 +307,27 @@ module.exports = {
         },
     },
     userExportList: {
-        url: "/wu-lazy-cloud-network/sys/user/export/List",
+        url: "/sys/user/export/List",
         type: "get",
     },
     userPage: {
-        url: "/wu-lazy-cloud-network/sys/user/findPage",
+        url: "/sys/user/findPage",
         type: "get",
     },
     userAdd: {
-        url: "/wu-lazy-cloud-network/sys/user/story",
+        url: "/sys/user/story",
         type: "post",
     },
     userEdit: {
-        url: "/wu-lazy-cloud-network/sys/user/updateOne",
+        url: "/sys/user/updateOne",
         type: "put",
     },
     userDel: {
-        url: "/wu-lazy-cloud-network/sys/user/{{id}}",
+        url: "/sys/user/{{id}}",
         type: "deleteUrl",
     },
     userStatus: {
-        url: "/wu-lazy-cloud-network/sys/user/status",
+        url: "/sys/user/status",
         type: "post",
         mock: true,
         response: (opt) => {
@@ -349,11 +349,11 @@ module.exports = {
     },
 
     menuList: {
-        url: "/wu-lazy-cloud-network/menu/findList",
+        url: "/menu/findList",
         type: "get",
     },
     menuAdd: {
-        url: "/wu-lazy-cloud-network/menu/story",
+        url: "/menu/story",
         type: "post",
         mock: true,
         response: (opt) => {
@@ -364,28 +364,28 @@ module.exports = {
         },
     },
     menuEdit: {
-        url: "/wu-lazy-cloud-network/menu/update",
+        url: "/menu/update",
         type: "put",
     },
     menuUpsert: {
-        url: "/wu-lazy-cloud-network/menu/upsert",
+        url: "/menu/upsert",
         type: "post",
     },
     menuDel: {
-        url: "/wu-lazy-cloud-network/menu/delete",
+        url: "/menu/delete",
         type: "delete",
     },
 
     roleList: {
-        url: "/wu-lazy-cloud-network/role/retrieve",
+        url: "/role/retrieve",
         type: "get",
     },
     roleOne: {
-        url: "/wu-lazy-cloud-network/role/findOne",
+        url: "/role/findOne",
         type: "get",
     },
     rolePage: {
-        url: "/wu-lazy-cloud-network/role/retrieve/page",
+        url: "/role/retrieve/page",
         type: "get",
         mock: true,
         response: (opt) => {
@@ -396,20 +396,20 @@ module.exports = {
         },
     },
     roleAdd: {
-        url: "/wu-lazy-cloud-network/role/story",
+        url: "/role/story",
         type: "post",
     },
     roleEdit: {
-        url: "/wu-lazy-cloud-network/role/updateOne",
+        url: "/role/updateOne",
         type: "put",
     },
     roleDel: {
-        url: "/wu-lazy-cloud-network/role/{{id}}",
+        url: "/role/{{id}}",
         type: "deleteUrl",
     },
 
     userMenuList: {
-        url: "/wu-lazy-cloud-network/sys/user/findUserMenuList",
+        url: "/sys/user/findUserMenuList",
         type: "get",
         mock: true,
         response: () => {
@@ -422,744 +422,744 @@ module.exports = {
         },
     },
     login: {
-        url: "/wu-lazy-cloud-network/token/access_token",
+        url: "/token/access_token",
         type: "post",
     },
     resolvingUser: {
-        url: "/wu-lazy-cloud-network/token/user/{{accessToken}}",
+        url: "/token/user/{{accessToken}}",
         type: "getUrl",
     },
     register: {
-        url: "/wu-lazy-cloud-network/token/create_user",
+        url: "/token/create_user",
         type: "post",
     },
     dictionaryPage: {
-        url: "/wu-lazy-cloud-network/dictionary/retrieve/page",
+        url: "/dictionary/retrieve/page",
         type: "get",
     },
     dictionaryDelete: {
-        url: "/wu-lazy-cloud-network/dictionary/{{id}}",
+        url: "/dictionary/{{id}}",
         type: "deleteUrl",
     },
     dictionaryAdd: {
-        url: "/wu-lazy-cloud-network/dictionary/save",
+        url: "/dictionary/save",
         type: "post",
     },
     dictionaryEdit: {
-        url: "/wu-lazy-cloud-network/dictionary/update",
+        url: "/dictionary/update",
         type: "put",
     },
     dictionaryDataPage: {
-        url: "/wu-lazy-cloud-network/dictionary/data/retrieve/page",
+        url: "/dictionary/data/retrieve/page",
         type: "get",
     },
     dictionaryDataList: {
-        url: "/wu-lazy-cloud-network/dictionary/data/retrieve",
+        url: "/dictionary/data/retrieve",
         type: "get",
     },
     dictionaryDataDelete: {
-        url: "/wu-lazy-cloud-network/dictionary/data/{{id}}",
+        url: "/dictionary/data/{{id}}",
         type: "deleteUrl",
     },
     dictionaryDataAdd: {
-        url: "/wu-lazy-cloud-network/dictionary/data/save",
+        url: "/dictionary/data/save",
         type: "post",
     },
     dictionaryDataEdit: {
-        url: "/wu-lazy-cloud-network/dictionary/data/update",
+        url: "/dictionary/data/update",
         type: "put",
     },
 
     upsertAdd: {
-        url: "/wu-lazy-cloud-network/upsert/task/save",
+        url: "/upsert/task/save",
         type: "post",
     },
     upsertPage: {
-        url: "/wu-lazy-cloud-network/upsert/task/retrieve/page",
+        url: "/upsert/task/retrieve/page",
         type: "get",
     },
     upsertEdit: {
-        url: "/wu-lazy-cloud-network/upsert/task/update",
+        url: "/upsert/task/update",
         type: "put",
     },
     upsertDelete: {
-        url: "/wu-lazy-cloud-network/upsert/task/{{id}}",
+        url: "/upsert/task/{{id}}",
         type: "deleteUrl",
     },
     databaseInstanceAdd: {
-        url: "/wu-lazy-cloud-network/database/instance/save",
+        url: "/database/instance/save",
         type: "post",
     },
     databaseInstanceTest: {
-        url: "/wu-lazy-cloud-network/database/instance/testConnection",
+        url: "/database/instance/testConnection",
         type: "post",
     },
     databaseInstancePage: {
-        url: "/wu-lazy-cloud-network/database/instance/retrieve/page",
+        url: "/database/instance/retrieve/page",
         type: "get",
     },
     databaseInstanceList: {
-        url: "/wu-lazy-cloud-network/database/instance/retrieve",
+        url: "/database/instance/retrieve",
         type: "get",
     },
     databaseInstanceEdit: {
-        url: "/wu-lazy-cloud-network/database/instance/update",
+        url: "/database/instance/update",
         type: "put",
     },
     databaseInstanceDelete: {
-        url: "/wu-lazy-cloud-network/database/instance/{{id}}",
+        url: "/database/instance/{{id}}",
         type: "deleteUrl",
     },
     databaseInstanceReload: {
-        url: "/wu-lazy-cloud-network/database/instance/reload/{{id}}",
+        url: "/database/instance/reload/{{id}}",
         type: "patchUrl",
     },
 
     acwTableAssociationRelationPage: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/findPage",
+        url: "/lazy/acw/table/association/relation/findPage",
         type: "get",
     },
     acwTableAssociationRelationList: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/findList",
+        url: "/lazy/acw/table/association/relation/findList",
         type: "get",
     },
     acwTableAssociationRelationStory: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/story",
+        url: "/lazy/acw/table/association/relation/story",
         type: "post",
     },
     acwTableAssociationRelationDelete: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/remove",
+        url: "/lazy/acw/table/association/relation/remove",
         type: "deleteUrl",
     },
     acwTableAssociationRelationReload: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/reload/{{id}}",
+        url: "/lazy/acw/table/association/relation/reload/{{id}}",
         type: "patchUrl",
     },
     acwTableAssociationRelationAnalysisSchema: {
-        url: "/wu-lazy-cloud-network/lazy/acw/table/association/relation/analysisSchema",
+        url: "/lazy/acw/table/association/relation/analysisSchema",
         type: "put",
     },
     // 数据库备份API 开始
     databaseInstanceBackUpPage: {
-        url: "/wu-lazy-cloud-network//lazy/database/instance/back/ups/findPage",
+        url: "//lazy/database/instance/back/ups/findPage",
         type: "get",
     },
     databaseInstanceBackUpDelete: {
-        url: "/wu-lazy-cloud-network//lazy/database/instance/back/ups/remove",
+        url: "//lazy/database/instance/back/ups/remove",
         type: "delete",
     },
     databaseInstanceBackUp: {
-        url: "/wu-lazy-cloud-network//lazy/database/instance/back/ups/backUps",
+        url: "//lazy/database/instance/back/ups/backUps",
         type: "patch",
     },
     databaseSchemaBackUpPage: {
-        url: "/wu-lazy-cloud-network//lazy/database/schema/back/ups/findPage",
+        url: "//lazy/database/schema/back/ups/findPage",
         type: "get",
     },
     databaseSchemaBackUp: {
-        url: "/wu-lazy-cloud-network//lazy/database/schema/back/ups/backUps",
+        url: "//lazy/database/schema/back/ups/backUps",
         type: "patch",
     },
     databaseSchemaBackUpRemove: {
-        url: "/wu-lazy-cloud-network//lazy/database/schema/back/ups/remove",
+        url: "//lazy/database/schema/back/ups/remove",
         type: "delete",
     },
     // 数据库备份API 结束
     // redis api实例 开始
     redisInstancePage: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/instance/findPage",
+        url: "/lazy/acw/redis/instance/findPage",
         type: "get",
     },
     redisInstanceDelete: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/instance/remove",
+        url: "/lazy/acw/redis/instance/remove",
         type: "delete",
     },
     redisInstanceStory: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/instance/story",
+        url: "/lazy/acw/redis/instance/story",
         type: "post",
     },
     redisInstanceTest: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/instance/test",
+        url: "/lazy/acw/redis/instance/test",
         type: "post",
     },
     redisInstanceConsoleFindDataBases: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/findDataBases",
+        url: "/lazy/acw/redis/console/findDataBases",
         type: "get",
     },
     redisInstanceConsoleFindKeys: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/findKeys",
+        url: "/lazy/acw/redis/console/findKeys",
         type: "get",
     },
 
     redisInstanceConsoleFindKeysValues: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/findKeysValues",
+        url: "/lazy/acw/redis/console/findKeysValues",
         type: "get",
     },
     redisInstanceConsoleFindKeyValue: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/findKeyValue",
+        url: "/lazy/acw/redis/console/findKeyValue",
         type: "get",
     },
     redisInstanceConsoleSetKey: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/setKey",
+        url: "/lazy/acw/redis/console/setKey",
         type: "post",
     },
     redisInstanceConsoleRemoveKey: {
-        url: "/wu-lazy-cloud-network/lazy/acw/redis/console/removeKey",
+        url: "/lazy/acw/redis/console/removeKey",
         type: "put",
     },
     // redis api实例 结束
     schemaAdd: {
-        url: "/wu-lazy-cloud-network/schema/save",
+        url: "/schema/save",
         type: "post",
     },
     schemaPage: {
-        url: "/wu-lazy-cloud-network/schema/retrieve/page",
+        url: "/schema/retrieve/page",
         type: "get",
     },
     schemaList: {
-        url: "/wu-lazy-cloud-network/schema/findList",
+        url: "/schema/findList",
         type: "get",
     },
     schemaEdit: {
-        url: "/wu-lazy-cloud-network/schema/update",
+        url: "/schema/update",
         type: "put",
     },
     schemaDelete: {
-        url: "/wu-lazy-cloud-network/schema/{{id}}",
+        url: "/schema/{{id}}",
         type: "deleteUrl",
     },
     batchDeleteInstanceSchema: {
-        url: "/wu-lazy-cloud-network/schema/delete/batchDeleteInstanceSchema",
+        url: "/schema/delete/batchDeleteInstanceSchema",
         type: "deleteBody",
     },
     batchExportSchemaData: {
-        url: "/wu-lazy-cloud-network/schema/batchExportSchemaData",
+        url: "/schema/batchExportSchemaData",
         type: "post",
     },
     schemaReload: {
-        url: "/wu-lazy-cloud-network/schema/reload/{{instanceId}}/{{schema}}",
+        url: "/schema/reload/{{instanceId}}/{{schema}}",
         type: "patchUrl",
     },
     aceSchemaImportData: {
-        url: "/wu-lazy-cloud-network/schema/batchImportSchemaData",
+        url: "/schema/batchImportSchemaData",
         type: "post",
     },
     schemaDeriveView: {
-        url: "/wu-lazy-cloud-network/schema/schemaDeriveView",
+        url: "/schema/schemaDeriveView",
         type: "post",
     },
     tableAutoStuffedRecordAdd: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/save",
+        url: "/database/table/auto/stuffed/record/save",
         type: "post",
     },
     tableAutoStuffedRecordBatchAdd: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/batchSave",
+        url: "/database/table/auto/stuffed/record/batchSave",
         type: "post",
     },
     tableAutoStuffedRecordPage: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/findPage",
+        url: "/database/table/auto/stuffed/record/findPage",
         type: "get",
     },
     tableAutoStuffedRecordList: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/findList",
+        url: "/database/table/auto/stuffed/record/findList",
         type: "get",
     },
     tableAutoStuffedRecordEdit: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/update",
+        url: "/database/table/auto/stuffed/record/update",
         type: "put",
     },
     tableAutoStuffedRecordDelete: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/{{id}}",
+        url: "/database/table/auto/stuffed/record/{{id}}",
         type: "deleteUrl",
     },
     tableAutoStuffedRecordBatchDelete: {
-        url: "/wu-lazy-cloud-network/database/table/auto/stuffed/record/batch",
+        url: "/database/table/auto/stuffed/record/batch",
         type: "deleteBody",
     },
     tableAdd: {
-        url: "/wu-lazy-cloud-network/table/storage",
+        url: "/table/storage",
         type: "post",
     },
     tablePage: {
-        url: "/wu-lazy-cloud-network/table/retrieve/page",
+        url: "/table/retrieve/page",
         type: "get",
     },
     tableList: {
-        url: "/wu-lazy-cloud-network/table/retrieve",
+        url: "/table/retrieve",
         type: "get",
     },
     tableDelete: {
-        url: "/wu-lazy-cloud-network/table/delete/{{instanceId}}/{{schemaName}}/{{tableName}}",
+        url: "/table/delete/{{instanceId}}/{{schemaName}}/{{tableName}}",
         type: "deleteUrl",
     },
     batchDeleteTableDelete: {
-        url: "/wu-lazy-cloud-network/table/batchDelete",
+        url: "/table/batchDelete",
         type: "deleteBody",
     },
     slqAuditPage: {
-        url: "/wu-lazy-cloud-network/sql/audit/findPage",
+        url: "/sql/audit/findPage",
         type: "get",
     },
     slqAuditExport: {
-        url: "/wu-lazy-cloud-network/sql/audit/export/findList",
+        url: "/sql/audit/export/findList",
         type: "get",
     },
     batchDeleteSlqAudit: {
-        url: "/wu-lazy-cloud-network/sql/audit/batch",
+        url: "/sql/audit/batch",
         type: "deleteBody",
     },
     generateJavaModel: {
-        url: "/wu-lazy-cloud-network/table/generate/java/model/{{instanceId}}/{{schemaName}}/{{tableName}}",
+        url: "/table/generate/java/model/{{instanceId}}/{{schemaName}}/{{tableName}}",
         type: "getUrl",
     },
     generateLocalJava: {
-        url: "/wu-lazy-cloud-network/table/generate/local/java",
+        url: "/table/generate/local/java",
         type: "post",
     },
     clientGenerateLocalJava: {
-        url: "/wu-lazy-cloud-network/acw/client/java/path/generate/local/java",
+        url: "/acw/client/java/path/generate/local/java",
         type: "post",
     },
     tableExportInsertSql: {
-        url: "/wu-lazy-cloud-network/table/export/insert/sql",
+        url: "/table/export/insert/sql",
         type: "get",
     },
     tableExportUpsertSql: {
-        url: "/wu-lazy-cloud-network/table/export/upsert/sql",
+        url: "/table/export/upsert/sql",
         type: "get",
     },
     exportTableStructureExcel: {
-        url: "/wu-lazy-cloud-network/table/export/table/structure/excel",
+        url: "/table/export/table/structure/excel",
         type: "get",
     },
     exportTableStructureSql: {
-        url: "/wu-lazy-cloud-network/table/export/table/structure/sql",
+        url: "/table/export/table/structure/sql",
         type: "get",
     },
     applicationAdd: {
-        url: "/wu-lazy-cloud-network/application/save",
+        url: "/application/save",
         type: "post",
     },
     applicationPage: {
-        url: "/wu-lazy-cloud-network/application/retrieve/page",
+        url: "/application/retrieve/page",
         type: "get",
     },
     applicationList: {
-        url: "/wu-lazy-cloud-network/application/retrieve",
+        url: "/application/retrieve",
         type: "get",
     },
     applicationEdit: {
-        url: "/wu-lazy-cloud-network/application/update",
+        url: "/application/update",
         type: "put",
     },
     applicationDelete: {
-        url: "/wu-lazy-cloud-network/application/{{id}}",
+        url: "/application/{{id}}",
         type: "deleteUrl",
     },
     applicationFindTables: {
-        url: "/wu-lazy-cloud-network/application/findTables/{{applicationId}}",
+        url: "/application/findTables/{{applicationId}}",
         type: "getUrl",
     },
     projectAdd: {
-        url: "/wu-lazy-cloud-network/project/save",
+        url: "/project/save",
         type: "post",
     },
     projectPage: {
-        url: "/wu-lazy-cloud-network/project/retrieve/page",
+        url: "/project/retrieve/page",
         type: "get",
     },
     projectList: {
-        url: "/wu-lazy-cloud-network/project/retrieve",
+        url: "/project/retrieve",
         type: "get",
     },
     projectEdit: {
-        url: "/wu-lazy-cloud-network/project/update",
+        url: "/project/update",
         type: "put",
     },
     projectDelete: {
-        url: "/wu-lazy-cloud-network/project/{{id}}",
+        url: "/project/{{id}}",
         type: "deleteUrl",
     },
     interfaceAdd: {
-        url: "/wu-lazy-cloud-network/interface/save",
+        url: "/interface/save",
         type: "post",
     },
     interfacePage: {
-        url: "/wu-lazy-cloud-network/interface/retrieve/page",
+        url: "/interface/retrieve/page",
         type: "get",
     },
     interfaceList: {
-        url: "/wu-lazy-cloud-network/interface/retrieve",
+        url: "/interface/retrieve",
         type: "get",
     },
     interfaceEdit: {
-        url: "/wu-lazy-cloud-network/interface/update",
+        url: "/interface/update",
         type: "put",
     },
     interfaceDelete: {
-        url: "/wu-lazy-cloud-network/interface/{{id}}",
+        url: "/interface/{{id}}",
         type: "deleteUrl",
     },
     apiAdd: {
-        url: "/wu-lazy-cloud-network/api/save",
+        url: "/api/save",
         type: "post",
     },
     apiPage: {
-        url: "/wu-lazy-cloud-network/api/retrieve/page",
+        url: "/api/retrieve/page",
         type: "get",
     },
     apiList: {
-        url: "/wu-lazy-cloud-network/api/retrieve",
+        url: "/api/retrieve",
         type: "get",
     },
     apiEdit: {
-        url: "/wu-lazy-cloud-network/api/update",
+        url: "/api/update",
         type: "put",
     },
     apiDelete: {
-        url: "/wu-lazy-cloud-network/api/{{id}}",
+        url: "/api/{{id}}",
         type: "deleteUrl",
     },
     clientApiAdd: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/story",
+        url: "/lazy/interface_/info/story",
         type: "post",
     },
     clientApiSQLAdd: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/story-sql",
+        url: "/lazy/interface_/info/story-sql",
         type: "post",
     },
     clientApiPage: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/findPage",
+        url: "/lazy/interface_/info/findPage",
         type: "get",
     },
     clientApiList: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/findList",
+        url: "/lazy/interface_/info/findList",
         type: "get",
     },
     clientApiFindOne: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/findOne",
+        url: "/lazy/interface_/info/findOne",
         type: "get",
     },
     clientApiEdit: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/updateOne",
+        url: "/lazy/interface_/info/updateOne",
         type: "put",
     },
     clientApiDelete: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/remove",
+        url: "/lazy/interface_/info/remove",
         type: "deleteUrl",
     },
     clientApiDerivativeCode: {
-        url: "/wu-lazy-cloud-network/lazy/interface_/info/derivativeCode",
+        url: "/lazy/interface_/info/derivativeCode",
         type: "put",
     },
 
     clientInstancePage: {
-        url: "/wu-lazy-cloud-network/acw/client/instance/findPage",
+        url: "/acw/client/instance/findPage",
         type: "get",
     },
     clientInstanceList: {
-        url: "/wu-lazy-cloud-network/acw/client/instance/findList",
+        url: "/acw/client/instance/findList",
         type: "get",
     },
     clientInstanceFindOne: {
-        url: "/wu-lazy-cloud-network/acw/client/instance/findOne",
+        url: "/acw/client/instance/findOne",
         type: "get",
     },
 
     clientJavaPathPage: {
-        url: "/wu-lazy-cloud-network/acw/client/java/path/findPage",
+        url: "/acw/client/java/path/findPage",
         type: "get",
     },
     clientJavaPathList: {
-        url: "/wu-lazy-cloud-network/acw/client/java/path/findList",
+        url: "/acw/client/java/path/findList",
         type: "get",
     },
     clientJavaPathFindOne: {
-        url: "/wu-lazy-cloud-network/acw/client/java/path/findOne",
+        url: "/acw/client/java/path/findOne",
         type: "get",
     },
 
     clientFindDefaultSchema: {
-        url: "/wu-lazy-cloud-network//current/project/dataSource/findDefaultSchema",
+        url: "//current/project/dataSource/findDefaultSchema",
         type: "get",
     },
 
     clientFindSchemaList: {
-        url: "/wu-lazy-cloud-network//current/project/dataSource/findSchemaList",
+        url: "//current/project/dataSource/findSchemaList",
         type: "get",
     },
     clientFindTableList: {
-        url: "/wu-lazy-cloud-network//current/project/dataSource/findTableList",
+        url: "//current/project/dataSource/findTableList",
         type: "get",
     },
     clientFindColumnList: {
-        url: "/wu-lazy-cloud-network//current/project/dataSource/findColumnList",
+        url: "//current/project/dataSource/findColumnList",
         type: "get",
     },
     databaseTableColumnAdd: {
-        url: "/wu-lazy-cloud-network/database/table/column/save",
+        url: "/database/table/column/save",
         type: "post",
     },
     databaseTableColumnPage: {
-        url: "/wu-lazy-cloud-network/database/table/column/retrieve/page",
+        url: "/database/table/column/retrieve/page",
         type: "get",
     },
     databaseTablesColumnList: {
-        url: "/wu-lazy-cloud-network/database/table/column/tableIds/{{instanceId}}/{{schemaName}}/{{tableNameList}}",
+        url: "/database/table/column/tableIds/{{instanceId}}/{{schemaName}}/{{tableNameList}}",
         type: "getUrl",
     },
     databaseTableColumnList: {
-        url: "/wu-lazy-cloud-network/database/table/column/{{instanceId}}/{{schemaName}}/{{tableName}}",
+        url: "/database/table/column/{{instanceId}}/{{schemaName}}/{{tableName}}",
         type: "getUrl",
     },
     findDatabaseTableColumnList: {
-        url: "/wu-lazy-cloud-network/database/table/column/findColumn/{{instanceId}}/{{schemaName}}/{{tableName}}",
+        url: "/database/table/column/findColumn/{{instanceId}}/{{schemaName}}/{{tableName}}",
         type: "getUrl",
     },
     findInstanceSchemaColumnList: {
-        url: "/wu-lazy-cloud-network/database/table/column/findInstanceSchemaColumnList/{{instanceId}}/{{schemaName}}",
+        url: "/database/table/column/findInstanceSchemaColumnList/{{instanceId}}/{{schemaName}}",
         type: "getUrl",
     },
     databaseTableColumnEdit: {
-        url: "/wu-lazy-cloud-network/database/table/column/update",
+        url: "/database/table/column/update",
         type: "put",
     },
     databaseTableColumnDelete: {
-        url: "/wu-lazy-cloud-network/database/table/column/{{id}}",
+        url: "/database/table/column/{{id}}",
         type: "deleteUrl",
     },
     playMusicInsertOrUpdate: {
-        url: "/wu-lazy-cloud-network/play/music/insertOrUpdate",
+        url: "/play/music/insertOrUpdate",
         type: "post",
     },
     playMusicPage: {
-        url: "/wu-lazy-cloud-network/play/music/retrieve/page",
+        url: "/play/music/retrieve/page",
         type: "get",
     },
     playMusicList: {
-        url: "/wu-lazy-cloud-network/play/music/retrieve",
+        url: "/play/music/retrieve",
         type: "get",
     },
     playMusicEdit: {
-        url: "/wu-lazy-cloud-network/play/music/update",
+        url: "/play/music/update",
         type: "put",
     },
     playMusicDelete: {
-        url: "/wu-lazy-cloud-network/play/music/{{id}}",
+        url: "/play/music/{{id}}",
         type: "deleteUrl",
     },
     playMusicFindData: {
-        url: "/wu-lazy-cloud-network/play/music/retrieve/data/{{id}}",
+        url: "/play/music/retrieve/data/{{id}}",
         type: "getUrl",
     },
     playFileAdd: {
-        url: "/wu-lazy-cloud-network/play/file/add",
+        url: "/play/file/add",
         type: "post",
     },
     playFilePage: {
-        url: "/wu-lazy-cloud-network/play/file/retrieve/page",
+        url: "/play/file/retrieve/page",
         type: "get",
     },
     playFileList: {
-        url: "/wu-lazy-cloud-network/play/file/retrieve",
+        url: "/play/file/retrieve",
         type: "get",
     },
     playFileData: {
-        url: "/wu-lazy-cloud-network/play/file/retrieve/data/{{id}}",
+        url: "/play/file/retrieve/data/{{id}}",
         type: "getUrl",
     },
     playFileEdit: {
-        url: "/wu-lazy-cloud-network/play/file/update",
+        url: "/play/file/update",
         type: "put",
     },
     playFileDelete: {
-        url: "/wu-lazy-cloud-network/play/file/{{id}}",
+        url: "/play/file/{{id}}",
         type: "deleteUrl",
     },
     playFileResourceList: {
-        url: "/wu-lazy-cloud-network/play/file/getFileResourceList",
+        url: "/play/file/getFileResourceList",
         type: "get",
     },
     downLocalFile: {
-        url: "/wu-lazy-cloud-network/play/file/retrieve/local/file",
+        url: "/play/file/retrieve/local/file",
         type: "get",
     },
     docPdfMerge: {
-        url: "/wu-lazy-cloud-network/doc/pdf/merge/merge",
+        url: "/doc/pdf/merge/merge",
         type: "post",
     },
     docJson2Excel: {
-        url: "/wu-lazy-cloud-network/doc/excel/json2Excel",
+        url: "/doc/excel/json2Excel",
         type: "post",
     },
     sqlConsole: {
-        url: "/wu-lazy-cloud-network/console/execute/sql/statement",
+        url: "/console/execute/sql/statement",
         type: "get",
     },
     sqlConsoleExport: {
-        url: "/wu-lazy-cloud-network/console/execute/sql/statement/export",
+        url: "/console/execute/sql/statement/export",
         type: "get",
     },
     sqlConsoleUpsertExport: {
-        url: "/wu-lazy-cloud-network/console/execute/upsert/sql/statement/export",
+        url: "/console/execute/upsert/sql/statement/export",
         type: "get",
     },
     tableSqlConsole: {
-        url: "/wu-lazy-cloud-network/table/console/execute/table/sql/statement",
+        url: "/table/console/execute/table/sql/statement",
         type: "post",
     },
     tableColumnSqlConsole: {
-        url: "/wu-lazy-cloud-network/table/console/execute/table/sql/statement/column",
+        url: "/table/console/execute/table/sql/statement/column",
         type: "post",
     },
     tableRowStory: {
-        url: "/wu-lazy-cloud-network/table/console/execute/upsert/table/sql",
+        url: "/table/console/execute/upsert/table/sql",
         type: "post",
     },
     tableRowDelete: {
-        url: "/wu-lazy-cloud-network/table/console/execute/delete/table/sql",
+        url: "/table/console/execute/delete/table/sql",
         type: "post",
     },
     tableRowBatchDelete: {
-        url: "/wu-lazy-cloud-network/table/console/execute/batch/delete/table/sql",
+        url: "/table/console/execute/batch/delete/table/sql",
         type: "post",
     },
     tableSqlConsoleExport: {
-        url: "/wu-lazy-cloud-network/table/console/execute/table/sql/statement/export",
+        url: "/table/console/execute/table/sql/statement/export",
         type: "post",
     },
     tableSqlConsoleUpsertExport: {
-        url: "/wu-lazy-cloud-network/table/console/execute/upsert/table/sql/statement/export",
+        url: "/table/console/execute/upsert/table/sql/statement/export",
         type: "post",
     },
     tableSqlConsoleMdExport: {
-        url: "/wu-lazy-cloud-network/table/console/execute/md/table/sql/statement/export",
+        url: "/table/console/execute/md/table/sql/statement/export",
         type: "post",
     },
     translate: {
-        url: "/wu-lazy-cloud-network/translate",
+        url: "/translate",
         type: "get",
     },
     shortcutsData: {
-        url: "/wu-lazy-cloud-network/shortcuts/data",
+        url: "/shortcuts/data",
         type: "get",
     },
     jvmRunTimeMemory: {
-        url: "/wu-lazy-cloud-network/jvm/runTimeMemory",
+        url: "/jvm/runTimeMemory",
         type: "get",
     },
     jvmGC: {
-        url: "/wu-lazy-cloud-network/jvm/gc",
+        url: "/jvm/gc",
         type: "get",
     },
     jvmCPU: {
-        url: "/wu-lazy-cloud-network/jvm/cpu",
+        url: "/jvm/cpu",
         type: "get",
     },
     //     自动化开始
     automationStory: {
-        url: "/wu-lazy-cloud-network/lazy/automation/story",
+        url: "/lazy/automation/story",
         type: "post",
     },
     automationFindPage: {
-        url: "/wu-lazy-cloud-network/lazy/automation/findPage",
+        url: "/lazy/automation/findPage",
         type: "get",
     },
     automationFindOne: {
-        url: "/wu-lazy-cloud-network/lazy/automation/findOne",
+        url: "/lazy/automation/findOne",
         type: "get",
     },
     automationRemove: {
-        url: "/wu-lazy-cloud-network/lazy/automation/remove",
+        url: "/lazy/automation/remove",
         type: "delete",
     },
 
     automationNodeStory: {
-        url: "/wu-lazy-cloud-network/lazy/automation/node/story",
+        url: "/lazy/automation/node/story",
         type: "post",
     },
     automationNodeRemove: {
-        url: "/wu-lazy-cloud-network/lazy/automation/node/remove",
+        url: "/lazy/automation/node/remove",
         type: "delete",
     },
 
     automationNodeHttpActionStory: {
-        url: "/wu-lazy-cloud-network/lazy/automation/node/http/action/story",
+        url: "/lazy/automation/node/http/action/story",
         type: "post",
     },
     automationNodeHttpActionRemove: {
-        url: "/wu-lazy-cloud-network/lazy/automation/node/http/action/remove",
+        url: "/lazy/automation/node/http/action/remove",
         type: "delete",
     },
 
     ttsTimbreStory: {
-        url: "/wu-lazy-cloud-network/tts/timbre/story",
+        url: "/tts/timbre/story",
         type: "post",
     },
     ttsTimbreFindPage: {
-        url: "/wu-lazy-cloud-network/tts/timbre/findPage",
+        url: "/tts/timbre/findPage",
         type: "get",
     },
     ttsTimbreFindList: {
-        url: "/wu-lazy-cloud-network/tts/timbre/findList",
+        url: "/tts/timbre/findList",
         type: "get",
     },
     ttsTimbreUpdateOne: {
-        url: "/wu-lazy-cloud-network/tts/timbre/updateOne",
+        url: "/tts/timbre/updateOne",
         type: "put",
     },
     ttsTimbreRemove: {
-        url: "/wu-lazy-cloud-network/tts/timbre/remove",
+        url: "/tts/timbre/remove",
         type: "delete",
     },
 
     ttsChineseCharactersStory: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/story",
+        url: "/tts/chinese/characters/story",
         type: "post",
     },
     ttsChineseCharactersFindPage: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/findPage",
+        url: "/tts/chinese/characters/findPage",
         type: "get",
     },
     ttsChineseCharactersFindList: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/findList",
+        url: "/tts/chinese/characters/findList",
         type: "get",
     },
     ttsChineseCharactersUpdateOne: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/updateOne",
+        url: "/tts/chinese/characters/updateOne",
         type: "put",
     },
     ttsChineseCharactersRemove: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/remove",
+        url: "/tts/chinese/characters/remove",
         type: "delete",
     },
 
     ttsChineseCharactersTimbreStory: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/story",
+        url: "/tts/chinese/characters/timbre/story",
         type: "post",
     },
     ttsChineseCharactersTimbreFindPage: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/findPage",
+        url: "/tts/chinese/characters/timbre/findPage",
         type: "get",
     },
     ttsChineseCharactersTimbreFindList: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/findList",
+        url: "/tts/chinese/characters/timbre/findList",
         type: "get",
     },
     ttsChineseCharactersTimbreUpdateOne: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/updateOne",
+        url: "/tts/chinese/characters/timbre/updateOne",
         type: "put",
     },
     ttsChineseCharactersTimbreRemove: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/remove",
+        url: "/tts/chinese/characters/timbre/remove",
         type: "delete",
     },
     ttsChineseCharactersTimbreTextToBytes: {
-        url: "/wu-lazy-cloud-network/tts/chinese/characters/timbre/textToBytes",
+        url: "/tts/chinese/characters/timbre/textToBytes",
         type: "get",
     },
     automationNodeHttpActionExecuteOne: {
-        url: "/wu-lazy-cloud-network/lazy/automation/node/http/action/executeOne/{{actionId}}",
+        url: "/lazy/automation/node/http/action/executeOne/{{actionId}}",
         type: "patchUrl",
     },
 };
