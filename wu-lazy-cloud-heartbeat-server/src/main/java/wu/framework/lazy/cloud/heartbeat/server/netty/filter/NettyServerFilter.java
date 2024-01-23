@@ -1,7 +1,7 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.filter;
 
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.decoder.NettyProxyMsgDecoder;
 import wu.framework.lazy.cloud.heartbeat.common.encoder.NettyProxyMsgEncoder;
 import io.netty.channel.ChannelInitializer;
@@ -24,10 +24,10 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
-    private final List<ChannelTypeAdvanced> channelTypeAdvancedList;
+    private final List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList;
 
-    public NettyServerFilter( List<ChannelTypeAdvanced> channelTypeAdvancedList) {
-        this.channelTypeAdvancedList = channelTypeAdvancedList;
+    public NettyServerFilter( List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
+        this.handleChannelTypeAdvancedList = handleChannelTypeAdvancedList;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("decoder", new StringDecoder());
         pipeline.addLast("encoder", new StringEncoder());
         // 类型处理器适配器
-        ChannelTypeAdapter channelTypeAdapter = new ChannelTypeAdapter(channelTypeAdvancedList);
+        ChannelTypeAdapter channelTypeAdapter = new ChannelTypeAdapter(handleChannelTypeAdvancedList);
         pipeline.addLast("doHandler", new NettyServerHandler(channelTypeAdapter));// 服务端业务逻辑
     }
 }

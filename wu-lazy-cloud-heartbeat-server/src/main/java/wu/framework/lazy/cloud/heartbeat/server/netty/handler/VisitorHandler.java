@@ -54,6 +54,8 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         if (clientChannel != null) {
             Channel channel = clientChannel.getChannel();
             channel.writeAndFlush(myMsg);
+        }else {
+            log.error("无法通过客户端ID获取客户端通道");
         }
 
 

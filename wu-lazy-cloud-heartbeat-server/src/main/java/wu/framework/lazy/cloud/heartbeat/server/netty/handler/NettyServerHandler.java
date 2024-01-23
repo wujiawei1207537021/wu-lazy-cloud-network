@@ -67,7 +67,6 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
                         // 给所有客户端发送 这个客户端离线了
                         NettyProxyMsg nettyMsg = new NettyProxyMsg();
                         nettyMsg.setClientId(clientId);
-                        nettyMsg.setVisitorId(visitorId);
                         nettyMsg.setType(MessageType.REPORT_CLIENT_DISCONNECTION);
                         channelTypeAdapter.handler(channel, nettyMsg);
                         channel.close();

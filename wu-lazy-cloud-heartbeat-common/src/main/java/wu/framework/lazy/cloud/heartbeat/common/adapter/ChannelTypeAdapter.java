@@ -1,6 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.common.adapter;
 
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 
@@ -11,10 +11,10 @@ import java.util.List;
  */
 @Slf4j
 public class ChannelTypeAdapter {
-    protected final List<ChannelTypeAdvanced> channelTypeAdvancedList;
+    protected final List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList;
 
-    public ChannelTypeAdapter(List<ChannelTypeAdvanced> channelTypeAdvancedList) {
-        this.channelTypeAdvancedList = channelTypeAdvancedList;
+    public ChannelTypeAdapter(List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
+        this.handleChannelTypeAdvancedList = handleChannelTypeAdvancedList;
     }
 
     /**
@@ -23,10 +23,10 @@ public class ChannelTypeAdapter {
      * @param msg 通道数据
      */
     public void handler(Channel channel, Object msg) {
-        for (ChannelTypeAdvanced channelTypeAdvanced : channelTypeAdvancedList) {
-            if (channelTypeAdvanced.support(msg)) {
-//                log.info("处理器:{},客户端:{}, 处理类型:{}",channelTypeAdvanced.getClass(),new String(msg.getClientId()),msg.getType());
-                channelTypeAdvanced.handler(channel, msg);
+        for (HandleChannelTypeAdvanced handleChannelTypeAdvanced : handleChannelTypeAdvancedList) {
+            if (handleChannelTypeAdvanced.support(msg)) {
+//                log.info("处理器:{},客户端:{}, 处理类型:{}",handleChannelTypeAdvanced.getClass(),new String(msg.getClientId()),msg.getType());
+                handleChannelTypeAdvanced.handler(channel, msg);
                 return;
             }
         }

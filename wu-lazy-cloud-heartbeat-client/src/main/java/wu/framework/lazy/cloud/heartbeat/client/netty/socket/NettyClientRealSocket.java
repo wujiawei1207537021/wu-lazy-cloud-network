@@ -4,7 +4,7 @@ package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
 import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientRealFilter;
 import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientVisitorRealFilter;
@@ -32,9 +32,9 @@ public class NettyClientRealSocket {
      */
     public static void buildRealServer(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                        NettyServerProperties nettyServerProperties,
-                                       List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+                                       List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
 
-        buildNewRealServer(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+        buildNewRealServer(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
 
     }
 
@@ -44,7 +44,7 @@ public class NettyClientRealSocket {
      */
     private static void buildNewRealServer(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                            NettyServerProperties nettyServerProperties,
-                                           List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+                                           List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         try {
             String clientTargetIp = internalNetworkPenetrationRealClient.getClientTargetIp();
             Integer clientTargetPort = internalNetworkPenetrationRealClient.getClientTargetPort();
@@ -71,7 +71,7 @@ public class NettyClientRealSocket {
 
 
                     // 新建一个通道处理
-                    newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+                    newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
 
                     // 是否等 服务端相应访客通道已经可以自动读写
 //                    realChannel.config().setOption(ChannelOption.AUTO_READ, true);
@@ -112,16 +112,16 @@ public class NettyClientRealSocket {
      *
      * @param internalNetworkPenetrationRealClient 内网穿透信息
      * @param nettyServerProperties                服务端配置信息
-     * @param channelTypeAdvancedList              处理器适配器
+     * @param handleChannelTypeAdvancedList              处理器适配器
      * @throws InterruptedException 异常
      */
     protected static void newVisitorConnect2Server(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                                    NettyServerProperties nettyServerProperties,
-                                                   List<ChannelTypeAdvanced> channelTypeAdvancedList) throws InterruptedException {
+                                                   List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
-                .handler(new NettyClientVisitorRealFilter(new ChannelTypeAdapter(channelTypeAdvancedList)))
+                .handler(new NettyClientVisitorRealFilter(new ChannelTypeAdapter(handleChannelTypeAdvancedList)))
         ;
 
         String inetHost = nettyServerProperties.getInetHost();
@@ -165,7 +165,7 @@ public class NettyClientRealSocket {
                 // 离线
                 channel.eventLoop().schedule(() -> {
                     try {
-                        newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+                        newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

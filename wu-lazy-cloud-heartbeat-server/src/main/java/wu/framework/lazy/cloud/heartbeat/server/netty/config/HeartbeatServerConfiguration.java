@@ -16,62 +16,62 @@ public class HeartbeatServerConfiguration {
     /**
      * 服务端 处理客户端心跳
      *
-     * @return ServerChannelHeartbeatTypeAdvanced
+     * @return ServerHandleChannelHeartbeatTypeAdvanced
      */
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerChannelHeartbeatTypeAdvanced serverChannelHeartbeatTypeAdvanced() {
-        return new ServerChannelHeartbeatTypeAdvanced();
+    public ServerHandleChannelHeartbeatTypeAdvanced serverChannelHeartbeatTypeAdvanced() {
+        return new ServerHandleChannelHeartbeatTypeAdvanced();
     }
 
     /**
      * 处理 服务端处理客户端数据传输
      *
-     * @return ServerReportChannelTransferTypeAdvanced
+     * @return ServerHandleReportHandleChannelTransferTypeAdvanced
      */
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportChannelTransferTypeAdvanced serverReportChannelTransferTypeAdvanced() {
-        return new ServerReportChannelTransferTypeAdvanced();
+    public ServerHandleReportHandleChannelTransferTypeAdvanced serverReportChannelTransferTypeAdvanced() {
+        return new ServerHandleReportHandleChannelTransferTypeAdvanced();
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportConnectSuccessTypeAdvanced serverReportConnectSuccessTypeAdvanced(
+    public ServerHandleReportConnectSuccessTypeAdvanced serverReportConnectSuccessTypeAdvanced(
             ServerNettyConfigApplication serverNettyConfigApplication,
             NettyClientBlacklistApplication nettyClientBlacklistApplication,
             InternalNetworkPenetrationMappingApplication internalNetworkPenetrationMappingApplication) {
-        return new ServerReportConnectSuccessTypeAdvanced(serverNettyConfigApplication, nettyClientBlacklistApplication, internalNetworkPenetrationMappingApplication);
+        return new ServerHandleReportConnectSuccessTypeAdvanced(serverNettyConfigApplication, nettyClientBlacklistApplication, internalNetworkPenetrationMappingApplication);
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportDisconnectTypeAdvanced serverReportDisconnectTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
-        return new ServerReportDisconnectTypeAdvanced(serverNettyConfigApplication);
+    public ServerHandleReportDisconnectTypeAdvanced serverReportDisconnectTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
+        return new ServerHandleReportDisconnectTypeAdvanced(serverNettyConfigApplication);
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportSingleClientCloseVisitorTypeAdvanced serverReportSingleClientCloseVisitorTypeAdvanced() {
-        return new ServerReportSingleClientCloseVisitorTypeAdvanced();
+    public ServerHandleReportSingleClientCloseVisitorTypeAdvanced serverReportSingleClientCloseVisitorTypeAdvanced() {
+        return new ServerHandleReportSingleClientCloseVisitorTypeAdvanced();
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportSingleClientRealConnectTypeAdvanced serverReportSingleClientRealConnectTypeAdvanced() {
-        return new ServerReportSingleClientRealConnectTypeAdvanced();
+    public ServerHandleReportSingleClientRealConnectTypeAdvanced serverReportSingleClientRealConnectTypeAdvanced() {
+        return new ServerHandleReportSingleClientRealConnectTypeAdvanced();
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportStagingClosedTypeAdvanced serverReportStagingClosedTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
-        return new ServerReportStagingClosedTypeAdvanced(serverNettyConfigApplication);
+    public ServerHandleReportStagingClosedTypeAdvanced serverReportStagingClosedTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
+        return new ServerHandleReportStagingClosedTypeAdvanced(serverNettyConfigApplication);
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerReportStagingOpenedTypeAdvanced serverReportStagingOpenedTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
-        return new ServerReportStagingOpenedTypeAdvanced(serverNettyConfigApplication);
+    public ServerHandleReportStagingOpenedTypeAdvanced serverReportStagingOpenedTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication) {
+        return new ServerHandleReportStagingOpenedTypeAdvanced(serverNettyConfigApplication);
     }
 
 

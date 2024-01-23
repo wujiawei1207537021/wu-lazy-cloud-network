@@ -88,7 +88,7 @@ import cloudNetworkMenu from "@/views/layoutpages/cloud_network/components/Cloud
 
 export default {
     data: () => ({
-        description: "客户端注册信息查询",
+        description: "客户端管理",
         buttons: {
             search: { name: "查询" },
             add: { name: "添加" },
@@ -100,7 +100,7 @@ export default {
         // type 0:目录 1：菜单 2：按钮
         type: "1",
         icon: "Avatar",
-        name: "客户端注册信息查询",
+        name: "客户端管理",
         parentMenu: cloudNetworkMenu,
     }),
 };

@@ -1,7 +1,7 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.config;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class ClientAutoConfiguration implements CommandLineRunner {
     private final NettyServerProperties nettyServerProperties;
     private final ClientNettyConfigApplication clientNettyConfigApplication;
 
-    private final List<ChannelTypeAdvanced> channelTypeAdvancedList; // 处理服务端发送过来的数据类型
+    private final List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList; // 处理服务端发送过来的数据类型
 
 
     ThreadPoolExecutor NETTY_CLIENT_EXECUTOR = new ThreadPoolExecutor(1, 1, 200, TimeUnit.MILLISECONDS,
@@ -35,10 +35,10 @@ public class ClientAutoConfiguration implements CommandLineRunner {
 
     public ClientAutoConfiguration(NettyServerProperties nettyServerProperties,
                                    ClientNettyConfigApplication clientNettyConfigApplication,
-                                   List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+                                   List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         this.nettyServerProperties = nettyServerProperties;
         this.clientNettyConfigApplication = clientNettyConfigApplication;
-        this.channelTypeAdvancedList = channelTypeAdvancedList;
+        this.handleChannelTypeAdvancedList = handleChannelTypeAdvancedList;
     }
 
 
@@ -47,7 +47,7 @@ public class ClientAutoConfiguration implements CommandLineRunner {
         String inetHost = nettyServerProperties.getInetHost();
         int inetPort = nettyServerProperties.getInetPort();
         String clientId = nettyServerProperties.getClientId();
-        return new NettyClientSocket(inetHost, inetPort, clientId, clientNettyConfigApplication, channelTypeAdvancedList);
+        return new NettyClientSocket(inetHost, inetPort, clientId, clientNettyConfigApplication, handleChannelTypeAdvancedList);
     }
 
     /**
@@ -61,7 +61,7 @@ public class ClientAutoConfiguration implements CommandLineRunner {
         String inetHost = nettyServerProperties.getInetHost();
         int inetPort = nettyServerProperties.getInetPort();
         String clientId = nettyServerProperties.getClientId();
-        NettyClientSocket nettyClientSocket = new NettyClientSocket(inetHost, inetPort, clientId, clientNettyConfigApplication, channelTypeAdvancedList);
+        NettyClientSocket nettyClientSocket = new NettyClientSocket(inetHost, inetPort, clientId, clientNettyConfigApplication, handleChannelTypeAdvancedList);
         Thread thread = new Thread(() -> {
             try {
                 nettyClientSocket.newConnect2Server();

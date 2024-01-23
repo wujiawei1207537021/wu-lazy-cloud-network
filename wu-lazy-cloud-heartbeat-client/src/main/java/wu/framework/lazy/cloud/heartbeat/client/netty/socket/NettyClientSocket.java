@@ -4,7 +4,7 @@ package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientFilter;
@@ -45,16 +45,16 @@ public class NettyClientSocket {
     @Getter
     private final ClientNettyConfigApplication clientNettyConfigApplication;
 
-    private final List<ChannelTypeAdvanced> channelTypeAdvancedList; // 处理服务端发送过来的数据类型
+    private final List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList; // 处理服务端发送过来的数据类型
 
     private static final EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
-    public NettyClientSocket(String inetHost, int inetPort, String clientId, ClientNettyConfigApplication clientNettyConfigApplication, List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+    public NettyClientSocket(String inetHost, int inetPort, String clientId, ClientNettyConfigApplication clientNettyConfigApplication, List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         this.inetHost = inetHost;
         this.inetPort = inetPort;
         this.clientId = clientId;
         this.clientNettyConfigApplication = clientNettyConfigApplication;
-        this.channelTypeAdvancedList = channelTypeAdvancedList;
+        this.handleChannelTypeAdvancedList = handleChannelTypeAdvancedList;
     }
 
     public void newConnect2Server() throws InterruptedException {
@@ -65,7 +65,7 @@ public class NettyClientSocket {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
-                .handler(new NettyClientFilter(new ChannelTypeAdapter(channelTypeAdvancedList),this))
+                .handler(new NettyClientFilter(new ChannelTypeAdapter(handleChannelTypeAdvancedList),this))
         ;
 
         log.info("连接服务端IP:{},连接服务端端口:{}", inetHost, inetPort);
