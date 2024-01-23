@@ -6,7 +6,7 @@
 
 #docker login --username=1207537021@qq.com registry.cn-hangzhou.aliyuncs.com
 
-mvn clean install 
+#mvn clean install 
 
 docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-server:1.2.2-JDK17-SNAPSHOT .
 docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-server:1.2.2-JDK17-SNAPSHOT

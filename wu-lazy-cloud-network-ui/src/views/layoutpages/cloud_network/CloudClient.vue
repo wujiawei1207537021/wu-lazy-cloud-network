@@ -56,8 +56,8 @@
             <el-table-column fixed="right" label="操作">
                 <template v-slot:default="{ row }">
                     <el-button
-                        v-permission="['del']"
-                        @click.prevent="handleDel(row.clientId)"
+                        v-permission="['off_line']"
+                        @click.prevent="handleOffLine(row.clientId)"
                         type="danger"
                         size="small"
                     >
@@ -93,7 +93,7 @@ export default {
             search: { name: "查询" },
             add: { name: "添加" },
             edit: { name: "编辑" },
-            del: { name: "删除" },
+            off_line: { name: "下线" },
             sendMessage: { name: "发送消息" },
             export: { name: "导出用户" },
         },
@@ -156,7 +156,7 @@ const handleArouse2SendMessage = (row = null) => {
  * @param {*}
  * @return {*}
  */
-const handleDel = (clientId) => {
+const handleOffLine = (clientId) => {
     proxy
         .$confirm("此操作将永久删除该数据, 是否继续?", "提示", {
             confirmButtonText: "确定",

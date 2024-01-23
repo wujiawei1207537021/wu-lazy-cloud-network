@@ -61,7 +61,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyProxyMs
         // 处理客户端连接成功
         Channel channel = ctx.channel();
         NettyProxyMsg nettyMsg = new NettyProxyMsg();
-        nettyMsg.setType(MessageType.REPORT_CLIENT_CONNECT_SUCCESS);
+        nettyMsg.setType(MessageType.CLIENT_CHANNEL_ACTIVE);
         nettyMsg.setClientId(clientId);
         channelTypeAdapter.handler(channel, nettyMsg);
 

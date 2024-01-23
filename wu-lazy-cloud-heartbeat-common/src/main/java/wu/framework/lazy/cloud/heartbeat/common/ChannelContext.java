@@ -35,7 +35,7 @@ public class ChannelContext {
         clientChannelImpl.setClientId(clientId.getBytes(StandardCharsets.UTF_8));
         // 如果客户端已经存在 移除
         if(channelIdClientChannelDTOConcurrentHashMap.containsKey(clientId)){
-            clear(clientId);
+//            clear(clientId);
         }
         channelIdClientChannelDTOConcurrentHashMap.put(clientId, clientChannelImpl);
 

@@ -137,7 +137,7 @@ public class NettyClientRealSocket {
         log.info("客户端新建访客通道 连接服务端IP:{},连接服务端端口:{}", inetHost, inetPort);
         ChannelFuture future = bootstrap.connect(inetHost, inetPort);
 
-        log.info("使用的租户ID:" + clientId);
+        log.info("使用的客户端ID:" + clientId);
         future.addListener((ChannelFutureListener) futureListener -> {
             Channel channel = futureListener.channel();
             if (futureListener.isSuccess()) {

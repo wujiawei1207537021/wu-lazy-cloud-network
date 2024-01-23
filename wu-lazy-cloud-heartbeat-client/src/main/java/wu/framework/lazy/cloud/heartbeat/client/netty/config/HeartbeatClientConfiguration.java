@@ -27,7 +27,7 @@ public class HeartbeatClientConfiguration {
      * @return ClientHandleDistributeSingleClientRealAutoReadConnectTypeAdvanced
      */
     @Bean
-    public ClientHandleDistributeSingleClientRealAutoReadConnectTypeAdvanced clientDistributeSingleClientRealAutoReadConnectTypeAdvanced(){
+    public ClientHandleDistributeSingleClientRealAutoReadConnectTypeAdvanced handleDistributeSingleClientRealAutoReadConnectTypeAdvanced(){
         return new ClientHandleDistributeSingleClientRealAutoReadConnectTypeAdvanced();
     }
     /**
@@ -35,38 +35,42 @@ public class HeartbeatClientConfiguration {
      * @return ClientHandleDistributeSingleClientMessageTypeAdvanced
      */
     @Bean
-    public ClientHandleDistributeSingleClientMessageTypeAdvanced clientDistributeSingleClientMessageTypeAdvanced(){
+    public ClientHandleDistributeSingleClientMessageTypeAdvanced handleDistributeSingleClientMessageTypeAdvanced(){
         return new ClientHandleDistributeSingleClientMessageTypeAdvanced();
     }
     @Bean
-    public ClientHandleDistributeSingleClientRealCloseVisitorTypeAdvanced clientDistributeSingleClientRealCloseVisitorTypeAdvanced(){
+    public ClientHandleDistributeSingleClientRealCloseVisitorTypeAdvanced handleDistributeSingleClientRealCloseVisitorTypeAdvanced(){
         return new ClientHandleDistributeSingleClientRealCloseVisitorTypeAdvanced();
     }
 
     @Bean
-    public ClientReportHandleChannelTransferTypeAdvancedHandleDistribute clientReportChannelTransferTypeAdvanced(NettyServerProperties nettyServerProperties){
+    public ClientReportHandleChannelTransferTypeAdvancedHandleDistribute handleChannelTransferTypeAdvancedHandleDistribute(NettyServerProperties nettyServerProperties){
         return new ClientReportHandleChannelTransferTypeAdvancedHandleDistribute(nettyServerProperties);
     }
     @Bean
-    public HandleDistributeConnectSuccessNotificationTypeAdvancedHandle distributeConnectSuccessNotificationTypeAdvanced(ClientNettyConfigApplication clientNettyConfigApplication, NettyServerProperties nettyServerProperties){
-        return new HandleDistributeConnectSuccessNotificationTypeAdvancedHandle(clientNettyConfigApplication, nettyServerProperties);
+    public HandleDistributeConnectSuccessNotificationTypeAdvancedHandle handleDistributeConnectSuccessNotificationTypeAdvancedHandle(ClientNettyConfigApplication clientNettyConfigApplication){
+        return new HandleDistributeConnectSuccessNotificationTypeAdvancedHandle(clientNettyConfigApplication);
     }
     @Bean
-    public HandleDistributeDisconnectTypeAdvancedHandle distributeDisconnectTypeAdvanced(ClientNettyConfigApplication clientNettyConfigApplication){
+    public HandleClientChannelActiveAdvanced handleClientChannelActiveAdvanced(NettyServerProperties nettyServerProperties){
+        return new HandleClientChannelActiveAdvanced(nettyServerProperties);
+    }
+    @Bean
+    public HandleDistributeDisconnectTypeAdvancedHandle handleDistributeDisconnectTypeAdvancedHandle(ClientNettyConfigApplication clientNettyConfigApplication){
         return new HandleDistributeDisconnectTypeAdvancedHandle(clientNettyConfigApplication);
     }
     @Bean
-    public HandleDistributeStagingClosedTypeAdvanced distributeStagingClosedTypeAdvanced(){
+    public HandleDistributeStagingClosedTypeAdvanced handleDistributeStagingClosedTypeAdvanced(){
         return new HandleDistributeStagingClosedTypeAdvanced();
     }
     @Bean
-    public HandleDistributeStagingOpenedTypeAdvanced distributeStagingOpenedTypeAdvanced(){
+    public HandleDistributeStagingOpenedTypeAdvanced handleDistributeStagingOpenedTypeAdvanced(){
         return new HandleDistributeStagingOpenedTypeAdvanced();
     }
 
 
     @Bean
-    public ClientHandleDistributeSingleClientRealConnectTypeAdvanced clientDistributeSingleClientRealConnectTypeAdvanced(NettyServerProperties nettyServerProperties,
+    public ClientHandleDistributeSingleClientRealConnectTypeAdvanced clientHandleDistributeSingleClientRealConnectTypeAdvanced(NettyServerProperties nettyServerProperties,
                                                                                                                          List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList){
         return new ClientHandleDistributeSingleClientRealConnectTypeAdvanced(nettyServerProperties, handleChannelTypeAdvancedList);
     }

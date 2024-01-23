@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportConnectSuccessTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleClientConnectSuccessTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenetrationMappingApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientBlacklistApplication;
@@ -25,13 +25,13 @@ import java.util.List;
  */
 @Slf4j
 @Component
-public class ServerHandleReportConnectSuccessTypeAdvanced extends AbstractHandleReportConnectSuccessTypeAdvanced<NettyProxyMsg> {
+public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandleClientConnectSuccessTypeAdvanced<NettyProxyMsg> {
 
     private final ServerNettyConfigApplication serverNettyConfigApplication;
     private final NettyClientBlacklistApplication nettyClientBlacklistApplication;
     private final InternalNetworkPenetrationMappingApplication internalNetworkPenetrationMappingApplication;
 
-    public ServerHandleReportConnectSuccessTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication, NettyClientBlacklistApplication nettyClientBlacklistApplication, InternalNetworkPenetrationMappingApplication internalNetworkPenetrationMappingApplication) {
+    public ServerHandleClientConnectSuccessTypeAdvanced(ServerNettyConfigApplication serverNettyConfigApplication, NettyClientBlacklistApplication nettyClientBlacklistApplication, InternalNetworkPenetrationMappingApplication internalNetworkPenetrationMappingApplication) {
         this.serverNettyConfigApplication = serverNettyConfigApplication;
         this.nettyClientBlacklistApplication = nettyClientBlacklistApplication;
         this.internalNetworkPenetrationMappingApplication = internalNetworkPenetrationMappingApplication;

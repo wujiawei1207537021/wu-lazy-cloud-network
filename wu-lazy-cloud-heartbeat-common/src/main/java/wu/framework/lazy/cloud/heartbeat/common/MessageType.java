@@ -22,7 +22,7 @@ public class MessageType {
      * 客户端上报连接成功
      *
      * @see MessageTypeEnums#REPORT_CLIENT_CONNECT_SUCCESS
-     * @see AbstractHandleReportConnectSuccessTypeAdvanced
+     * @see AbstractHandleClientConnectSuccessTypeAdvanced
      */
     public static final byte REPORT_CLIENT_CONNECT_SUCCESS = 0X01;
     /**
@@ -78,6 +78,13 @@ public class MessageType {
      * @see AbstractHandleReportSingleClientMessage2OtherClientTypeAdvanced
      */
     public static final byte REPORT_SINGLE_CLIENT_MESSAGE = 0X09;
+    /**
+     *  服务端通道 is active
+     *
+     * @see MessageTypeEnums#SERVER_CHANNEL_ACTIVE
+     * @see AbstractHandleServerChannelActiveTypeAdvanced
+     */
+    public static final byte SERVER_CHANNEL_ACTIVE = 0X10;
 
     /**
      * 下发 客户端接收连接成功通知
@@ -146,4 +153,13 @@ public class MessageType {
      * @see AbstractHandleDistributeSingleClientMessageTypeAdvanced
      */
     public static final byte DISTRIBUTE_SINGLE_CLIENT_MESSAGE = -0X09;
+
+
+    /**
+     * 客户端通道 is active
+     *
+     * @see MessageTypeEnums#CLIENT_CHANNEL_ACTIVE
+     * @see AbstractHandleClientChannelActiveAdvanced
+     */
+    public static final byte CLIENT_CHANNEL_ACTIVE = -0X10;
 }

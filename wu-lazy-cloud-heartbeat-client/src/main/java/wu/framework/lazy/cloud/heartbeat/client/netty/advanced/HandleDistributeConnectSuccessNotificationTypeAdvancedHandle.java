@@ -22,11 +22,10 @@ import java.util.List;
 public class HandleDistributeConnectSuccessNotificationTypeAdvancedHandle extends AbstractHandleDistributeConnectSuccessNotificationTypeAdvancedHandle<NettyProxyMsg> {
 
     private final ClientNettyConfigApplication clientNettyConfigApplication;
-    private final NettyServerProperties nettyServerProperties;
 
-    public HandleDistributeConnectSuccessNotificationTypeAdvancedHandle(ClientNettyConfigApplication clientNettyConfigApplication, NettyServerProperties nettyServerProperties) {
+
+    public HandleDistributeConnectSuccessNotificationTypeAdvancedHandle(ClientNettyConfigApplication clientNettyConfigApplication) {
         this.clientNettyConfigApplication = clientNettyConfigApplication;
-        this.nettyServerProperties = nettyServerProperties;
     }
 
     /**
@@ -39,12 +38,7 @@ public class HandleDistributeConnectSuccessNotificationTypeAdvancedHandle extend
     protected void doHandler(Channel channel, NettyProxyMsg msg) {
         log.warn("客户端ID：{},客户端:{}连接成功", new String(msg.getClientId()), new String(msg.getData()));
 
-        // 缓存当前通道
-        String clientId = nettyServerProperties.getClientId();
-        NettyProxyMsg nettyMsg = new NettyProxyMsg();
-        nettyMsg.setClientId(clientId.getBytes(StandardCharsets.UTF_8));
-        ChannelContext.push(channel, clientId);
-        ChannelAttributeKeyUtils.buildClientId(channel,clientId);
+
         // 存储其他客户端状态
         List<String> clientIdList = JSONObject.parseArray(new String(msg.getData()), String.class);
         for (String tenantId : clientIdList) {

@@ -1,14 +1,18 @@
 package wu.framework.lazy.cloud.heartbeat.common.advanced.server;
 
+
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractHandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
 
+
 /**
- * 客户端连接成功上报处理器
+ * 服务端通道 is active
+ * SERVER_CHANNEL_ACTIVE
  */
-public abstract class AbstractHandleReportConnectSuccessTypeAdvanced<MSG> extends AbstractHandleChannelTypeAdvanced<NettyProxyMsg> implements HandleChannelTypeAdvanced {
+public abstract class AbstractHandleServerChannelActiveTypeAdvanced<MSG> extends AbstractHandleChannelTypeAdvanced<NettyProxyMsg> implements HandleChannelTypeAdvanced {
+
 
     /**
      * 是否支持当前类型
@@ -18,6 +22,6 @@ public abstract class AbstractHandleReportConnectSuccessTypeAdvanced<MSG> extend
      */
     @Override
     public boolean doSupport(NettyProxyMsg msg) {
-        return MessageTypeEnums.REPORT_CLIENT_CONNECT_SUCCESS.getTypeByte() == msg.getType();
+        return MessageTypeEnums.SERVER_CHANNEL_ACTIVE.getTypeByte() == msg.getType();
     }
 }

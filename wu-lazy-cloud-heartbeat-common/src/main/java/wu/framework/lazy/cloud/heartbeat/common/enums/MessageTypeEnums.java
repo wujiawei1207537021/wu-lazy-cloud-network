@@ -18,7 +18,7 @@ public enum MessageTypeEnums {
      */
     TYPE_HEARTBEAT(MessageType.TYPE_HEARTBEAT, "心跳"),
     /**
-     * @see AbstractHandleReportConnectSuccessTypeAdvanced
+     * @see AbstractHandleClientConnectSuccessTypeAdvanced
      */
     REPORT_CLIENT_CONNECT_SUCCESS(MessageType.REPORT_CLIENT_CONNECT_SUCCESS, "上报 客户端连接成功"),
     /**
@@ -50,6 +50,10 @@ public enum MessageTypeEnums {
      * @see AbstractHandleReportSingleClientMessage2OtherClientTypeAdvanced
      */
     REPORT_SINGLE_CLIENT_MESSAGE(MessageType.REPORT_SINGLE_CLIENT_MESSAGE, "上报 客户端消息到另一个客户端"),
+    /**
+     * @see AbstractHandleServerChannelActiveTypeAdvanced
+     */
+    SERVER_CHANNEL_ACTIVE(MessageType.SERVER_CHANNEL_ACTIVE, "服务端通道 is active"),
     /**
      * @see AbstractHandleDistributeConnectSuccessNotificationTypeAdvancedHandle
      */
@@ -91,6 +95,10 @@ public enum MessageTypeEnums {
      * @see AbstractHandleDistributeSingleClientMessageTypeAdvanced
      */
     DISTRIBUTE_SINGLE_CLIENT_MESSAGE(MessageType.DISTRIBUTE_SINGLE_CLIENT_MESSAGE, "下发 客户端消息"),
+    /**
+     * @see AbstractHandleClientChannelActiveAdvanced
+     */
+    CLIENT_CHANNEL_ACTIVE(MessageType.CLIENT_CHANNEL_ACTIVE, "客户端通道 is active"),
 
     ;
 

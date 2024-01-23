@@ -37,11 +37,11 @@ public class HeartbeatServerConfiguration {
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerHandleReportConnectSuccessTypeAdvanced serverReportConnectSuccessTypeAdvanced(
+    public ServerHandleClientConnectSuccessTypeAdvanced serverReportConnectSuccessTypeAdvanced(
             ServerNettyConfigApplication serverNettyConfigApplication,
             NettyClientBlacklistApplication nettyClientBlacklistApplication,
             InternalNetworkPenetrationMappingApplication internalNetworkPenetrationMappingApplication) {
-        return new ServerHandleReportConnectSuccessTypeAdvanced(serverNettyConfigApplication, nettyClientBlacklistApplication, internalNetworkPenetrationMappingApplication);
+        return new ServerHandleClientConnectSuccessTypeAdvanced(serverNettyConfigApplication, nettyClientBlacklistApplication, internalNetworkPenetrationMappingApplication);
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

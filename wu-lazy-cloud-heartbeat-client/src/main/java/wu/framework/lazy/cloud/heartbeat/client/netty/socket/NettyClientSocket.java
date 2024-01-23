@@ -72,7 +72,7 @@ public class NettyClientSocket {
         ChannelFuture future = bootstrap.connect(inetHost, inetPort);
         Channel channel = future.channel();
 
-        log.info("使用的租户ID:" + clientId);
+        log.info("使用的客户端ID:" + clientId);
         future.addListener((ChannelFutureListener) futureListener -> {
             if (futureListener.isSuccess()) {
 
