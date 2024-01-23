@@ -52,6 +52,7 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         // 客户端心跳通道
         ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId);
         if (clientChannel != null) {
+            log.info("通过客户端:{},获取通道而后创建连接",clientId);
             Channel channel = clientChannel.getChannel();
             channel.writeAndFlush(nettyProxyMsg);
         }else {
