@@ -3,7 +3,6 @@ package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 
 import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
 import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
@@ -64,7 +63,7 @@ public class NettyClientRealSocket {
                     String visitorId = internalNetworkPenetrationRealClient.getVisitorId();
                     log.info("访客通过 客户端:【{}】,绑定本地服务,IP:{},端口:{} 新建通道成功", clientId, clientTargetIp1, clientTargetPort1);
                     // 客户端真实通道
-                    NettyRealIdContext.pushVisitor(realChannel, visitorId);
+                    NettyRealIdContext.pushReal(realChannel, visitorId);
                     // 绑定访客ID到当前真实通道属性
                     ChannelAttributeKeyUtils.buildVisitorId(realChannel, visitorId);
                     ChannelAttributeKeyUtils.buildClientId(realChannel, clientId);
@@ -157,7 +156,7 @@ public class NettyClientRealSocket {
                 ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
                 ChannelAttributeKeyUtils.buildClientId(channel, clientId);
                 // 客户端真实通道自动读写打开
-                Channel visitor = NettyRealIdContext.getVisitor(visitorId);
+                Channel visitor = NettyRealIdContext.getReal(visitorId);
                 visitor.config().setOption(ChannelOption.AUTO_READ, true);
 
 

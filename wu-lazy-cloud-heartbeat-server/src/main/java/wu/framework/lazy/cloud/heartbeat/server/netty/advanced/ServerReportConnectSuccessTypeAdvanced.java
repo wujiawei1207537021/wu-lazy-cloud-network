@@ -46,9 +46,10 @@ public class ServerReportConnectSuccessTypeAdvanced extends AbstractReportConnec
      */
     @Override
     public void doHandler(Channel newChannel, NettyProxyMsg msg) {
-        ChannelContext.push(newChannel, msg);
+
 
         String clientId = new String(msg.getClientId());
+        ChannelContext.push(newChannel, clientId);
 
         ChannelAttributeKeyUtils.buildClientId(newChannel,clientId);
         log.info("客户端:{}连接成功",new String(msg.getClientId()));
@@ -76,8 +77,10 @@ public class ServerReportConnectSuccessTypeAdvanced extends AbstractReportConnec
                     // 发送所有客户端ID
                     channel.writeAndFlush(nettyMsg);
                 }
+                log.info("开始开启客户端：【{}】,端口映射",clientId);
                 // 创建访问者（内网穿透连接创建）
                 internalNetworkPenetrationMappingApplication.createVisitor(clientId);
+                log.info("结束开启客户端：【{}】,端口映射",clientId);
 
             }else {
                 // 黑名单客户端

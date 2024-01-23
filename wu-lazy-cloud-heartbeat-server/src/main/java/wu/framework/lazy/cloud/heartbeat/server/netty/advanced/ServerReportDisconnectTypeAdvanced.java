@@ -39,14 +39,14 @@ public class ServerReportDisconnectTypeAdvanced extends AbstractReportDisconnect
         byte[] clientIdByte = msg.getClientId();
         log.info("关闭客户端:{} 的通道",new String(clientIdByte));
         ChannelId deathChannelId = deathChannel.id();
-        ChannelContext.ClientChannel deathClientChannelDTO = ChannelContext.get(deathChannelId);
+        ChannelContext.ClientChannel deathClientChannelDTO = ChannelContext.get(clientIdByte);
 
         if (deathClientChannelDTO != null) {
             byte[] clientId = deathClientChannelDTO.getClientId();
             // 服务状态离线
             String tenantId = new String(clientId);
             serverNettyConfigApplication.clientOffLine(tenantId);
-            ChannelContext.remove(deathChannelId);
+            ChannelContext.remove(clientIdByte);
             List<ChannelContext.ClientChannel> clientChannels = ChannelContext.get();
 
             // 通知其他客户端 channelId 关闭了

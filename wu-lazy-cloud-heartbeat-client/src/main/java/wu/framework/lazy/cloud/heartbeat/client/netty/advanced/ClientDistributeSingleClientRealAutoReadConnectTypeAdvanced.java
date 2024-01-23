@@ -22,7 +22,7 @@ public class ClientDistributeSingleClientRealAutoReadConnectTypeAdvanced extends
         // 获取访客ID
         byte[] visitorId = nettyProxyMsg.getVisitorId();
         // 获取访客对应的真实代理通道
-        Channel realChannel = NettyRealIdContext.getVisitor(visitorId);
+        Channel realChannel = NettyRealIdContext.getReal(visitorId);
         if (realChannel != null) {
             realChannel.config().setOption(ChannelOption.AUTO_READ, true);
         }

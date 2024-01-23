@@ -1,8 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.handler;
 
 
-
-import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.buffer.ByteBuf;
@@ -38,7 +36,7 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         String clientTargetIp = internalNetworkPenetrationRealClient.getClientTargetIp();
         Integer clientTargetPort = internalNetworkPenetrationRealClient.getClientTargetPort();
         // 绑定访客真实通道
-        NettyRealIdContext.pushVisitor(visitorChannel, visitorId);
+        NettyRealIdContext.pushReal(visitorChannel, visitorId);
         // 当前通道绑定访客ID
         ChannelAttributeKeyUtils.buildVisitorId(visitorChannel, visitorId);
         ChannelAttributeKeyUtils.buildClientId(visitorChannel, clientId);
@@ -51,6 +49,7 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
         myMsg.setVisitorId(visitorId);
 
+        // 客户端心跳通道
         ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId);
         if (clientChannel != null) {
             Channel channel = clientChannel.getChannel();

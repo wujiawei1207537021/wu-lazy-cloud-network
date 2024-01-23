@@ -1,9 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.handler;
 
-import wu.framework.lazy.cloud.heartbeat.common.MessageType;
-import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.*;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.channel.*;
@@ -62,10 +59,10 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
             if (IdleState.READER_IDLE.equals(event.state())) {  //如果读通道处于空闲状态，说明没有接收到心跳命令
                 String clientId = ChannelAttributeKeyUtils.getClientId(channel);
                 String visitorId = ChannelAttributeKeyUtils.getVisitorId(channel);
-                log.warn("已经5秒没有接收到客户端：{}的信息了",clientId);
+                log.warn("已经5秒没有接收到客户端：{}的信息了", clientId);
                 if (idle_count > 2) {
 
-                    if(ObjectUtils.isEmpty(visitorId)){
+                    if (ObjectUtils.isEmpty(visitorId)) {
                         log.warn("关闭这个不活跃的channel client:{}", clientId);
                         // 给所有客户端发送 这个客户端离线了
                         NettyProxyMsg nettyMsg = new NettyProxyMsg();
@@ -74,8 +71,8 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
                         nettyMsg.setType(MessageType.REPORT_CLIENT_DISCONNECTION);
                         channelTypeAdapter.handler(channel, nettyMsg);
                         channel.close();
-                    }else {
-                        log.info("关闭访客：【{}】的连接",visitorId);
+                    } else {
+                        log.info("关闭访客：【{}】的连接", visitorId);
                         NettyCommunicationIdContext.clear(visitorId);
                         NettyRealIdContext.clear(visitorId);
                     }
@@ -104,8 +101,13 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
         // 下发当前客户端通道断开连接
 
         String clientId = ChannelAttributeKeyUtils.getClientId(channel);
+        String visitorId = ChannelAttributeKeyUtils.getVisitorId(channel);
         log.info("断开客户端的连接:{}", clientId);
-        if (!ObjectUtils.isEmpty(clientId)) {
+        if (!ObjectUtils.isEmpty(visitorId)) {
+            // 访客通道 关闭访客通道
+            NettyCommunicationIdContext.clear(visitorId);
+            super.channelInactive(ctx);
+        } else if (!ObjectUtils.isEmpty(clientId)) {
             NettyProxyMsg nettyMsg = new NettyProxyMsg();
             nettyMsg.setType(MessageType.REPORT_CLIENT_DISCONNECTION);
             nettyMsg.setClientId(clientId);

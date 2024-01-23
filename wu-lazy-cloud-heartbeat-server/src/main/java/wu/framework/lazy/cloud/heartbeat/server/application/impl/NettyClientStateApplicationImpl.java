@@ -3,7 +3,6 @@ package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
-import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorContext;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientStateApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.NettyClientStateDTOAssembler;
 import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.state.NettyClientStateStoryCommand;

@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 访客ID对应上下文
+ * 访客通信通道上下文（服务端、客户端 通信）
  */
 @Deprecated
 public class NettyVisitorIdContext {

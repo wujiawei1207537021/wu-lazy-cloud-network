@@ -41,7 +41,7 @@ public class ClientReportChannelTransferTypeAdvanced extends AbstractDistributeC
         byte[] clientTargetPort = nettyProxyMsg.getClientTargetPort();
         byte[] visitorId = nettyProxyMsg.getVisitorId();
         // 真实服务通道
-        Channel realChannel = NettyRealIdContext.getVisitor(new String(visitorId));
+        Channel realChannel = NettyRealIdContext.getReal(new String(visitorId));
         if (realChannel == null) {
             log.error("无法获取访客:{} 真实服务", new String(visitorId));
             return;

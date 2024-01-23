@@ -1,13 +1,11 @@
 package wu.framework.lazy.cloud.heartbeat.common;
 
-import io.netty.channel.Channel;
-
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 访客端口对应上下文
  */
-public class NettyVisitorContext {
+public class NettyVisitorPortContext {
 
     protected static final ConcurrentHashMap<Integer, Object> VISITOR_PORT = new ConcurrentHashMap<>();
 

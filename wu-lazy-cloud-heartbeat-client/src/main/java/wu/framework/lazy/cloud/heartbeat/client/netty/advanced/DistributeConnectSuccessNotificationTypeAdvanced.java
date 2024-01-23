@@ -43,7 +43,7 @@ public class DistributeConnectSuccessNotificationTypeAdvanced extends AbstractDi
         String clientId = nettyServerProperties.getClientId();
         NettyProxyMsg nettyMsg = new NettyProxyMsg();
         nettyMsg.setClientId(clientId.getBytes(StandardCharsets.UTF_8));
-        ChannelContext.push(channel, nettyMsg);
+        ChannelContext.push(channel, clientId);
         ChannelAttributeKeyUtils.buildClientId(channel,clientId);
         // 存储其他客户端状态
         List<String> clientIdList = JSONObject.parseArray(new String(msg.getData()), String.class);

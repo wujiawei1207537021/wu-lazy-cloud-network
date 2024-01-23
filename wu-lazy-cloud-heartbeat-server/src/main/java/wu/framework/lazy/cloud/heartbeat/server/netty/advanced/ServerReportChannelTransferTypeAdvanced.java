@@ -29,7 +29,7 @@ public class ServerReportChannelTransferTypeAdvanced extends AbstractReportChann
         log.debug("接收到客户端:[{}]内网穿透返回的数据:[{}]", new String(msg.getClientId()), new String(msg.getData()));
         // 将数据转发访客通道
         byte[] visitorId = msg.getVisitorId();
-        Channel visitor = NettyRealIdContext.getVisitor(visitorId);
+        Channel visitor = NettyRealIdContext.getReal(visitorId);
         if (visitor != null) {
             ByteBuf buf = visitor.config().getAllocator().buffer(msg.getData().length);
             buf.writeBytes(msg.getData());

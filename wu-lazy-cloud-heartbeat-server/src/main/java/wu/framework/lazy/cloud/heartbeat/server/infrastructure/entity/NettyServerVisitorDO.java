@@ -25,7 +25,7 @@ import java.lang.Integer;
  **/
 @Data
 @Accessors(chain = true)
-@LazyTable(tableName = "netty_server_visitor",schema = "lazy_cloud_netty_server",comment = "服务端提前开放出来的端口")
+@LazyTable(tableName = "netty_server_visitor",comment = "服务端提前开放出来的端口")
 @Schema(title = "netty_server_visitor",description = "服务端提前开放出来的端口")
 public class NettyServerVisitorDO {
 

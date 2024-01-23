@@ -34,7 +34,7 @@ public class ServerReportSingleClientRealConnectTypeAdvanced extends AbstractRep
         ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
         ChannelAttributeKeyUtils.buildClientId(channel, clientId);
         // 访客通道开启自动读取
-        Channel visitorRealChannel = NettyRealIdContext.getVisitor(new String(visitorId));
+        Channel visitorRealChannel = NettyRealIdContext.getReal(new String(visitorId));
         visitorRealChannel.config().setOption(ChannelOption.AUTO_READ, true);
 
         // 或许此处还应该通知服务端 这个访客绑定的客户端真实通道打开

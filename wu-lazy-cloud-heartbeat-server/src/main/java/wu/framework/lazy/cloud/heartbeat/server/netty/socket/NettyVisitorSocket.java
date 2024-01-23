@@ -1,6 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.socket;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorPortContext;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -32,7 +32,7 @@ public class NettyVisitorSocket {
      */
     public void startServer(int visitorPort) throws Exception {
 
-        Channel visitor = NettyVisitorContext.getVisitor(visitorPort);
+        Channel visitor = NettyVisitorPortContext.getVisitor(visitorPort);
         if (visitor == null) {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
@@ -42,7 +42,7 @@ public class NettyVisitorSocket {
                 if(future.isSuccess()){
                     Channel channel = future.channel();
                     log.info("访客端口：{} 开启", visitorPort);
-                    NettyVisitorContext.pushVisitor(visitorPort, channel);
+                    NettyVisitorPortContext.pushVisitor(visitorPort, channel);
                 }
             });
 

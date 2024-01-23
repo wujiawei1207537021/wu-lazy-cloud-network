@@ -1,0 +1,89 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {}
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+  name: wu-lazy-cloud-heartbeat-server
+  namespace: default
+  resourceVersion: '3503304'
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: gateway
+      k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: '2024-01-16T21:34:28+08:00'
+      creationTimestamp: null
+      labels:
+        k8s.kuboard.cn/layer: gateway
+        k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+    spec:
+      containers:
+        - env:
+            - name: spring.datasource.url
+              value: >-
+                jdbc:mysql://cloud-mysql:3306/wu_lazy_cloud_netty_server?allowMultiQueries=true&useUnicode=true&autoReconnect=true&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&databaseTerm=SCHEMA
+            - name: JAVA_OPTS
+              value: '-Xms64m -Xmx128m'
+          image: >-
+            registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-server:1.2.2-JDK17-SNAPSHOT
+          imagePullPolicy: Always
+          name: wu-lazy-cloud-heartbeat-server
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+  name: wu-lazy-cloud-heartbeat-server
+  namespace: default
+  resourceVersion: '3500792'
+spec:
+  clusterIP: 10.96.41.191
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: pecjjh
+      nodePort: 30676
+      port: 7001
+      protocol: TCP
+      targetPort: 7001
+    - name: z4bg3n
+      nodePort: 30273
+      port: 30273
+      protocol: TCP
+      targetPort: 30273
+    - name: wfcigf
+      nodePort: 30576
+      port: 6001
+      protocol: TCP
+      targetPort: 6001
+  selector:
+    k8s.kuboard.cn/layer: gateway
+    k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+  sessionAffinity: None
+  type: NodePort
+

@@ -39,7 +39,7 @@ public class ServerReportStagingClosedTypeAdvanced extends AbstractReportStaging
         // 获取所有通道
         List<ChannelContext.ClientChannel> clientChannels = ChannelContext.get();
         ChannelId stagingClosedChannelId = stagingClosedChannel.id();
-        ChannelContext.ClientChannel stagingOpenedClientChannel = ChannelContext.get(stagingClosedChannelId);
+        ChannelContext.ClientChannel stagingOpenedClientChannel = ChannelContext.get(clientIdBytes);
         if (stagingOpenedClientChannel != null) {
             String clientId = new String(clientIdBytes);
             // 存储当前客户端暂存关闭

@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 真实通道对应上下文
+ * 真实通道对应上下文 客户端、服务端真实代理通道
  */
 public class NettyRealIdContext {
 
@@ -13,12 +13,12 @@ public class NettyRealIdContext {
 
 
     /**
-     * 添加访客
+     * 添加真实通道
      *
      * @param visitorId 访客id
-     * @param visitor   访客
+     * @param visitor   访客真实通道
      */
-    public static <T> void pushVisitor(T visitor, String visitorId) {
+    public static <T> void pushReal(T visitor, String visitorId) {
         REAL.put(visitorId, visitor);
 
     }
@@ -30,7 +30,7 @@ public class NettyRealIdContext {
      * @param <T>       访客范型
      * @return 访客
      */
-    public static <T> T getVisitor(String visitorId) {
+    public static <T> T getReal(String visitorId) {
         return (T) REAL.get(visitorId);
     }
 
@@ -41,8 +41,8 @@ public class NettyRealIdContext {
      * @param <T>       访客范型
      * @return 访客
      */
-    public static <T> T getVisitor(byte[] visitorId) {
-        return getVisitor(new String(visitorId));
+    public static <T> T getReal(byte[] visitorId) {
+        return getReal(new String(visitorId));
 
     }
 
@@ -52,7 +52,7 @@ public class NettyRealIdContext {
      * @param visitorId 访客ID
      */
     public static void clear(String visitorId) {
-        Channel visitor = getVisitor(visitorId);
+        Channel visitor = getReal(visitorId);
         if (visitor != null) {
             REAL.remove(visitorId);
             visitor.close();

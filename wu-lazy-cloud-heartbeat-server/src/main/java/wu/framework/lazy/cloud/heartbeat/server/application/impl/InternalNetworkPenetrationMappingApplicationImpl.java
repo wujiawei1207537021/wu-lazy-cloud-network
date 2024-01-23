@@ -1,5 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenetrationMappingApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.InternalNetworkPenetrationMappingDTOAssembler;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
  * @date 2023/12/29 05:21 下午
  * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyApplicationImpl
  **/
+@Slf4j
 @LazyApplication
 public class InternalNetworkPenetrationMappingApplicationImpl implements InternalNetworkPenetrationMappingApplication {
 
@@ -45,6 +47,7 @@ public class InternalNetworkPenetrationMappingApplicationImpl implements Interna
     @Override
     public Result<InternalNetworkPenetrationMapping> story(InternalNetworkPenetrationMappingStoryCommand internalNetworkPenetrationMappingStoryCommand) {
         InternalNetworkPenetrationMapping internalNetworkPenetrationMapping = InternalNetworkPenetrationMappingDTOAssembler.INSTANCE.toInternalNetworkPenetrationMapping(internalNetworkPenetrationMappingStoryCommand);
+        internalNetworkPenetrationMapping.setIsDeleted(false);
         return internalNetworkPenetrationMappingRepository.story(internalNetworkPenetrationMapping);
     }
 
@@ -167,17 +170,11 @@ public class InternalNetworkPenetrationMappingApplicationImpl implements Interna
                         VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient);
                         NettyVisitorSocket nettyVisitorSocket = new NettyVisitorSocket(visitorFilter);
 
-                            Thread thread = new Thread(() -> {
-                                try {
-                                    nettyVisitorSocket.startServer(visitorPort);
-                                } catch (Exception e) {
-                                    throw new RuntimeException(e);
-                                }
-
-                            });
-                            // 使用线程池 TODO
-                            thread.run();
-
+                        try {
+                            nettyVisitorSocket.startServer(visitorPort);
+                        } catch (Exception e) {
+                           log.error("客户端:{},网络端口:{},开放失败",clientId,visitorPort);
+                        }
 
 
                         // 发送客户端代理连接请求  客户端创建代理连接

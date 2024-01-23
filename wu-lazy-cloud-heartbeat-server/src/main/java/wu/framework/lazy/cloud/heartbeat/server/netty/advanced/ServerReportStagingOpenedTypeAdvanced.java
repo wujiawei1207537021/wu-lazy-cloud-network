@@ -38,7 +38,7 @@ public class ServerReportStagingOpenedTypeAdvanced extends AbstractReportStaging
         byte[] clientIdBytes = msg.getClientId();
         List<ChannelContext.ClientChannel> clientChannels = ChannelContext.get();
         ChannelId stagingOpenedChannelId = stagingOpenedChannel.id();
-        ChannelContext.ClientChannel stagingOpenedClientChannel = ChannelContext.get(stagingOpenedChannelId);
+        ChannelContext.ClientChannel stagingOpenedClientChannel = ChannelContext.get(clientIdBytes);
         if (stagingOpenedClientChannel != null) {
             for (ChannelContext.ClientChannel clientChannel : clientChannels) {
                 // 存储当前客户端暂存关闭
