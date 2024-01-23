@@ -52,7 +52,7 @@ public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandle
         ChannelContext.push(newChannel, clientId);
 
         ChannelAttributeKeyUtils.buildClientId(newChannel,clientId);
-        log.info("客户端:{}连接成功",new String(msg.getClientId()));
+        log.info("客户端:{}，IP:{}连接成功",new String(msg.getClientId()),newChannel.remoteAddress().toString());
         // 验证客户端是否时黑名单
         NettyClientBlacklist nettyClientBlacklist = new NettyClientBlacklist();
         nettyClientBlacklist.setClientId(clientId);

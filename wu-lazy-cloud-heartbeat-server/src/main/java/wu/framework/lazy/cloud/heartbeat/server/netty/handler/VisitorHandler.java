@@ -40,20 +40,20 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         // 当前通道绑定访客ID
         ChannelAttributeKeyUtils.buildVisitorId(visitorChannel, visitorId);
         ChannelAttributeKeyUtils.buildClientId(visitorChannel, clientId);
-        NettyProxyMsg myMsg = new NettyProxyMsg();
-        myMsg.setType(MessageType.DISTRIBUTE_SINGLE_CLIENT_REAL_CONNECT);
-        myMsg.setClientId(clientId);
-        myMsg.setVisitorPort(visitorPort);
-        myMsg.setClientTargetIp(clientTargetIp);
-        myMsg.setClientTargetPort(clientTargetPort);
+        NettyProxyMsg nettyProxyMsg = new NettyProxyMsg();
+        nettyProxyMsg.setType(MessageType.DISTRIBUTE_SINGLE_CLIENT_REAL_CONNECT);
+        nettyProxyMsg.setClientId(clientId);
+        nettyProxyMsg.setVisitorPort(visitorPort);
+        nettyProxyMsg.setClientTargetIp(clientTargetIp);
+        nettyProxyMsg.setClientTargetPort(clientTargetPort);
 
-        myMsg.setVisitorId(visitorId);
+        nettyProxyMsg.setVisitorId(visitorId);
 
         // 客户端心跳通道
         ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId);
         if (clientChannel != null) {
             Channel channel = clientChannel.getChannel();
-            channel.writeAndFlush(myMsg);
+            channel.writeAndFlush(nettyProxyMsg);
         }else {
             log.error("无法通过客户端ID获取客户端通道");
         }
