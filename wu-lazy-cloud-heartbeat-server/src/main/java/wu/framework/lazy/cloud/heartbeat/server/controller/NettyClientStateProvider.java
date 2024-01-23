@@ -136,4 +136,19 @@ public class NettyClientStateProvider  {
     public Result<NettyClientState> remove(@ModelAttribute NettyClientStateRemoveCommand nettyClientStateRemoveCommand){
         return nettyClientStateApplication.remove(nettyClientStateRemoveCommand);
     }
+
+    /**
+     * describe 通过客户端心跳通道发送客户端请求
+     * @param nettyClientMessageCommand 发送请求到客户端
+     * @return {@link Result<NettyClientState>}
+
+     * @author Jia wei Wu
+     * @date 2023/12/27 03:46 下午
+     **/
+
+    @Operation(summary = "通过客户端心跳通道发送客户端请求")
+    @PostMapping("/sendMessage2HeartbeatClient")
+    public Result<Void> sendMessage2HeartbeatClient(@RequestBody NettyClientMessageCommand nettyClientMessageCommand){
+        return nettyClientStateApplication.sendMessage2HeartbeatClient(nettyClientMessageCommand);
+    }
 }

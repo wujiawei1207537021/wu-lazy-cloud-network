@@ -63,9 +63,24 @@
                     >
                         {{ buttons.del.name }}
                     </el-button>
+                    <el-button
+                        v-permission="['sendMessage']"
+                        @click.prevent="handleArouse2SendMessage(row)"
+                        type="primary"
+                        size="small"
+                    >
+                        {{ buttons.sendMessage.name }}
+                    </el-button>
                 </template>
             </el-table-column>
         </ve-table>
+        <!--发送消息到客户端-->
+        <cloud-server-send-message2-clinet
+            v-if="showDialog"
+            :rowData="rowData"
+            :showDialog="showDialog"
+            @closeDialog="handelDialog($event)"
+        />
     </div>
 </template>
 <script>
@@ -79,6 +94,7 @@ export default {
             add: { name: "添加" },
             edit: { name: "编辑" },
             del: { name: "删除" },
+            sendMessage: { name: "发送消息" },
             export: { name: "导出用户" },
         },
         // type 0:目录 1：菜单 2：按钮
@@ -99,10 +115,15 @@ import {
     handleSizeChange,
     handleCurrentChange,
 } from "@/views/layoutpages/common";
+import CloudServerSendMessage2Clinet from "@/views/layoutpages/cloud_network/components/CloudServerSendMessage2Clinet.vue";
 
 const { proxy } = getCurrentInstance();
 const queryForm = ref(null);
 const tableData = ref([]);
+
+const rowData = ref(null);
+const showDialog = ref(false);
+
 const params = reactive({
     clientId: "",
     size: 10,
@@ -110,6 +131,25 @@ const params = reactive({
     total: 0,
 });
 const { clientId, size, current, total } = toRefs(params);
+
+/**
+ * @description: dialog事件
+ * @param {*}
+ * @return {*}
+ */
+const handelDialog = (e) => {
+    showDialog.value = e;
+    getDataList();
+};
+/**
+ * @description:添加or编辑事件
+ * @param {*}
+ * @return {*}
+ */
+const handleArouse2SendMessage = (row = null) => {
+    showDialog.value = true;
+    rowData.value = row;
+};
 
 /**删除行数据
  * @description:

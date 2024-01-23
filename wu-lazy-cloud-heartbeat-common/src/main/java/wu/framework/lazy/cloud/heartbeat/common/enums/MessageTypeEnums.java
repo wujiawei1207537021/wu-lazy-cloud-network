@@ -47,6 +47,10 @@ public enum MessageTypeEnums {
      */
     REPORT_SINGLE_CLIENT_CLOSE_VISITOR(MessageType.REPORT_SINGLE_CLIENT_CLOSE_VISITOR, "上报 客户端关闭一个访客通道"),
     /**
+     * @see AbstractReportSingleClientMessage2OtherClientTypeAdvanced
+     */
+    REPORT_SINGLE_CLIENT_MESSAGE(MessageType.REPORT_SINGLE_CLIENT_MESSAGE, "上报 客户端消息到另一个客户端"),
+    /**
      * @see AbstractDistributeConnectSuccessNotificationTypeAdvanced
      */
 
@@ -83,6 +87,10 @@ public enum MessageTypeEnums {
      * @see AbstractDistributeSingleClientRealCloseVisitorTypeAdvanced
      */
     DISTRIBUTE_SINGLE_CLIENT_REAL_CLOSE_VISITOR(MessageType.DISTRIBUTE_SINGLE_CLIENT_REAL_CLOSE_VISITOR, "下发 客户端关闭代理服务通道"),
+    /**
+     * @see AbstractDistributeSingleClientMessageTypeAdvanced
+     */
+    DISTRIBUTE_SINGLE_CLIENT_MESSAGE(MessageType.DISTRIBUTE_SINGLE_CLIENT_MESSAGE, "下发 客户端消息"),
 
     ;
 

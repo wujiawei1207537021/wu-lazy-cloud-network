@@ -73,6 +73,13 @@ public class MessageType {
      */
     public static final byte REPORT_SINGLE_CLIENT_CLOSE_VISITOR = 0X08;
 
+    /**
+     * 上报 客户端消息到另一个客户端
+     *
+     * @see MessageTypeEnums#REPORT_SINGLE_CLIENT_MESSAGE
+     * @see AbstractReportSingleClientMessage2OtherClientTypeAdvanced
+     */
+    public static final byte REPORT_SINGLE_CLIENT_MESSAGE = 0X09;
 
     /**
      * 下发 客户端接收连接成功通知
@@ -134,5 +141,11 @@ public class MessageType {
      */
     public static final byte DISTRIBUTE_SINGLE_CLIENT_REAL_CLOSE_VISITOR = -0X08;
 
-
+    /**
+     * 下发 客户端消息
+     *
+     * @see MessageTypeEnums#DISTRIBUTE_SINGLE_CLIENT_MESSAGE
+     * @see AbstractDistributeSingleClientMessageTypeAdvanced
+     */
+    public static final byte DISTRIBUTE_SINGLE_CLIENT_MESSAGE = -0X09;
 }

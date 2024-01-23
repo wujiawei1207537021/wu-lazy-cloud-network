@@ -104,4 +104,10 @@ public interface NettyClientStateApplication {
 
     Result<NettyClientState> remove(NettyClientStateRemoveCommand nettyClientStateRemoveCommand);
 
+    /**
+     * 通过客户端心跳通道发送客户端请求
+     * @param nettyClientMessageCommand 发送请求到客户端
+     * @return {@link Result<Void>}
+     */
+    Result<Void> sendMessage2HeartbeatClient(NettyClientMessageCommand nettyClientMessageCommand);
 }

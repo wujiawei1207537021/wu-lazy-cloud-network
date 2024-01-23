@@ -11,6 +11,10 @@ module.exports = {
         url: "/netty/client/state/remove",
         type: "delete",
     },
+    sendMessage2HeartbeatClient: {
+        url: "/netty/client/state/sendMessage2HeartbeatClient",
+        type: "post",
+    },
     visitorPage: {
         url: "/netty/server/visitor/findPage",
         type: "get",

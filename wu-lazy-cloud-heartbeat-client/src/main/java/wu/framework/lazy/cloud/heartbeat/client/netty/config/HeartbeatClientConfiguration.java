@@ -31,6 +31,14 @@ public class HeartbeatClientConfiguration {
     public ClientDistributeSingleClientRealAutoReadConnectTypeAdvanced clientDistributeSingleClientRealAutoReadConnectTypeAdvanced(){
         return new ClientDistributeSingleClientRealAutoReadConnectTypeAdvanced();
     }
+    /**
+     * 处理 接收服务端发送过来的聊天信息
+     * @return ClientDistributeSingleClientMessageTypeAdvanced
+     */
+    @Bean
+    public ClientDistributeSingleClientMessageTypeAdvanced clientDistributeSingleClientMessageTypeAdvanced(){
+        return new ClientDistributeSingleClientMessageTypeAdvanced();
+    }
     @Bean
     public ClientDistributeSingleClientRealCloseVisitorTypeAdvanced clientDistributeSingleClientRealCloseVisitorTypeAdvanced(){
         return new ClientDistributeSingleClientRealCloseVisitorTypeAdvanced();

@@ -2,7 +2,11 @@ package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 
 
+import com.wu.framework.response.ResultFactory;
+import io.netty.channel.Channel;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientStateApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.NettyClientStateDTOAssembler;
 import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client.state.NettyClientStateStoryCommand;
@@ -15,6 +19,7 @@ import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.L
 import com.wu.framework.response.Result;
 import jakarta.annotation.Resource;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 /**
@@ -143,4 +148,28 @@ public class NettyClientStateApplicationImpl implements NettyClientStateApplicat
         return nettyClientStateRepository.remove(nettyClientState);
     }
 
+    /**
+     * 通过客户端心跳通道发送客户端请求
+     *
+     * @param nettyClientMessageCommand 发送请求到客户端
+     * @return {@link Result<Void>}
+     */
+    @Override
+    public Result<Void> sendMessage2HeartbeatClient(NettyClientMessageCommand nettyClientMessageCommand) {
+        // 获取客户端ID
+        String clientId = nettyClientMessageCommand.getClientId();
+        String message = nettyClientMessageCommand.getMessage();
+        ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId);
+        if(clientChannel==null){
+            return ResultFactory.errorOf("客户端："+clientId+"不存在");
+        }
+        // 发送消息到客户端
+        Channel channel = clientChannel.getChannel();
+        NettyProxyMsg nettyProxyMsg = new NettyProxyMsg();
+        nettyProxyMsg.setClientId("服务端");
+        nettyProxyMsg.setData(message.getBytes(StandardCharsets.UTF_8));
+        nettyProxyMsg.setType(MessageType.DISTRIBUTE_SINGLE_CLIENT_MESSAGE);
+        channel.writeAndFlush(nettyProxyMsg);
+        return ResultFactory.successOf();
+    }
 }
