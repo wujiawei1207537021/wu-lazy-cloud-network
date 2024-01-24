@@ -25,11 +25,15 @@ public class NettyClientRealHandler extends SimpleChannelInboundHandler<ByteBuf>
         buf.readBytes(bytes);
         log.debug("接收客户端真实服务数据:{}", new String(bytes));
         String visitorId = ChannelAttributeKeyUtils.getVisitorId(ctx.channel());
+        Integer visitorPort = ChannelAttributeKeyUtils.getVisitorPort(ctx.channel());
+        String clientId = ChannelAttributeKeyUtils.getClientId(ctx.channel());
         // 访客通信通道 上报服务端代理完成
         Channel visitorChannel = NettyCommunicationIdContext.getVisitor(visitorId);
         NettyProxyMsg returnMessage = new NettyProxyMsg();
         returnMessage.setType(MessageType.REPORT_CLIENT_TRANSFER);
         returnMessage.setVisitorId(visitorId);
+        returnMessage.setClientId(clientId);
+        returnMessage.setVisitorPort(visitorPort);
         returnMessage.setData(bytes);
 
         visitorChannel.writeAndFlush(returnMessage);

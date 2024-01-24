@@ -41,13 +41,16 @@ public class ClientHandleDistributeSingleClientRealConnectTypeAdvanced extends A
         byte[] clientTargetIp = msg.getClientTargetIp();
         byte[] clientTargetPort = msg.getClientTargetPort();
         byte[] visitorIdBytes = msg.getVisitorId();
-        InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient = new InternalNetworkPenetrationRealClient();
-        internalNetworkPenetrationRealClient.setClientId(new String(clientIdBytes));
-        internalNetworkPenetrationRealClient.setVisitorPort(Integer.valueOf(new String(visitorPort)));
-        internalNetworkPenetrationRealClient.setClientTargetIp(new String( clientTargetIp));
-        internalNetworkPenetrationRealClient.setClientTargetPort(Integer.valueOf(new String( clientTargetPort)));
-        String visitorId=new String(visitorIdBytes);// 访客ID
-        internalNetworkPenetrationRealClient.setVisitorId(visitorId);
+        InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient =
+                InternalNetworkPenetrationRealClient
+                        .builder()
+                        .clientId(new String(clientIdBytes))
+                        .visitorPort(Integer.valueOf(new String(visitorPort)))
+                        .clientTargetIp(new String( clientTargetIp))
+                        .clientTargetPort(Integer.valueOf(new String( clientTargetPort)))
+                        .visitorId(new String(visitorIdBytes))
+                        .build()
+                ;
 
         // 绑定真实服务端口
         NettyClientRealSocket.buildRealServer(internalNetworkPenetrationRealClient,nettyServerProperties, handleChannelTypeAdvancedList);

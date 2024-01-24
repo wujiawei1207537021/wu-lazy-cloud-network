@@ -25,7 +25,7 @@ public abstract class AbstractHandleChannelFlowAdvanced implements HandleChannel
      * @param channelFlow 数据
      * @return boolean
      */
-    abstract boolean doSupport(ChannelFlow channelFlow);
+    protected abstract boolean doSupport(ChannelFlow channelFlow);
 
     /**
      * 处理当前数据
@@ -43,5 +43,5 @@ public abstract class AbstractHandleChannelFlowAdvanced implements HandleChannel
      * @param channel 当前通道
      * @param channelFlow     通道数据
      */
-    abstract void doHandler(Channel channel, ChannelFlow channelFlow);
+    protected  abstract void doHandler(Channel channel, ChannelFlow channelFlow);
 }

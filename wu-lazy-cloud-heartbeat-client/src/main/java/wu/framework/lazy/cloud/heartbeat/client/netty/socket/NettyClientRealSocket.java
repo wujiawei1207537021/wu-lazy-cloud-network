@@ -66,6 +66,7 @@ public class NettyClientRealSocket {
                     // 绑定访客ID到当前真实通道属性
                     ChannelAttributeKeyUtils.buildVisitorId(realChannel, visitorId);
                     ChannelAttributeKeyUtils.buildClientId(realChannel, clientId);
+                    ChannelAttributeKeyUtils.buildVisitorPort(realChannel, visitorPort);
                     // 通知服务端访客连接成功
 
 

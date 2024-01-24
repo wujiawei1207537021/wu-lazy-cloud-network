@@ -9,6 +9,7 @@ import io.netty.util.AttributeKey;
 public class ChannelAttributeKeyUtils {
 
     private static final AttributeKey<String> VISITOR_ID = AttributeKey.newInstance("visitorId");
+    private static final AttributeKey<Integer> VISITOR_PORT = AttributeKey.newInstance("visitorPort");
     private static final AttributeKey<String> CLIENT_ID = AttributeKey.newInstance("clientId");
     private static final AttributeKey<Integer> OUT_FLOW = AttributeKey.newInstance("outFlow");
     private static final AttributeKey<Integer> IN_FLOW = AttributeKey.newInstance("inFlow");
@@ -110,5 +111,24 @@ public class ChannelAttributeKeyUtils {
      */
     public static Integer getInFlow(Channel channel) {
         return channel.attr(IN_FLOW).get();
+    }
+
+    /**
+     * 为通道绑定 通道中访客端口
+     *
+     * @param channel 通道
+     * @param visitorPort  进口流量
+     */
+    public static void buildVisitorPort(Channel channel, Integer visitorPort) {
+        channel.attr(VISITOR_PORT).set(visitorPort);
+    }
+
+    /**
+     * 获取 通道中访客端口
+     *
+     * @param channel 通道
+     */
+    public static Integer getVisitorPort(Channel channel) {
+        return channel.attr(VISITOR_PORT).get();
     }
 }

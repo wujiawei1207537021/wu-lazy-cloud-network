@@ -4,6 +4,7 @@ package wu.framework.lazy.cloud.heartbeat.server.netty.config;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenetrationMappingApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientBlacklistApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
@@ -31,8 +32,8 @@ public class HeartbeatServerConfiguration {
      */
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerHandleReportHandleChannelTransferTypeAdvanced serverReportChannelTransferTypeAdvanced() {
-        return new ServerHandleReportHandleChannelTransferTypeAdvanced();
+    public ServerHandleReportHandleChannelTransferTypeAdvanced serverReportChannelTransferTypeAdvanced(ChannelFlowAdapter channelFlowAdapter) {
+        return new ServerHandleReportHandleChannelTransferTypeAdvanced(channelFlowAdapter);
     }
 
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

@@ -33,6 +33,7 @@ public class ServerHandleReportSingleClientRealConnectTypeAdvanced extends Abstr
         NettyCommunicationIdContext.pushVisitor(channel,new String(visitorId));
         ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
         ChannelAttributeKeyUtils.buildClientId(channel, clientId);
+        ChannelAttributeKeyUtils.buildVisitorPort(channel,Integer.valueOf(new String(visitorPort)));
         // 访客通道开启自动读取
         Channel visitorRealChannel = NettyRealIdContext.getReal(new String(visitorId));
         visitorRealChannel.config().setOption(ChannelOption.AUTO_READ, true);

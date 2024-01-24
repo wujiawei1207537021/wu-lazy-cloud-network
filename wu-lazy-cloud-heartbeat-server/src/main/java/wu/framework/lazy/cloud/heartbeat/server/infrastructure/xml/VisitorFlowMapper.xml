@@ -1,0 +1,15 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wu.framework.lazy.cloud.heartbeat.server.infrastructure.mapper.VisitorFlowMapper">
+<resultMap id="BaseResultMap" type="wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.VisitorFlowDO">
+<result column="client_id" property="clientId" />
+<result column="create_time" property="createTime" />
+<id column="id" property="id" />
+<result column="in_flow" property="inFlow" />
+<result column="is_deleted" property="isDeleted" />
+<result column="out_flow" property="outFlow" />
+<result column="update_time" property="updateTime" />
+<result column="visitor_port" property="visitorPort" />
+</resultMap>
+</mapper>
