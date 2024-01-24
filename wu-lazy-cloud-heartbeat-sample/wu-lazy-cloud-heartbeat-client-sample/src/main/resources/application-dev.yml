@@ -3,10 +3,10 @@ spring:
     netty:
 #      inet-host: 127.0.0.1
 #      inet-port: 7001
-#      inet-path: middleground-on-cloud-heartbeat-server
+#      inet-path: wu-lazy-cloud-heartbeat-server
       inet-host: 124.222.48.62 # 服务端地址
       inet-port: 30676 #服务端端口
-#      inet-path: middleground-on-cloud-heartbeat-server
+#      inet-path: wu-lazy-cloud-heartbeat-server
       client-id: wujiawei # 客户端ID
   data:
     redis:

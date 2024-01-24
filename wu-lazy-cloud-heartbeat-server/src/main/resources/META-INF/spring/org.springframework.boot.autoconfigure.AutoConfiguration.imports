@@ -1,3 +1,4 @@
 wu.framework.lazy.cloud.heartbeat.server.EnableHeartbeatServerAutoConfiguration
 wu.framework.lazy.cloud.heartbeat.server.netty.config.HeartbeatServerConfiguration
 wu.framework.lazy.cloud.heartbeat.server.netty.config.ServerAutoConfiguration
+wu.framework.lazy.cloud.heartbeat.server.netty.config.ServerFlowConfiguration

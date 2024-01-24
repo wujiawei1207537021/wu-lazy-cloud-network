@@ -10,6 +10,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * @see NettyProxyMsg
  * NettyProxyMsg 对象编码
  */
+@Deprecated
 public class NettMsgEncoder extends MessageToByteEncoder<NettyMsg> {
 
     public NettMsgEncoder() {

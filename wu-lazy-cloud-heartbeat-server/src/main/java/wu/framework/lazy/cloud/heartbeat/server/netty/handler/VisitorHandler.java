@@ -2,6 +2,8 @@ package wu.framework.lazy.cloud.heartbeat.server.netty.handler;
 
 
 import wu.framework.lazy.cloud.heartbeat.common.*;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.enums.ChannelFlowEnum;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -10,15 +12,18 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.server.netty.flow.ServerChannelFlow;
 
 import java.util.UUID;
 
 @Slf4j
 public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private final InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient;
+    private final ChannelFlowAdapter channelFlowAdapter;// 流量适配器
 
-    public VisitorHandler(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient) {
+    public VisitorHandler(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient, ChannelFlowAdapter channelFlowAdapter) {
         this.internalNetworkPenetrationRealClient = internalNetworkPenetrationRealClient;
+        this.channelFlowAdapter = channelFlowAdapter;
     }
 
     @Override
@@ -52,10 +57,10 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         // 客户端心跳通道
         ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId);
         if (clientChannel != null) {
-            log.info("通过客户端:{},获取通道而后创建连接",clientId);
+            log.info("通过客户端:{},获取通道而后创建连接", clientId);
             Channel channel = clientChannel.getChannel();
             channel.writeAndFlush(nettyProxyMsg);
-        }else {
+        } else {
             log.error("无法通过客户端ID获取客户端通道");
         }
 
@@ -70,11 +75,12 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, ByteBuf buf) {
 
+        Channel realChannel = ctx.channel();
         String clientId = internalNetworkPenetrationRealClient.getClientId();
         String clientTargetIp = internalNetworkPenetrationRealClient.getClientTargetIp();
         Integer clientTargetPort = internalNetworkPenetrationRealClient.getClientTargetPort();
         Integer visitorPort = internalNetworkPenetrationRealClient.getVisitorPort();
-        String visitorId = ChannelAttributeKeyUtils.getVisitorId(ctx.channel());
+        String visitorId = ChannelAttributeKeyUtils.getVisitorId(realChannel);
         if (StringUtil.isNullOrEmpty(clientId)) {
             return;
         }
@@ -82,9 +88,11 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         buf.readBytes(bytes);
         // 获取客户端通道，而后进行数据下发
         log.debug("服务端访客端口成功接收数据:{}", new String(bytes));
+
         // 使用访客的通信通道
         Channel visitorCommunicationChannel = NettyCommunicationIdContext.getVisitor(visitorId);
-
+        // 绑定数据流量
+        ChannelAttributeKeyUtils.buildInFlow(visitorCommunicationChannel, bytes.length);
         NettyProxyMsg nettyProxyMsg = new NettyProxyMsg();
         nettyProxyMsg.setType(MessageType.DISTRIBUTE_CLIENT_TRANSFER);
         nettyProxyMsg.setClientId(clientId);
@@ -94,6 +102,15 @@ public class VisitorHandler extends SimpleChannelInboundHandler<ByteBuf> {
         nettyProxyMsg.setVisitorId(visitorId);
         nettyProxyMsg.setData(bytes);
         visitorCommunicationChannel.writeAndFlush(nettyProxyMsg);
+        // 处理访客流量
+        ServerChannelFlow serverChannelFlow = ServerChannelFlow
+                .builder()
+                .channelFlowEnum(ChannelFlowEnum.IN_FLOW)
+                .port(visitorPort)
+                .clientId(clientId)
+                .flow(bytes.length)
+                .build();
+        channelFlowAdapter.handler(realChannel, serverChannelFlow);
         log.debug("服务端访客端口成功发送数据了");
     }
 

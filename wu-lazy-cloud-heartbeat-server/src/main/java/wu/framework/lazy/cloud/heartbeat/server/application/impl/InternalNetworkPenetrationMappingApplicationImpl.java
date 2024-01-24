@@ -2,6 +2,7 @@ package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenetrationMappingApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.InternalNetworkPenetrationMappingDTOAssembler;
 import wu.framework.lazy.cloud.heartbeat.server.application.command.internal.network.penetration.mapping.*;
@@ -33,6 +34,9 @@ public class InternalNetworkPenetrationMappingApplicationImpl implements Interna
 
     @Resource
     InternalNetworkPenetrationMappingRepository internalNetworkPenetrationMappingRepository;
+
+    @Resource
+    ChannelFlowAdapter channelFlowAdapter;
 
 
     /**
@@ -160,20 +164,28 @@ public class InternalNetworkPenetrationMappingApplicationImpl implements Interna
                         String clientTargetIp = networkPenetrationMapping.getClientTargetIp();
                         Integer clientTargetPort = networkPenetrationMapping.getClientTargetPort();
 
-                        InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient = new InternalNetworkPenetrationRealClient();
-                        internalNetworkPenetrationRealClient.setClientTargetIp(clientTargetIp);
-                        internalNetworkPenetrationRealClient.setClientTargetPort(clientTargetPort);
-                        internalNetworkPenetrationRealClient.setClientId(clientId);
-                        internalNetworkPenetrationRealClient.setVisitorPort(visitorPort);
+//                        InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient = new InternalNetworkPenetrationRealClient();
+//                        internalNetworkPenetrationRealClient.setClientTargetIp(clientTargetIp);
+//                        internalNetworkPenetrationRealClient.setClientTargetPort(clientTargetPort);
+//                        internalNetworkPenetrationRealClient.setClientId(clientId);
+//                        internalNetworkPenetrationRealClient.setVisitorPort(visitorPort);
 
                         // 创建服务端代理连接
-                        VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient);
-                        NettyVisitorSocket nettyVisitorSocket = new NettyVisitorSocket(visitorFilter);
+//                        VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient);
+//                        NettyVisitorSocket nettyVisitorSocket = new NettyVisitorSocket(visitorFilter);
+                        NettyVisitorSocket nettyVisitorSocket = NettyVisitorSocket.NettyVisitorSocketBuilder
+                                .builder()
+                                .builderClientId(clientId)
+                                .builderClientTargetIp(clientTargetIp)
+                                .builderClientTargetPort(clientTargetPort)
+                                .builderVisitorPort(visitorPort)
+                                .builderChannelFlowAdapter(channelFlowAdapter)
+                                .build();
 
                         try {
                             nettyVisitorSocket.startServer(visitorPort);
                         } catch (Exception e) {
-                           log.error("客户端:{},网络端口:{},开放失败",clientId,visitorPort);
+                            log.error("客户端:{},网络端口:{},开放失败", clientId, visitorPort);
                         }
 
 

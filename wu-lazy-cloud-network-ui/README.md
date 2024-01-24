@@ -273,8 +273,18 @@ VE_API [ fileName ][ portName ] (params,{Global:false)   //没有全局loading
 ```shell
 npm config set registry http://registry.npm.taobao.org/
 ```
+
+### 打包
+
 ```shell
 yarn run build
+```
+
+### 拷贝前端
+```shell
+echo "开始拷贝前端UI"
+rm -rf ../wu-lazy-cloud-heartbeat-server/src/resources/static
+cp -r ../wu-lazy-cloud-network-ui/dist/* ../wu-lazy-cloud-heartbeat-server/src/main/resources/static/
 
 ```
 

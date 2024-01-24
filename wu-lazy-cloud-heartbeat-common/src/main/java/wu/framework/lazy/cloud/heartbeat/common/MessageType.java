@@ -7,7 +7,8 @@ import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
 
 /**
  * @see MessageTypeEnums
- * -128~ 127
+ * 数据取值范围 -128~ 127
+ * 当前约束范围 -100～100
  */
 public class MessageType {
     /**
@@ -79,7 +80,7 @@ public class MessageType {
      */
     public static final byte REPORT_SINGLE_CLIENT_MESSAGE = 0X09;
     /**
-     *  服务端通道 is active
+     * 服务端通道 is active
      *
      * @see MessageTypeEnums#SERVER_CHANNEL_ACTIVE
      * @see AbstractHandleServerChannelActiveTypeAdvanced

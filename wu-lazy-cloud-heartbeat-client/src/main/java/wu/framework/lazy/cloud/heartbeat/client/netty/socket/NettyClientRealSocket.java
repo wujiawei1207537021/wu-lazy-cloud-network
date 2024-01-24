@@ -46,8 +46,11 @@ public class NettyClientRealSocket {
                                            NettyServerProperties nettyServerProperties,
                                            List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         try {
+            String clientId = internalNetworkPenetrationRealClient.getClientId();
             String clientTargetIp = internalNetworkPenetrationRealClient.getClientTargetIp();
             Integer clientTargetPort = internalNetworkPenetrationRealClient.getClientTargetPort();
+            Integer visitorPort = internalNetworkPenetrationRealClient.getVisitorPort();
+            String visitorId = internalNetworkPenetrationRealClient.getVisitorId();
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class)
                     .handler(new NettyClientRealFilter());
@@ -56,12 +59,8 @@ public class NettyClientRealSocket {
                     // 客户端链接真实服务成功 设置自动读写false 等待访客连接成功后设置成true
                     Channel realChannel = future.channel();
                     realChannel.config().setOption(ChannelOption.AUTO_READ, false);
-                    String clientId = internalNetworkPenetrationRealClient.getClientId();// 客户端ID
-                    String clientTargetIp1 = internalNetworkPenetrationRealClient.getClientTargetIp();
-                    Integer clientTargetPort1 = internalNetworkPenetrationRealClient.getClientTargetPort();
-                    Integer visitorPort = internalNetworkPenetrationRealClient.getVisitorPort();
-                    String visitorId = internalNetworkPenetrationRealClient.getVisitorId();
-                    log.info("访客通过 客户端:【{}】,绑定本地服务,IP:{},端口:{} 新建通道成功", clientId, clientTargetIp1, clientTargetPort1);
+
+                    log.info("访客通过 客户端:【{}】,绑定本地服务,IP:{},端口:{} 新建通道成功", clientId, clientTargetIp, clientTargetPort);
                     // 客户端真实通道
                     NettyRealIdContext.pushReal(realChannel, visitorId);
                     // 绑定访客ID到当前真实通道属性
@@ -99,6 +98,8 @@ public class NettyClientRealSocket {
 //                        future.channel().attr(Constant.VID).set(internalNetworkPenetrationRealClient);
 //                        Constant.vrc.put(internalNetworkPenetrationRealClient, future.channel());
 //                        ProxySocket.connectProxyServer(internalNetworkPenetrationRealClient);
+                }else {
+                    log.error("客户：【{}】,无法连接当前网络内的目标IP：【{}】,目标端口:【{}】",clientId,clientTargetIp,clientTargetPort);
                 }
             });
         } catch (Exception e) {

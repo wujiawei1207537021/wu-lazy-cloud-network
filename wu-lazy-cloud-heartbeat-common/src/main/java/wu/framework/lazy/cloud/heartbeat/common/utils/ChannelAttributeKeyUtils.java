@@ -10,6 +10,8 @@ public class ChannelAttributeKeyUtils {
 
     private static final AttributeKey<String> VISITOR_ID = AttributeKey.newInstance("visitorId");
     private static final AttributeKey<String> CLIENT_ID = AttributeKey.newInstance("clientId");
+    private static final AttributeKey<Integer> OUT_FLOW = AttributeKey.newInstance("outFlow");
+    private static final AttributeKey<Integer> IN_FLOW = AttributeKey.newInstance("inFlow");
 
 
     /**
@@ -34,7 +36,8 @@ public class ChannelAttributeKeyUtils {
 
     /**
      * 获取 通道中访客ID
-     * @param channel   通道
+     *
+     * @param channel 通道
      */
     public static String getVisitorId(Channel channel) {
         return channel.attr(VISITOR_ID).get();
@@ -44,16 +47,17 @@ public class ChannelAttributeKeyUtils {
     /**
      * 为通道绑定 访客属性
      *
-     * @param channel   通道
+     * @param channel  通道
      * @param clientId 客户端ID
      */
     public static void buildClientId(Channel channel, byte[] clientId) {
         channel.attr(CLIENT_ID).set(new String(clientId));
     }
+
     /**
      * 为通道绑定 访客属性
      *
-     * @param channel   通道
+     * @param channel  通道
      * @param clientId 客户端ID
      */
     public static void buildClientId(Channel channel, String clientId) {
@@ -62,9 +66,49 @@ public class ChannelAttributeKeyUtils {
 
     /**
      * 获取 通道中访客ID
-     * @param channel   通道
+     *
+     * @param channel 通道
      */
     public static String getClientId(Channel channel) {
         return channel.attr(CLIENT_ID).get();
+    }
+
+
+    /**
+     * 为通道绑定 出口流量
+     *
+     * @param channel 通道
+     * @param outFlow 出口流量
+     */
+    public static void buildOutFlow(Channel channel, Integer outFlow) {
+        channel.attr(OUT_FLOW).set(outFlow);
+    }
+
+    /**
+     * 获取 通道中出口流量
+     *
+     * @param channel 通道
+     */
+    public static Integer getOutFlow(Channel channel) {
+        return channel.attr(OUT_FLOW).get();
+    }
+
+    /**
+     * 为通道绑定 进口流量
+     *
+     * @param channel 通道
+     * @param inFlow  进口流量
+     */
+    public static void buildInFlow(Channel channel, Integer inFlow) {
+        channel.attr(IN_FLOW).set(inFlow);
+    }
+
+    /**
+     * 获取 通道中进口流量
+     *
+     * @param channel 通道
+     */
+    public static Integer getInFlow(Channel channel) {
+        return channel.attr(IN_FLOW).get();
     }
 }

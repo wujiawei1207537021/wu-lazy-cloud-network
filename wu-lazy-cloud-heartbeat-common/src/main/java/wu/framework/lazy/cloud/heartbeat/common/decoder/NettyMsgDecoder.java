@@ -9,6 +9,7 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
  * @see NettyMsg
  * NettyMsg 对象解码
  */
+@Deprecated
 public class NettyMsgDecoder extends LengthFieldBasedFrameDecoder {
 
     public NettyMsgDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength, int lengthAdjustment,

@@ -6,8 +6,8 @@ metadata:
     k8s.kuboard.cn/displayName: 【云上云下】云上心跳服务端（新）
   labels:
     k8s.kuboard.cn/layer: monitor
-    k8s.kuboard.cn/name: middleground-on-cloud-heartbeat-server
-  name: middleground-on-cloud-heartbeat-server
+    k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
+  name: wu-lazy-cloud-heartbeat-server
   namespace: middleground-management
 spec:
   progressDeadlineSeconds: 600
@@ -16,7 +16,7 @@ spec:
   selector:
     matchLabels:
       k8s.kuboard.cn/layer: monitor
-      k8s.kuboard.cn/name: middleground-on-cloud-heartbeat-server
+      k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -26,16 +26,16 @@ spec:
     metadata:
       labels:
         k8s.kuboard.cn/layer: monitor
-        k8s.kuboard.cn/name: middleground-on-cloud-heartbeat-server
+        k8s.kuboard.cn/name: wu-lazy-cloud-heartbeat-server
     spec:
       containers:
         - envFrom:
             - configMapRef:
                 name: common-cnf
           image: >-
-            docker-registry.laihui.com/middleground/middleground-on-cloud-heartbeat-server:master_latest
+            docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-server:master_latest
           imagePullPolicy: Always
-          name: middleground-on-cloud-heartbeat-server
+          name: wu-lazy-cloud-heartbeat-server
           resources:
             limits:
               memory: 512Mi
@@ -57,8 +57,8 @@ metadata:
     k8s.kuboard.cn/displayName: 【云上云下】云上中心网关（新）
   labels:
     k8s.kuboard.cn/layer: gateway
-    k8s.kuboard.cn/name: middleground-on-cloud-central-gateway
-  name: middleground-on-cloud-central-gateway
+    k8s.kuboard.cn/name: wu-lazy-cloud-central-gateway
+  name: wu-lazy-cloud-central-gateway
   namespace: middleground-management
 spec:
   progressDeadlineSeconds: 600
@@ -67,7 +67,7 @@ spec:
   selector:
     matchLabels:
       k8s.kuboard.cn/layer: gateway
-      k8s.kuboard.cn/name: middleground-on-cloud-central-gateway
+      k8s.kuboard.cn/name: wu-lazy-cloud-central-gateway
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -77,16 +77,16 @@ spec:
     metadata:
       labels:
         k8s.kuboard.cn/layer: gateway
-        k8s.kuboard.cn/name: middleground-on-cloud-central-gateway
+        k8s.kuboard.cn/name: wu-lazy-cloud-central-gateway
     spec:
       containers:
         - envFrom:
             - configMapRef:
                 name: common-cnf
           image: >-
-            docker-registry.laihui.com/middleground/middleground-on-cloud-central-gateway:master_latest
+            docker-registry.laihui.com/middleground/wu-lazy-cloud-central-gateway:master_latest
           imagePullPolicy: Always
-          name: middleground-on-cloud-central-gateway
+          name: wu-lazy-cloud-central-gateway
           resources:
             limits:
               memory: 384Mi
@@ -108,8 +108,8 @@ metadata:
     k8s.kuboard.cn/displayName: 【云上云下】暂存服务（新）
   labels:
     k8s.kuboard.cn/layer: svc
-    k8s.kuboard.cn/name: middleground-cloud-staging-provider
-  name: middleground-cloud-staging-provider
+    k8s.kuboard.cn/name: wu-lazy-cloud-staging-provider
+  name: wu-lazy-cloud-staging-provider
   namespace: middleground-management
 spec:
   progressDeadlineSeconds: 600
@@ -118,7 +118,7 @@ spec:
   selector:
     matchLabels:
       k8s.kuboard.cn/layer: svc
-      k8s.kuboard.cn/name: middleground-cloud-staging-provider
+      k8s.kuboard.cn/name: wu-lazy-cloud-staging-provider
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -128,16 +128,16 @@ spec:
     metadata:
       labels:
         k8s.kuboard.cn/layer: svc
-        k8s.kuboard.cn/name: middleground-cloud-staging-provider
+        k8s.kuboard.cn/name: wu-lazy-cloud-staging-provider
     spec:
       containers:
         - envFrom:
             - configMapRef:
                 name: common-cnf
           image: >-
-            docker-registry.laihui.com/middleground/middleground-cloud-staging-provider:master_latest
+            docker-registry.laihui.com/middleground/wu-lazy-cloud-staging-provider:master_latest
           imagePullPolicy: Always
-          name: middleground-cloud-staging-provider
+          name: wu-lazy-cloud-staging-provider
           resources:
             limits:
               memory: 384Mi
