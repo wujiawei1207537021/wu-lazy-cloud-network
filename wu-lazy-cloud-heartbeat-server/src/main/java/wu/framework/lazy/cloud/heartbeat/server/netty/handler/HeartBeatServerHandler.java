@@ -18,8 +18,7 @@ public class HeartBeatServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("channelAttributeTenantId:" + channelAttributeId);
         System.out.println("已经5秒未收到客户端的消息了！");
 
-        if (evt instanceof IdleStateEvent) {
-            IdleStateEvent event = (IdleStateEvent) evt;
+        if (evt instanceof IdleStateEvent event) {
             if (event.state() == IdleState.READER_IDLE) {
                 lossConnectCount++;
                 if (lossConnectCount > 2) {

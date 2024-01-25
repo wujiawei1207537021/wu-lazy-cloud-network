@@ -1,9 +1,5 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.handler;
 
-import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
-import wu.framework.lazy.cloud.heartbeat.common.MessageType;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.EventLoop;
@@ -11,6 +7,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -91,8 +91,7 @@ public class NettyClientHandler extends SimpleChannelInboundHandler<NettyProxyMs
      */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object obj) throws Exception {
-        if (obj instanceof IdleStateEvent) {
-            IdleStateEvent event = (IdleStateEvent) obj;
+        if (obj instanceof IdleStateEvent event) {
             if (IdleState.WRITER_IDLE.equals(event.state())) {  //如果写通道处于空闲状态,就发送心跳命令
                 String clientId = nettyClientSocket.getClientId();
                 NettyProxyMsg nettyMsg = new NettyProxyMsg();

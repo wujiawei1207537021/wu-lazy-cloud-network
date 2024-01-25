@@ -54,8 +54,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object obj) throws Exception {
         Channel channel = ctx.channel();
-        if (obj instanceof IdleStateEvent) {
-            IdleStateEvent event = (IdleStateEvent) obj;
+        if (obj instanceof IdleStateEvent event) {
             if (IdleState.READER_IDLE.equals(event.state())) {  //如果读通道处于空闲状态，说明没有接收到心跳命令
                 String clientId = ChannelAttributeKeyUtils.getClientId(channel);
                 String visitorId = ChannelAttributeKeyUtils.getVisitorId(channel);

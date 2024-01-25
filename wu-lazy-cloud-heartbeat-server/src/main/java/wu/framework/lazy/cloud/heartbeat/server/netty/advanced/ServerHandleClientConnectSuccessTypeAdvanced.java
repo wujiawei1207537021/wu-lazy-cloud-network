@@ -72,7 +72,7 @@ public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandle
                     Channel channel = clientChannel.getChannel();
                     NettyProxyMsg nettyMsg = new NettyProxyMsg();
                     nettyMsg.setType(MessageType.DISTRIBUTE_CLIENT_CONNECTION_SUCCESS_NOTIFICATION);
-                    nettyMsg.setData((JSON.toJSONString(clientIdList).toString()
+                    nettyMsg.setData((JSON.toJSONString(clientIdList)
                             .getBytes(StandardCharsets.UTF_8)));
                     // 发送所有客户端ID
                     channel.writeAndFlush(nettyMsg);
