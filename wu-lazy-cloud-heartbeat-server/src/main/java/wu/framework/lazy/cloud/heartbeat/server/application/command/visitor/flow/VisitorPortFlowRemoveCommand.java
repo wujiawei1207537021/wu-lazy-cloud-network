@@ -13,12 +13,12 @@ import java.lang.Boolean;
  *
  * @author Jia wei Wu
  * @date 2024/01/24 05:19 下午
- * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyQueryOneCommand 
+ * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyRemoveCommand 
  **/
 @Data
 @Accessors(chain = true)
-@Schema(title = "visitor_flow_query_one_command",description = "访客端流量")
-public class VisitorFlowQueryOneCommand {
+@Schema(title = "visitor_port_flow_remove_command",description = "访客端流量")
+public class VisitorPortFlowRemoveCommand {
 
 
     /**

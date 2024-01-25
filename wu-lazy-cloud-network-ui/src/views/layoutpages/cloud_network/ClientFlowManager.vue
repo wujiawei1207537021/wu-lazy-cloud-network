@@ -37,21 +37,10 @@
                 total: total,
             }"
         >
-            <template #tool_bar>
-                <el-button
-                    title="弹窗式"
-                    v-permission="['add']"
-                    size="small"
-                    type="primary"
-                    @click="handleEdit(buttons.add.name)"
-                >
-                    {{ buttons.add.name }}
-                </el-button>
-            </template>
             <el-table-column prop="clientId" label="客户端ID"></el-table-column>
-            <el-table-column prop="onLineState" label="客户端在线状态">
+            <el-table-column prop="outFlow" label="客户端出口流量">
             </el-table-column>
-            <el-table-column prop="stagingState" label="暂存状态">
+            <el-table-column prop="inFlow" label="客户端进口流量">
             </el-table-column>
             <el-table-column fixed="right" label="操作">
                 <template v-slot:default="{ row }">
@@ -63,24 +52,9 @@
                     >
                         {{ buttons.offLine.name }}
                     </el-button>
-                    <el-button
-                        v-permission="['sendMessage']"
-                        @click.prevent="handleArouse2SendMessage(row)"
-                        type="primary"
-                        size="small"
-                    >
-                        {{ buttons.sendMessage.name }}
-                    </el-button>
                 </template>
             </el-table-column>
         </ve-table>
-        <!--发送消息到客户端-->
-        <cloud-server-send-message2-clinet
-            v-if="showDialog"
-            :rowData="rowData"
-            :showDialog="showDialog"
-            @closeDialog="handelDialog($event)"
-        />
     </div>
 </template>
 <script>
@@ -107,7 +81,7 @@ export default {
 </script>
 
 <script setup>
-import { reactive, toRefs, ref, onMounted, getCurrentInstance } from "vue";
+import { reactive, toRefs, ref, onMounted } from "vue";
 //?导入公共查询方法
 import {
     onSubmit,
@@ -115,13 +89,13 @@ import {
     handleSizeChange,
     handleCurrentChange,
 } from "@/views/layoutpages/common";
-import CloudServerSendMessage2Clinet from "@/views/layoutpages/cloud_network/components/CloudServerSendMessage2Clinet.vue";
 
-const { proxy } = getCurrentInstance();
 const queryForm = ref(null);
 const tableData = ref([]);
 
+// eslint-disable-next-line no-unused-vars
 const rowData = ref(null);
+// eslint-disable-next-line no-unused-vars
 const showDialog = ref(false);
 
 const params = reactive({
@@ -133,59 +107,13 @@ const params = reactive({
 const { clientId, size, current, total } = toRefs(params);
 
 /**
- * @description: dialog事件
- * @param {*}
- * @return {*}
- */
-const handelDialog = (e) => {
-    showDialog.value = e;
-    getDataList();
-};
-/**
- * @description:添加or编辑事件
- * @param {*}
- * @return {*}
- */
-const handleArouse2SendMessage = (row = null) => {
-    showDialog.value = true;
-    rowData.value = row;
-};
-
-/**删除行数据
- * @description:
- * @param {*}
- * @return {*}
- */
-const handleOffLine = (clientId) => {
-    proxy
-        .$confirm("此操作将永久删除该数据, 是否继续?", "提示", {
-            confirmButtonText: "确定",
-            cancelButtonText: "取消",
-            type: "error",
-        })
-        .then(async () => {
-            const { code } = await VE_API.cloudNetwork.cloudClientDelete({
-                clientId,
-            });
-            if (code == "00") {
-                getDataList();
-            }
-        })
-        .catch(() => {
-            proxy.$message({
-                type: "info",
-                message: "已取消删除",
-            });
-        });
-};
-/**
  * @description: 获取列表数据
  * @param {*}
  * @return {*}
  */
 const getDataList = async () => {
     const { code, data } =
-        await VE_API.cloudNetwork.cloudClientFindPage(params);
+        await VE_API.cloudNetwork.visitorClientFlowPage(params);
     if (code === 0) {
         const { size, current, total, record } = data;
         params.size = size;

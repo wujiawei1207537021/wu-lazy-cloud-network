@@ -5,17 +5,17 @@ import org.springframework.util.ObjectUtils;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.flow.AbstractHandleChannelFlowAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.flow.ChannelFlow;
 import wu.framework.lazy.cloud.heartbeat.common.enums.ChannelFlowEnum;
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorFlow;
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorFlowRepository;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlowRepository;
 
 /**
  * 出口流量处理
  */
 public class ServerHandlerOutFlowHandler extends AbstractHandleChannelFlowAdvanced {
-    private final VisitorFlowRepository visitorFlowRepository;
+    private final VisitorPortFlowRepository visitorPortFlowRepository;
 
-    public ServerHandlerOutFlowHandler(VisitorFlowRepository visitorFlowRepository) {
-        this.visitorFlowRepository = visitorFlowRepository;
+    public ServerHandlerOutFlowHandler(VisitorPortFlowRepository visitorPortFlowRepository) {
+        this.visitorPortFlowRepository = visitorPortFlowRepository;
     }
 
     /**
@@ -42,25 +42,25 @@ public class ServerHandlerOutFlowHandler extends AbstractHandleChannelFlowAdvanc
         Integer flow = channelFlow.flow();
 
         // 进口流量处理
-        VisitorFlow visitorFlow = new VisitorFlow();
-        visitorFlow.setOutFlow(flow);
-        visitorFlow.setClientId(clientId);
-        visitorFlow.setVisitorPort(port);
-        visitorFlow.setIsDeleted(false);
+        VisitorPortFlow visitorPortFlow = new VisitorPortFlow();
+        visitorPortFlow.setOutFlow(flow);
+        visitorPortFlow.setClientId(clientId);
+        visitorPortFlow.setVisitorPort(port);
+        visitorPortFlow.setIsDeleted(false);
         // 查询是否存在已有流量 而后进行统计汇总
-        VisitorFlow findOneVisitorFlowQuery = new VisitorFlow();
-        findOneVisitorFlowQuery.setClientId(clientId);
-        findOneVisitorFlowQuery.setVisitorPort(port);
-        visitorFlowRepository.findOne(findOneVisitorFlowQuery).accept(existVisitorFlow -> {
+        VisitorPortFlow findOneVisitorPortFlowQuery = new VisitorPortFlow();
+        findOneVisitorPortFlowQuery.setClientId(clientId);
+        findOneVisitorPortFlowQuery.setVisitorPort(port);
+        visitorPortFlowRepository.findOne(findOneVisitorPortFlowQuery).accept(existVisitorFlow -> {
             Integer outFlow = existVisitorFlow.getOutFlow();
             Integer inFlow = existVisitorFlow.getInFlow();
             if (!ObjectUtils.isEmpty(outFlow)) {
-                visitorFlow.setOutFlow(visitorFlow.getOutFlow() + outFlow);
+                visitorPortFlow.setOutFlow(visitorPortFlow.getOutFlow() + outFlow);
             }
             if (!ObjectUtils.isEmpty(inFlow)) {
-                visitorFlow.setInFlow( inFlow);
+                visitorPortFlow.setInFlow( inFlow);
             }
         });
-        visitorFlowRepository.story(visitorFlow);
+        visitorPortFlowRepository.story(visitorPortFlow);
     }
 }

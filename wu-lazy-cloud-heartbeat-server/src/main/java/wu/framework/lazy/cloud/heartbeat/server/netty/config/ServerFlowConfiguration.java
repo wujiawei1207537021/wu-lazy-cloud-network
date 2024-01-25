@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.flow.HandleChannelFlowAdvanced;
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorFlowRepository;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlowRepository;
 import wu.framework.lazy.cloud.heartbeat.server.netty.flow.ServerHandlerInFlowHandler;
 import wu.framework.lazy.cloud.heartbeat.server.netty.flow.ServerHandlerOutFlowHandler;
 
@@ -25,8 +25,8 @@ public class ServerFlowConfiguration {
      */
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerHandlerInFlowHandler serverHandlerInFlowHandler(VisitorFlowRepository visitorFlowRepository) {
-        return new ServerHandlerInFlowHandler(visitorFlowRepository);
+    public ServerHandlerInFlowHandler serverHandlerInFlowHandler(VisitorPortFlowRepository visitorPortFlowRepository) {
+        return new ServerHandlerInFlowHandler(visitorPortFlowRepository);
     }
 
     /**
@@ -36,8 +36,8 @@ public class ServerFlowConfiguration {
      */
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     @Bean
-    public ServerHandlerOutFlowHandler serverHandlerOutFlowHandler(VisitorFlowRepository visitorFlowRepository) {
-        return new ServerHandlerOutFlowHandler(visitorFlowRepository);
+    public ServerHandlerOutFlowHandler serverHandlerOutFlowHandler(VisitorPortFlowRepository visitorPortFlowRepository) {
+        return new ServerHandlerOutFlowHandler(visitorPortFlowRepository);
     }
 
 

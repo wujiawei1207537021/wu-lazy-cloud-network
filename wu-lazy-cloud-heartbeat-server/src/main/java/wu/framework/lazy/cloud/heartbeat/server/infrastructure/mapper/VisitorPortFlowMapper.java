@@ -8,7 +8,7 @@ package wu.framework.lazy.cloud.heartbeat.server.infrastructure.mapper;
  * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyInfrastructureMapper 
  **/
 
-public interface VisitorFlowMapper {
+public interface VisitorPortFlowMapper {
 
 
 

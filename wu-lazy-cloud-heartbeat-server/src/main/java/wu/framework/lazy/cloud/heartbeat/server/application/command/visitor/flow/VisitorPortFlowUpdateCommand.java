@@ -17,8 +17,8 @@ import java.lang.Boolean;
  **/
 @Data
 @Accessors(chain = true)
-@Schema(title = "visitor_flow_update_command",description = "访客端流量")
-public class VisitorFlowUpdateCommand {
+@Schema(title = "visitor_port_flow_update_command",description = "访客端流量")
+public class VisitorPortFlowUpdateCommand {
 
 
     /**

@@ -1,9 +1,10 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter;
 
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorFlow;
-import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.VisitorFlowDO;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.VisitorPortFlowDO;
 import org.mapstruct.factory.Mappers;
 import org.mapstruct.Mapper;
+
 /**
  * describe 访客端流量 
  *
@@ -12,7 +13,7 @@ import org.mapstruct.Mapper;
  * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyInfrastructureConverter 
  **/
 @Mapper
-public interface VisitorFlowConverter {
+public interface VisitorPortFlowConverter {
 
 
     /**
@@ -24,25 +25,25 @@ public interface VisitorFlowConverter {
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
-    VisitorFlowConverter INSTANCE = Mappers.getMapper(VisitorFlowConverter.class);
+    VisitorPortFlowConverter INSTANCE = Mappers.getMapper(VisitorPortFlowConverter.class);
     /**
      * describe 实体对象 转换成领域对象
      *
-     * @param visitorFlowDO 访客端流量实体对象     
-     * @return {@link VisitorFlow} 访客端流量领域对象     
+     * @param visitorPortFlowDO 访客端流量实体对象
+     * @return {@link VisitorPortFlow} 访客端流量领域对象
      
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
-    VisitorFlow toVisitorFlow(VisitorFlowDO visitorFlowDO);
+    VisitorPortFlow toVisitorFlow(VisitorPortFlowDO visitorPortFlowDO);
     /**
      * describe 领域对象 转换成实体对象
      *
-     * @param visitorFlow 访客端流量领域对象     
-     * @return {@link VisitorFlowDO} 访客端流量实体对象     
+     * @param visitorPortFlow 访客端流量领域对象
+     * @return {@link VisitorPortFlowDO} 访客端流量实体对象
      
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
-     VisitorFlowDO fromVisitorFlow(VisitorFlow visitorFlow); 
+     VisitorPortFlowDO fromVisitorFlow(VisitorPortFlow visitorPortFlow);
 }

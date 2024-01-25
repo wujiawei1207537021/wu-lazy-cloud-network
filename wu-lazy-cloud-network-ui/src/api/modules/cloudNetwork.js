@@ -36,6 +36,10 @@ module.exports = {
         type: "put",
     },
 
+    visitorClientFlowPage: {
+        url: "/visitor/port/flow/findClientFlowPage",
+        type: "get",
+    },
     networkMappingPage: {
         url: "/internal/network/penetration/mapping/findPage",
         type: "get",

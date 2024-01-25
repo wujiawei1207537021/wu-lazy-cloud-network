@@ -1,4 +1,4 @@
-package wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow;
+package wu.framework.lazy.cloud.heartbeat.server.application.command.visitor.flow;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -13,12 +13,12 @@ import java.lang.Boolean;
  *
  * @author Jia wei Wu
  * @date 2024/01/24 05:19 下午
- * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyDomain 
+ * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyStoryCommand 
  **/
 @Data
 @Accessors(chain = true)
-@Schema(title = "visitor_flow",description = "访客端流量")
-public class VisitorFlow {
+@Schema(title = "visitor_port_flow_story_command",description = "访客端流量")
+public class VisitorPortFlowStoryCommand {
 
 
     /**
