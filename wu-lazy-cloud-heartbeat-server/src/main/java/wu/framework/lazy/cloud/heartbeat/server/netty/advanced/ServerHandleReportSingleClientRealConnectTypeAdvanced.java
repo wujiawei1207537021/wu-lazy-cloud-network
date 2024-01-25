@@ -1,14 +1,14 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelOption;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportSingleClientRealConnectTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelOption;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
@@ -30,10 +30,10 @@ public class ServerHandleReportSingleClientRealConnectTypeAdvanced extends Abstr
         byte[] visitorId = nettyProxyMsg.getVisitorId();
         log.info("客户端:{},绑定真实服务ip:{},port:{},成功", new String(clientId), new String(clientTargetIp), new String(clientTargetPort));
         // 绑定服务端访客通信通道
-        NettyCommunicationIdContext.pushVisitor(channel,new String(visitorId));
+        NettyCommunicationIdContext.pushVisitor(channel, new String(visitorId));
         ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
         ChannelAttributeKeyUtils.buildClientId(channel, clientId);
-        ChannelAttributeKeyUtils.buildVisitorPort(channel,Integer.valueOf(new String(visitorPort)));
+        ChannelAttributeKeyUtils.buildVisitorPort(channel, Integer.valueOf(new String(visitorPort)));
         // 访客通道开启自动读取
         Channel visitorRealChannel = NettyRealIdContext.getReal(new String(visitorId));
         visitorRealChannel.config().setOption(ChannelOption.AUTO_READ, true);

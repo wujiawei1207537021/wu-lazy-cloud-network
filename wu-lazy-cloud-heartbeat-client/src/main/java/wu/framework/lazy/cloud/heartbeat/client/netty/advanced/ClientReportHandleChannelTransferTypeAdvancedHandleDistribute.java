@@ -1,19 +1,20 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.advanced;
 
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeChannelTransferTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.Channel;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 
 /**
  * 服务端处理客户端数据传输
+ *
  * @see MessageTypeEnums#DISTRIBUTE_CLIENT_TRANSFER
  */
 @Slf4j

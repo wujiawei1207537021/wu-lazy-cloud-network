@@ -1,12 +1,12 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
+import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportSingleClientCloseVisitorTypeAdvanced;
-import io.netty.channel.Channel;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * 服务端处理客户端 关闭一个访客

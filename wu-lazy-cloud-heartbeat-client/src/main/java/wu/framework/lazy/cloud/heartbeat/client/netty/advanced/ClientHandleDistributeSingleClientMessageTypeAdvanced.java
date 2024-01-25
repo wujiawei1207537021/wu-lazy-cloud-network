@@ -22,7 +22,7 @@ public class ClientHandleDistributeSingleClientMessageTypeAdvanced extends Abstr
     protected void doHandler(Channel channel, NettyProxyMsg nettyProxyMsg) {
         byte[] clientId = nettyProxyMsg.getClientId();
         byte[] data = nettyProxyMsg.getData();
-        log.info("接收客户端：{},发送过来的聊天信息:{}",new String( clientId),new String( data ));
+        log.info("接收客户端：{},发送过来的聊天信息:{}", new String(clientId), new String(data));
 
     }
 }

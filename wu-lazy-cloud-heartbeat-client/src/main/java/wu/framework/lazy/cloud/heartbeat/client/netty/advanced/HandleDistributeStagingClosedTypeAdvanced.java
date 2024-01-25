@@ -1,10 +1,10 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.advanced;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeStagingClosedTypeAdvanced;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeStagingClosedTypeAdvanced;
 
 /**
  * 服务端下发暂存关闭消息处理
@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class HandleDistributeStagingClosedTypeAdvanced extends AbstractHandleDistributeStagingClosedTypeAdvanced<NettyProxyMsg> {
-
-
 
 
     /**

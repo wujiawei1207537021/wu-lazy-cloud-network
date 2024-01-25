@@ -1,9 +1,5 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.filter;
 
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
-import wu.framework.lazy.cloud.heartbeat.common.decoder.NettyProxyMsgDecoder;
-import wu.framework.lazy.cloud.heartbeat.common.encoder.NettyProxyMsgEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -11,6 +7,10 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.decoder.NettyProxyMsgDecoder;
+import wu.framework.lazy.cloud.heartbeat.common.encoder.NettyProxyMsgEncoder;
 import wu.framework.lazy.cloud.heartbeat.server.netty.handler.NettyServerHandler;
 
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
     private final List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList;
 
-    public NettyServerFilter( List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
+    public NettyServerFilter(List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         this.handleChannelTypeAdvancedList = handleChannelTypeAdvancedList;
     }
 

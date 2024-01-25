@@ -1,6 +1,5 @@
 package wu.framework.lazy.cloud.heartbeat.common;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

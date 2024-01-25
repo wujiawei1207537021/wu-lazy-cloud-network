@@ -27,6 +27,7 @@ public abstract class AbstractHandleChannelTypeAdvanced<MSG> implements HandleCh
     public void handler(Channel channel, Object msg) {
         doHandler(channel, (MSG) msg);
     }
+
     /**
      * 是否支持当前类型
      *

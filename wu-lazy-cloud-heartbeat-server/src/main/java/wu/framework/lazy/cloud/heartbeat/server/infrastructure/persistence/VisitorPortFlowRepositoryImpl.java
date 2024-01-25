@@ -1,25 +1,22 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.persistence;
 
 
-import org.springframework.util.ObjectUtils;
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
-import wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter.VisitorPortFlowConverter;
-import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlowRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
+import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
+import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.lambda.LazyLambdaStream;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.wrapper.LazyWrappers;
 import com.wu.framework.response.Result;
 import com.wu.framework.response.ResultFactory;
 import jakarta.annotation.Resource;
-import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.lambda.LazyLambdaStream;
-
-import java.util.List;
-
-import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
+import org.springframework.stereotype.Repository;
+import org.springframework.util.ObjectUtils;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
+import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlowRepository;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter.VisitorPortFlowConverter;
 import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.VisitorPortFlowDO;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * describe 访客端流量
@@ -178,10 +175,10 @@ public class VisitorPortFlowRepositoryImpl implements VisitorPortFlowRepository 
      */
     @Override
     public List<VisitorPortFlow> findListByClientIds(List<String> clientIdList) {
-        if(ObjectUtils.isEmpty(clientIdList)){
+        if (ObjectUtils.isEmpty(clientIdList)) {
             return new ArrayList<>();
         }
         return lazyLambdaStream.selectList(LazyWrappers.<VisitorPortFlowDO>lambdaWrapper()
-                .in(VisitorPortFlowDO::getClientId,clientIdList), VisitorPortFlow.class);
+                .in(VisitorPortFlowDO::getClientId, clientIdList), VisitorPortFlow.class);
     }
 }

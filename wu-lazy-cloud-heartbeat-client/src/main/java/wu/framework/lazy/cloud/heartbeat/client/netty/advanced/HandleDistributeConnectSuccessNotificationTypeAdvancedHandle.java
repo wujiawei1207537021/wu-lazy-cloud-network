@@ -1,17 +1,13 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.advanced;
 
 import com.alibaba.fastjson.JSONObject;
-import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
-import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeConnectSuccessNotificationTypeAdvancedHandle;
-import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
-import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeConnectSuccessNotificationTypeAdvancedHandle;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**

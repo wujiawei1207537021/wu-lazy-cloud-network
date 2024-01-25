@@ -1,10 +1,10 @@
 package wu.framework.lazy.cloud.heartbeat.common.encoder;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
+import wu.framework.lazy.cloud.heartbeat.common.NettyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 
 /**
  * @see NettyProxyMsg
@@ -38,7 +38,7 @@ public class NettMsgEncoder extends MessageToByteEncoder<NettyMsg> {
         if (clientIdBytes != null) {
             out.writeInt(clientIdBytes.length);
             out.writeBytes(clientIdBytes);
-        }else {
+        } else {
             // 防止客户端ID未填写
             out.writeInt(0x00);
         }

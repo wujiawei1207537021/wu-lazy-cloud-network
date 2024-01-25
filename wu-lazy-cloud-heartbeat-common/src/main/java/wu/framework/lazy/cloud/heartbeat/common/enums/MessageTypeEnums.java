@@ -61,8 +61,6 @@ public enum MessageTypeEnums {
     DISTRIBUTE_CLIENT_CONNECTION_SUCCESS_NOTIFICATION(MessageType.DISTRIBUTE_CLIENT_CONNECTION_SUCCESS_NOTIFICATION, "下发 客户端接收连接成功通知"),
 
 
-
-
     /**
      * @see AbstractHandleDistributeDisconnectTypeAdvancedHandle
      */

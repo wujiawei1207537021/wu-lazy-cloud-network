@@ -54,11 +54,11 @@ public class ServerHandlerInFlowHandler extends AbstractHandleChannelFlowAdvance
         visitorPortFlowRepository.findOne(findOneVisitorPortFlowQuery).accept(existVisitorFlow -> {
             Integer inFlow = existVisitorFlow.getInFlow();
             Integer outFlow = existVisitorFlow.getOutFlow();
-            if(!ObjectUtils.isEmpty(inFlow)){
-                visitorPortFlow.setInFlow(visitorPortFlow.getInFlow()+inFlow);
+            if (!ObjectUtils.isEmpty(inFlow)) {
+                visitorPortFlow.setInFlow(visitorPortFlow.getInFlow() + inFlow);
             }
             if (!ObjectUtils.isEmpty(outFlow)) {
-                visitorPortFlow.setOutFlow( outFlow);
+                visitorPortFlow.setOutFlow(outFlow);
             }
         });
         visitorPortFlowRepository.story(visitorPortFlow);

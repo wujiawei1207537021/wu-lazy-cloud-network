@@ -1,12 +1,9 @@
 package wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow;
 
-import ch.qos.logback.classic.util.LevelToSyslogSeverity;
+import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;
 
 import java.util.List;
-
-import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
-import wu.framework.lazy.cloud.heartbeat.server.application.dto.VisitorFlowDTO;
 
 /**
  * describe 访客端流量
@@ -110,6 +107,7 @@ public interface VisitorPortFlowRepository {
 
     /**
      * 根据客户端ID查询出 客户端所有的进出口流量
+     *
      * @param clientIdList 客户端ID
      * @return 客户端所有的进出口流量
      */

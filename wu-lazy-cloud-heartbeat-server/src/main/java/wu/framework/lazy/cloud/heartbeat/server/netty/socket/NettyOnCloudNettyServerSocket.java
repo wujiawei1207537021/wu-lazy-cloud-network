@@ -13,8 +13,8 @@ import wu.framework.lazy.cloud.heartbeat.server.netty.filter.NettyServerFilter;
 public class NettyOnCloudNettyServerSocket {
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
-    private ChannelFuture channelFuture;
     private final NettyServerFilter nettyServerFilter;// 通道业务处理
+    private ChannelFuture channelFuture;
 
     public NettyOnCloudNettyServerSocket(NettyServerFilter nettyServerFilter) {
         this.nettyServerFilter = nettyServerFilter;

@@ -1,13 +1,13 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.filter;
 
-import wu.framework.lazy.cloud.heartbeat.client.netty.handler.NettyClientRealHandler;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import wu.framework.lazy.cloud.heartbeat.client.netty.handler.NettyClientRealHandler;
 
-public class NettyClientRealFilter  extends ChannelInitializer<SocketChannel> {
+public class NettyClientRealFilter extends ChannelInitializer<SocketChannel> {
     /**
      * This method will be called once the {@link Channel} was registered. After the method returns this instance
      * will be removed from the {@link ChannelPipeline} of the {@link Channel}.

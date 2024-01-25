@@ -36,9 +36,10 @@ public class ServerAutoConfiguration implements CommandLineRunner {
 
 
     @Bean(destroyMethod = "shutdown")
-    public NettyOnCloudNettyServerSocket nettyServerSocket(){
+    public NettyOnCloudNettyServerSocket nettyServerSocket() {
         return new NettyOnCloudNettyServerSocket(nettyServerFilter);
     }
+
     /**
      * @param args
      * @throws Exception

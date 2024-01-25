@@ -22,6 +22,7 @@ public abstract class AbstractHandleChannelFlowAdvanced implements HandleChannel
 
     /**
      * 处理是否支持这种类型
+     *
      * @param channelFlow 数据
      * @return boolean
      */
@@ -30,18 +31,19 @@ public abstract class AbstractHandleChannelFlowAdvanced implements HandleChannel
     /**
      * 处理当前数据
      *
-     * @param channel 当前通道
-     * @param channelFlow     通道数据
+     * @param channel     当前通道
+     * @param channelFlow 通道数据
      */
     @Override
     public void handler(Channel channel, ChannelFlow channelFlow) {
         doHandler(channel, channelFlow);
     }
+
     /**
      * 处理当前数据
      *
-     * @param channel 当前通道
-     * @param channelFlow     通道数据
+     * @param channel     当前通道
+     * @param channelFlow 通道数据
      */
-    protected  abstract void doHandler(Channel channel, ChannelFlow channelFlow);
+    protected abstract void doHandler(Channel channel, ChannelFlow channelFlow);
 }

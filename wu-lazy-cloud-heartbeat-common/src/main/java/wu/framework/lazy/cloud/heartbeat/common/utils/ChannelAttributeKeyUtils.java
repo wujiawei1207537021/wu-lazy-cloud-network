@@ -116,8 +116,8 @@ public class ChannelAttributeKeyUtils {
     /**
      * 为通道绑定 通道中访客端口
      *
-     * @param channel 通道
-     * @param visitorPort  进口流量
+     * @param channel     通道
+     * @param visitorPort 进口流量
      */
     public static void buildVisitorPort(Channel channel, Integer visitorPort) {
         channel.attr(VISITOR_PORT).set(visitorPort);

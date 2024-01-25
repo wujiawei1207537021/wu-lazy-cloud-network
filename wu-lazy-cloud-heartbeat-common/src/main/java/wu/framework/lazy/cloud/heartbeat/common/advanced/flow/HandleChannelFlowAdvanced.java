@@ -18,8 +18,8 @@ public interface HandleChannelFlowAdvanced {
     /**
      * 处理当前数据
      *
-     * @param channel 当前通道
-     * @param channelFlow     通道数据
+     * @param channel     当前通道
+     * @param channelFlow 通道数据
      */
     void handler(Channel channel, ChannelFlow channelFlow);
 }

@@ -2,6 +2,9 @@ package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
 import com.alibaba.fastjson.JSON;
+import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
@@ -11,9 +14,6 @@ import wu.framework.lazy.cloud.heartbeat.server.application.InternalNetworkPenet
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientBlacklistApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
 import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.blacklist.NettyClientBlacklist;
-import io.netty.channel.Channel;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -42,7 +42,7 @@ public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandle
      * 处理当前数据
      *
      * @param newChannel 当前通道
-     * @param msg     通道数据
+     * @param msg        通道数据
      */
     @Override
     public void doHandler(Channel newChannel, NettyProxyMsg msg) {
@@ -51,14 +51,14 @@ public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandle
         String clientId = new String(msg.getClientId());
         ChannelContext.push(newChannel, clientId);
 
-        ChannelAttributeKeyUtils.buildClientId(newChannel,clientId);
-        log.info("客户端:{}，IP:{}连接成功",new String(msg.getClientId()),newChannel.remoteAddress().toString());
+        ChannelAttributeKeyUtils.buildClientId(newChannel, clientId);
+        log.info("客户端:{}，IP:{}连接成功", new String(msg.getClientId()), newChannel.remoteAddress().toString());
         // 验证客户端是否时黑名单
         NettyClientBlacklist nettyClientBlacklist = new NettyClientBlacklist();
         nettyClientBlacklist.setClientId(clientId);
         nettyClientBlacklist.setIsDeleted(false);
         nettyClientBlacklistApplication.exists(nettyClientBlacklist).accept(exists -> {
-            if(!exists){
+            if (!exists) {
                 // 服务状态在线
                 serverNettyConfigApplication.clientOnLine(clientId);
                 List<ChannelContext.ClientChannel> clientChannels = ChannelContext.get();
@@ -77,12 +77,12 @@ public class ServerHandleClientConnectSuccessTypeAdvanced extends AbstractHandle
                     // 发送所有客户端ID
                     channel.writeAndFlush(nettyMsg);
                 }
-                log.info("开始开启客户端：【{}】,端口映射",clientId);
+                log.info("开始开启客户端：【{}】,端口映射", clientId);
                 // 创建访问者（内网穿透连接创建）
                 internalNetworkPenetrationMappingApplication.createVisitor(clientId);
-                log.info("结束开启客户端：【{}】,端口映射",clientId);
+                log.info("结束开启客户端：【{}】,端口映射", clientId);
 
-            }else {
+            } else {
                 // 黑名单客户端
 
             }

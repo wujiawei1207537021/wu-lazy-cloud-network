@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @LazyRpc
-public class StagingNoticeApiRpc  {
+public class StagingNoticeApiRpc {
 
 
     /**

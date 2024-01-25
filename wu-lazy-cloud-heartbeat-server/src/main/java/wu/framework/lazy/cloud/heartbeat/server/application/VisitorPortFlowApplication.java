@@ -1,21 +1,20 @@
 package wu.framework.lazy.cloud.heartbeat.server.application;
 
+import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.response.Result;
 import wu.framework.lazy.cloud.heartbeat.server.application.command.visitor.flow.*;
 import wu.framework.lazy.cloud.heartbeat.server.application.dto.VisitorFlowDTO;
 import wu.framework.lazy.cloud.heartbeat.server.application.dto.VisitorPortFlowDTO;
 import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
-import wu.framework.lazy.cloud.heartbeat.server.application.command.visitor.flow.VisitorPortFlowStoryCommand;
 
 import java.util.List;
-import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 
 /**
- * describe 访客端流量 
+ * describe 访客端流量
  *
  * @author Jia wei Wu
  * @date 2024/01/24 05:19 下午
- * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyApplication 
+ * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyApplication
  **/
 
 public interface VisitorPortFlowApplication {
@@ -26,7 +25,6 @@ public interface VisitorPortFlowApplication {
      *
      * @param visitorPortFlowStoryCommand 新增访客端流量
      * @return {@link Result< VisitorPortFlow >} 访客端流量新增后领域对象
-     
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
@@ -38,7 +36,6 @@ public interface VisitorPortFlowApplication {
      *
      * @param visitorPortFlowStoryCommandList 批量新增访客端流量
      * @return {@link Result<List< VisitorPortFlow >>} 访客端流量新增后领域对象集合
-     
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
@@ -50,7 +47,6 @@ public interface VisitorPortFlowApplication {
      *
      * @param visitorPortFlowUpdateCommand 更新访客端流量
      * @return {@link Result< VisitorPortFlow >} 访客端流量领域对象
-     
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
@@ -77,7 +73,7 @@ public interface VisitorPortFlowApplication {
      * @date 2024/01/24 05:19 下午
      **/
 
-    Result <List<VisitorPortFlowDTO>> findList(VisitorPortFlowQueryListCommand visitorPortFlowQueryListCommand);
+    Result<List<VisitorPortFlowDTO>> findList(VisitorPortFlowQueryListCommand visitorPortFlowQueryListCommand);
 
     /**
      * describe 分页查询多个访客端流量
@@ -88,14 +84,13 @@ public interface VisitorPortFlowApplication {
      * @date 2024/01/24 05:19 下午
      **/
 
-    Result <LazyPage<VisitorPortFlowDTO>> findPage(int size, int current, VisitorPortFlowQueryListCommand visitorPortFlowQueryListCommand);
+    Result<LazyPage<VisitorPortFlowDTO>> findPage(int size, int current, VisitorPortFlowQueryListCommand visitorPortFlowQueryListCommand);
 
     /**
      * describe 删除访客端流量
      *
      * @param visitorPortFlowRemoveCommand 删除访客端流量
      * @return {@link Result< VisitorPortFlow >} 访客端流量
-     
      * @author Jia wei Wu
      * @date 2024/01/24 05:19 下午
      **/
@@ -105,8 +100,9 @@ public interface VisitorPortFlowApplication {
 
     /**
      * 根据客户端查询流量
-     * @param size 分页大小
-     * @param current 分页
+     *
+     * @param size                            分页大小
+     * @param current                         分页
      * @param visitorPortFlowQueryListCommand 查询条件
      * @return {@link Result<LazyPage< VisitorFlowDTO >>} 分页访客端流量DTO对象
      */

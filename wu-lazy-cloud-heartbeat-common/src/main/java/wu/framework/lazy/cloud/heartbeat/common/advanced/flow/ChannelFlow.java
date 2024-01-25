@@ -28,6 +28,7 @@ public interface ChannelFlow {
 
     /**
      * 流量
+     *
      * @return 流量
      */
     Integer flow();

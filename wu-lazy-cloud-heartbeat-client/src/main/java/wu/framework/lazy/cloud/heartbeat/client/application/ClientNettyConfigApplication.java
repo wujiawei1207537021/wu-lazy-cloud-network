@@ -6,7 +6,6 @@ package wu.framework.lazy.cloud.heartbeat.client.application;
 public interface ClientNettyConfigApplication {
 
 
-
     /**
      * 推送客户端在线
      */
@@ -19,14 +18,16 @@ public interface ClientNettyConfigApplication {
 
     /**
      * 暂存开启
-     * @param clientId  租户ID
+     *
+     * @param clientId 租户ID
      */
     void stagingOpen(String clientId);
 
 
     /**
      * 暂存关闭
-     * @param clientId  客户端ID 对应的租户
+     *
+     * @param clientId 客户端ID 对应的租户
      */
     void stagingClose(String clientId);
 }

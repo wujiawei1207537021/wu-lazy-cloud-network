@@ -58,7 +58,7 @@ public class ServerHandlerOutFlowHandler extends AbstractHandleChannelFlowAdvanc
                 visitorPortFlow.setOutFlow(visitorPortFlow.getOutFlow() + outFlow);
             }
             if (!ObjectUtils.isEmpty(inFlow)) {
-                visitorPortFlow.setInFlow( inFlow);
+                visitorPortFlow.setInFlow(inFlow);
             }
         });
         visitorPortFlowRepository.story(visitorPortFlow);

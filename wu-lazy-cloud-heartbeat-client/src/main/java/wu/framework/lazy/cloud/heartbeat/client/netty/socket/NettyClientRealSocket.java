@@ -1,18 +1,18 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 
 
-import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
-import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
-import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
-import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientRealFilter;
-import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientVisitorRealFilter;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
+import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientRealFilter;
+import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientVisitorRealFilter;
+import wu.framework.lazy.cloud.heartbeat.common.*;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -99,8 +99,8 @@ public class NettyClientRealSocket {
 //                        future.channel().attr(Constant.VID).set(internalNetworkPenetrationRealClient);
 //                        Constant.vrc.put(internalNetworkPenetrationRealClient, future.channel());
 //                        ProxySocket.connectProxyServer(internalNetworkPenetrationRealClient);
-                }else {
-                    log.error("客户：【{}】,无法连接当前网络内的目标IP：【{}】,目标端口:【{}】",clientId,clientTargetIp,clientTargetPort);
+                } else {
+                    log.error("客户：【{}】,无法连接当前网络内的目标IP：【{}】,目标端口:【{}】", clientId, clientTargetIp, clientTargetPort);
                 }
             });
         } catch (Exception e) {
@@ -114,7 +114,7 @@ public class NettyClientRealSocket {
      *
      * @param internalNetworkPenetrationRealClient 内网穿透信息
      * @param nettyServerProperties                服务端配置信息
-     * @param handleChannelTypeAdvancedList              处理器适配器
+     * @param handleChannelTypeAdvancedList        处理器适配器
      * @throws InterruptedException 异常
      */
     protected static void newVisitorConnect2Server(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
@@ -154,7 +154,7 @@ public class NettyClientRealSocket {
                 myMsg.setVisitorId(visitorId);
                 channel.writeAndFlush(myMsg);
                 // 绑定客户端真实通信通道
-                NettyCommunicationIdContext.pushVisitor(channel,visitorId);
+                NettyCommunicationIdContext.pushVisitor(channel, visitorId);
                 ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
                 ChannelAttributeKeyUtils.buildClientId(channel, clientId);
                 // 客户端真实通道自动读写打开

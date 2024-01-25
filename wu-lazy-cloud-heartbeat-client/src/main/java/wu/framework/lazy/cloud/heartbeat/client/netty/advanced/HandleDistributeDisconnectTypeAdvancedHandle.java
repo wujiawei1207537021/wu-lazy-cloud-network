@@ -1,12 +1,12 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.advanced;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeDisconnectTypeAdvancedHandle;
-import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeDisconnectTypeAdvancedHandle;
 
 
 /**
@@ -36,7 +36,7 @@ public class HandleDistributeDisconnectTypeAdvancedHandle extends AbstractHandle
         byte[] data = msg.getData();
         byte[] clientId = msg.getClientId();
         String tenantId = new String(clientId);
-        log.warn("客户端:{}下线",tenantId);
+        log.warn("客户端:{}下线", tenantId);
         clientNettyConfigApplication.clientOffLine(tenantId);
 
     }

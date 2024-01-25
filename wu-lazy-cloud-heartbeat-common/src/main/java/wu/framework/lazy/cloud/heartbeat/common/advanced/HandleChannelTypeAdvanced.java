@@ -1,9 +1,9 @@
 package wu.framework.lazy.cloud.heartbeat.common.advanced;
 
 
+import io.netty.channel.Channel;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
-import io.netty.channel.Channel;
 
 /**
  * 通道不同数据类型处理器

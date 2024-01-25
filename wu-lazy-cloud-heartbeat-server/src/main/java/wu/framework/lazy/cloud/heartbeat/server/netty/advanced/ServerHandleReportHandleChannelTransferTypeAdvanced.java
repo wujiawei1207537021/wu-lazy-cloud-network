@@ -1,14 +1,14 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportHandleChannelTransferTypeAdvanced;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportHandleChannelTransferTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.enums.ChannelFlowEnum;
 import wu.framework.lazy.cloud.heartbeat.server.netty.flow.ServerChannelFlow;
 
@@ -54,7 +54,7 @@ public class ServerHandleReportHandleChannelTransferTypeAdvanced extends Abstrac
                     .clientId(clientId)
                     .flow(msg.getData().length)
                     .build();
-            channelFlowAdapter.handler(channel,serverChannelFlow);
+            channelFlowAdapter.handler(channel, serverChannelFlow);
         }
 
     }

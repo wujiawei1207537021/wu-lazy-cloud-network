@@ -1,15 +1,11 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.dto;
 
 import com.wu.framework.inner.layer.util.ByteSizeUtil;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.lang.String;
 import java.time.LocalDateTime;
-import java.lang.Long;
-import java.lang.Integer;
-import java.lang.Boolean;
 
 /**
  * describe 访客端流量

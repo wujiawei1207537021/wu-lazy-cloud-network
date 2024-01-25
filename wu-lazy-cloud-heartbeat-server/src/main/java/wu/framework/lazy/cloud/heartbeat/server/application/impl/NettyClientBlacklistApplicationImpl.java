@@ -1,6 +1,10 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyApplication;
+import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
+import com.wu.framework.response.Result;
+import io.netty.channel.Channel;
+import jakarta.annotation.Resource;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
@@ -10,32 +14,29 @@ import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client
 import wu.framework.lazy.cloud.heartbeat.server.application.dto.NettyClientBlacklistDTO;
 import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.blacklist.NettyClientBlacklist;
 import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.blacklist.NettyClientBlacklistRepository;
-import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
-import com.wu.framework.response.Result;
-import io.netty.channel.Channel;
-import jakarta.annotation.Resource;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
- * describe 客户端黑名单 
+ * describe 客户端黑名单
  *
  * @author Jia wei Wu
  * @date 2023/12/27 03:46 下午
- * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyApplicationImpl 
+ * @see com.wu.framework.inner.lazy.persistence.reverse.lazy.ddd.DefaultDDDLazyApplicationImpl
  **/
 @LazyApplication
 public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklistApplication {
 
     @Resource
     NettyClientBlacklistRepository nettyClientBlacklistRepository;
+
     /**
      * describe 新增客户端黑名单
      *
-     * @param nettyClientBlacklistStoryCommand 新增客户端黑名单     
-     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单新增后领域对象     
-     
+     * @param nettyClientBlacklistStoryCommand 新增客户端黑名单
+     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单新增后领域对象
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
@@ -48,7 +49,7 @@ public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklist
         // 获取客户端channel 发送下下通知
         String clientId = nettyClientBlacklist.getClientId();
         ChannelContext.ClientChannel clientChannel = ChannelContext.get(clientId.getBytes(StandardCharsets.UTF_8));
-        if(null!=clientChannel){
+        if (null != clientChannel) {
             // 模拟客户端发送下线通知
             Channel channel = clientChannel.getChannel();
             NettyProxyMsg nettyMsg = new NettyProxyMsg();
@@ -60,27 +61,27 @@ public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklist
 
         return story;
     }
+
     /**
      * describe 批量新增客户端黑名单
      *
-     * @param nettyClientBlacklistStoryCommandList 批量新增客户端黑名单     
-     * @return {@link Result<List<NettyClientBlacklist>>} 客户端黑名单新增后领域对象集合     
-     
+     * @param nettyClientBlacklistStoryCommandList 批量新增客户端黑名单
+     * @return {@link Result<List<NettyClientBlacklist>>} 客户端黑名单新增后领域对象集合
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
 
     @Override
     public Result<List<NettyClientBlacklist>> batchStory(List<NettyClientBlacklistStoryCommand> nettyClientBlacklistStoryCommandList) {
-        List<NettyClientBlacklist> nettyClientBlacklistList = nettyClientBlacklistStoryCommandList.stream().map( NettyClientBlacklistDTOAssembler.INSTANCE::toNettyClientBlacklist).collect(Collectors.toList());
+        List<NettyClientBlacklist> nettyClientBlacklistList = nettyClientBlacklistStoryCommandList.stream().map(NettyClientBlacklistDTOAssembler.INSTANCE::toNettyClientBlacklist).collect(Collectors.toList());
         return nettyClientBlacklistRepository.batchStory(nettyClientBlacklistList);
     }
+
     /**
      * describe 更新客户端黑名单
      *
-     * @param nettyClientBlacklistUpdateCommand 更新客户端黑名单     
-     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单领域对象     
-     
+     * @param nettyClientBlacklistUpdateCommand 更新客户端黑名单
+     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单领域对象
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
@@ -94,9 +95,8 @@ public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklist
     /**
      * describe 查询单个客户端黑名单
      *
-     * @param nettyClientBlacklistQueryOneCommand 查询单个客户端黑名单     
-     * @return {@link Result<NettyClientBlacklistDTO>} 客户端黑名单DTO对象     
-     
+     * @param nettyClientBlacklistQueryOneCommand 查询单个客户端黑名单
+     * @return {@link Result<NettyClientBlacklistDTO>} 客户端黑名单DTO对象
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
@@ -110,9 +110,8 @@ public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklist
     /**
      * describe 查询多个客户端黑名单
      *
-     * @param nettyClientBlacklistQueryListCommand 查询多个客户端黑名单     
-     * @return {@link Result<List<NettyClientBlacklistDTO>>} 客户端黑名单DTO对象     
-     
+     * @param nettyClientBlacklistQueryListCommand 查询多个客户端黑名单
+     * @return {@link Result<List<NettyClientBlacklistDTO>>} 客户端黑名单DTO对象
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
@@ -120,39 +119,37 @@ public class NettyClientBlacklistApplicationImpl implements NettyClientBlacklist
     @Override
     public Result<List<NettyClientBlacklistDTO>> findList(NettyClientBlacklistQueryListCommand nettyClientBlacklistQueryListCommand) {
         NettyClientBlacklist nettyClientBlacklist = NettyClientBlacklistDTOAssembler.INSTANCE.toNettyClientBlacklist(nettyClientBlacklistQueryListCommand);
-        return nettyClientBlacklistRepository.findList(nettyClientBlacklist)        .convert(nettyClientBlacklists -> nettyClientBlacklists.stream().map(NettyClientBlacklistDTOAssembler.INSTANCE::fromNettyClientBlacklist).collect(Collectors.toList())) ;
+        return nettyClientBlacklistRepository.findList(nettyClientBlacklist).convert(nettyClientBlacklists -> nettyClientBlacklists.stream().map(NettyClientBlacklistDTOAssembler.INSTANCE::fromNettyClientBlacklist).collect(Collectors.toList()));
     }
 
     /**
      * describe 分页查询多个客户端黑名单
      *
-     * @param nettyClientBlacklistQueryListCommand 分页查询多个客户端黑名单     
-     * @return {@link Result<LazyPage<NettyClientBlacklistDTO>>} 分页客户端黑名单DTO对象     
-     
+     * @param nettyClientBlacklistQueryListCommand 分页查询多个客户端黑名单
+     * @return {@link Result<LazyPage<NettyClientBlacklistDTO>>} 分页客户端黑名单DTO对象
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
 
     @Override
-    public Result<LazyPage<NettyClientBlacklistDTO>> findPage(int size,int current,NettyClientBlacklistQueryListCommand nettyClientBlacklistQueryListCommand) {
+    public Result<LazyPage<NettyClientBlacklistDTO>> findPage(int size, int current, NettyClientBlacklistQueryListCommand nettyClientBlacklistQueryListCommand) {
         NettyClientBlacklist nettyClientBlacklist = NettyClientBlacklistDTOAssembler.INSTANCE.toNettyClientBlacklist(nettyClientBlacklistQueryListCommand);
-        return nettyClientBlacklistRepository.findPage(size,current,nettyClientBlacklist)        .convert(page -> page.convert(NettyClientBlacklistDTOAssembler.INSTANCE::fromNettyClientBlacklist))            ;
+        return nettyClientBlacklistRepository.findPage(size, current, nettyClientBlacklist).convert(page -> page.convert(NettyClientBlacklistDTOAssembler.INSTANCE::fromNettyClientBlacklist));
     }
 
     /**
      * describe 删除客户端黑名单
      *
-     * @param nettyClientBlacklistRemoveCommand 删除客户端黑名单     
-     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单     
-     
+     * @param nettyClientBlacklistRemoveCommand 删除客户端黑名单
+     * @return {@link Result<NettyClientBlacklist>} 客户端黑名单
      * @author Jia wei Wu
      * @date 2023/12/27 03:46 下午
      **/
 
     @Override
     public Result<NettyClientBlacklist> remove(NettyClientBlacklistRemoveCommand nettyClientBlacklistRemoveCommand) {
-     NettyClientBlacklist nettyClientBlacklist = NettyClientBlacklistDTOAssembler.INSTANCE.toNettyClientBlacklist(nettyClientBlacklistRemoveCommand);
-     return nettyClientBlacklistRepository.remove(nettyClientBlacklist);
+        NettyClientBlacklist nettyClientBlacklist = NettyClientBlacklistDTOAssembler.INSTANCE.toNettyClientBlacklist(nettyClientBlacklistRemoveCommand);
+        return nettyClientBlacklistRepository.remove(nettyClientBlacklist);
     }
 
     /**

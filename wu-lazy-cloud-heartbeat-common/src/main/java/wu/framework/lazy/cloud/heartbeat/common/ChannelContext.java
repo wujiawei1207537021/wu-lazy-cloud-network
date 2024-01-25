@@ -5,7 +5,6 @@ import io.netty.channel.ChannelId;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +33,13 @@ public class ChannelContext {
         clientChannelImpl.setChannel(channel);
         clientChannelImpl.setClientId(clientId.getBytes(StandardCharsets.UTF_8));
         // 如果客户端已经存在 移除
-        if(channelIdClientChannelDTOConcurrentHashMap.containsKey(clientId)){
+        if (channelIdClientChannelDTOConcurrentHashMap.containsKey(clientId)) {
 //            clear(clientId);
         }
         channelIdClientChannelDTOConcurrentHashMap.put(clientId, clientChannelImpl);
 
     }
+
     /**
      * 新增通道
      *

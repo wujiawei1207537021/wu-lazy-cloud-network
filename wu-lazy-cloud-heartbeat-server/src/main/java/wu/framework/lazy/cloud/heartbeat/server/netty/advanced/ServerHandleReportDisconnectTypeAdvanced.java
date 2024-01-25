@@ -1,14 +1,14 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
-import wu.framework.lazy.cloud.heartbeat.common.MessageType;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportDisconnectTypeAdvanced;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportDisconnectTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class ServerHandleReportDisconnectTypeAdvanced extends AbstractHandleRepo
     public void doHandler(Channel deathChannel, NettyProxyMsg msg) {
         // 关闭连接通知
         byte[] clientIdByte = msg.getClientId();
-        log.info("关闭客户端:{} 的通道",new String(clientIdByte));
+        log.info("关闭客户端:{} 的通道", new String(clientIdByte));
         ChannelId deathChannelId = deathChannel.id();
         ChannelContext.ClientChannel deathClientChannelDTO = ChannelContext.get(clientIdByte);
 

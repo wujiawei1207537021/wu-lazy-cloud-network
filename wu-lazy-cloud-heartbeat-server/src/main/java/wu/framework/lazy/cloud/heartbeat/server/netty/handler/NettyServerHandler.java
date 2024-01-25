@@ -1,13 +1,16 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.handler;
 
-import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.channel.*;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.NettyRealIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 
 /**
  * description 服务端数据处理器
@@ -19,6 +22,10 @@ import org.springframework.util.ObjectUtils;
 public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMsg> {
 
     private final ChannelTypeAdapter channelTypeAdapter;
+    /**
+     * 空闲次数
+     */
+    private int idle_count = 1;
 
     public NettyServerHandler(ChannelTypeAdapter channelTypeAdapter) {
         this.channelTypeAdapter = channelTypeAdapter;
@@ -42,11 +49,6 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
         channelTypeAdapter.handler(channel, nettyMsg);
 
     }
-
-    /**
-     * 空闲次数
-     */
-    private int idle_count = 1;
 
     /**
      * 超时处理 * 如果5秒没有接受客户端的心跳，就触发; * 如果超过两次，则直接关闭;
@@ -102,7 +104,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
         String visitorId = ChannelAttributeKeyUtils.getVisitorId(channel);
 
         if (!ObjectUtils.isEmpty(visitorId)) {
-            log.info("客户端:{},断开访客的连接:{}", clientId,visitorId);
+            log.info("客户端:{},断开访客的连接:{}", clientId, visitorId);
             // 访客通道 关闭访客通道
             NettyCommunicationIdContext.clear(visitorId);
             super.channelInactive(ctx);
@@ -116,6 +118,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<NettyProxyMs
         }
 
     }
+
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 //        super.exceptionCaught(ctx, cause);

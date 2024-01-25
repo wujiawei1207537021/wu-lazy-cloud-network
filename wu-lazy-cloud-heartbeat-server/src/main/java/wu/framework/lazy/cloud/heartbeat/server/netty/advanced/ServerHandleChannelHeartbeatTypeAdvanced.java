@@ -1,11 +1,11 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.advanced;
 
 
+import io.netty.channel.Channel;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractHandleChannelHeartbeatTypeAdvanced;
-import io.netty.channel.Channel;
-import org.springframework.stereotype.Component;
 
 
 /**

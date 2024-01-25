@@ -1,16 +1,16 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.filter;
 
-import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.decoder.NettyProxyMsgDecoder;
-import wu.framework.lazy.cloud.heartbeat.common.encoder.NettyProxyMsgEncoder;
-import wu.framework.lazy.cloud.heartbeat.client.netty.handler.NettyClientHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
+import wu.framework.lazy.cloud.heartbeat.client.netty.handler.NettyClientHandler;
+import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientSocket;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.decoder.NettyProxyMsgDecoder;
+import wu.framework.lazy.cloud.heartbeat.common.encoder.NettyProxyMsgEncoder;
 
 public class NettyClientFilter extends ChannelInitializer<SocketChannel> {
 
@@ -40,6 +40,6 @@ public class NettyClientFilter extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new IdleStateHandler(0, 4, 0));
         pipeline.addLast("decoder", new StringDecoder());
         pipeline.addLast("encoder", new StringEncoder());
-        pipeline.addLast("doHandler", new NettyClientHandler(channelTypeAdapter,nettyClientSocket)); //客户端的逻辑
+        pipeline.addLast("doHandler", new NettyClientHandler(channelTypeAdapter, nettyClientSocket)); //客户端的逻辑
     }
 }

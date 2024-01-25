@@ -1,8 +1,8 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.filter;
 
-import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
+import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.server.netty.handler.VisitorHandler;
 
@@ -28,7 +28,7 @@ public class VisitorFilter extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new ChannelDuplexHandler());
-        pipeline.addLast(new VisitorHandler(internalNetworkPenetrationRealClient,channelFlowAdapter));
+        pipeline.addLast(new VisitorHandler(internalNetworkPenetrationRealClient, channelFlowAdapter));
 
     }
 }

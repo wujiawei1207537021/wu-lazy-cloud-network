@@ -1,8 +1,8 @@
 package wu.framework.lazy.cloud.heartbeat.common.advanced.client;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractHandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.AbstractHandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.enums.MessageTypeEnums;
 

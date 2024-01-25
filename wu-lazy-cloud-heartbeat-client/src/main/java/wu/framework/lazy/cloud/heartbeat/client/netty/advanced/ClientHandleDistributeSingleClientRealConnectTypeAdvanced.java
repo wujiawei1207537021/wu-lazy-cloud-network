@@ -1,14 +1,14 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.advanced;
 
+import io.netty.channel.Channel;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
 import wu.framework.lazy.cloud.heartbeat.client.netty.socket.NettyClientRealSocket;
 import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.client.AbstractHandleDistributeSingleClientRealConnectTypeAdvanced;
-import io.netty.channel.Channel;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -46,14 +46,13 @@ public class ClientHandleDistributeSingleClientRealConnectTypeAdvanced extends A
                         .builder()
                         .clientId(new String(clientIdBytes))
                         .visitorPort(Integer.valueOf(new String(visitorPort)))
-                        .clientTargetIp(new String( clientTargetIp))
-                        .clientTargetPort(Integer.valueOf(new String( clientTargetPort)))
+                        .clientTargetIp(new String(clientTargetIp))
+                        .clientTargetPort(Integer.valueOf(new String(clientTargetPort)))
                         .visitorId(new String(visitorIdBytes))
-                        .build()
-                ;
+                        .build();
 
         // 绑定真实服务端口
-        NettyClientRealSocket.buildRealServer(internalNetworkPenetrationRealClient,nettyServerProperties, handleChannelTypeAdvancedList);
+        NettyClientRealSocket.buildRealServer(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
 
     }
 }

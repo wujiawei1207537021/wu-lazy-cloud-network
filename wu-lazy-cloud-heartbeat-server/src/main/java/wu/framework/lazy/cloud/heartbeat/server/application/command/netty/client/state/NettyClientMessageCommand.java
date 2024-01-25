@@ -3,9 +3,6 @@ package wu.framework.lazy.cloud.heartbeat.server.application.command.netty.clien
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
-
-import java.time.LocalDateTime;
 
 /**
  * describe 发送请求到客户端

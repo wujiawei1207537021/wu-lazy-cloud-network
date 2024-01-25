@@ -1,8 +1,5 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.persistence;
 
-import wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter.NettyClientStateConverter;
-import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
-import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientStateRepository;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.domain.LazyPage;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.lambda.LazyLambdaStream;
 import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.wrapper.LazyWrappers;
@@ -10,7 +7,10 @@ import com.wu.framework.response.Result;
 import com.wu.framework.response.ResultFactory;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Repository;
+import wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter.NettyClientStateConverter;
 import wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity.NettyClientStateDO;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
+import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientStateRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -124,7 +124,7 @@ public class NettyClientStateRepositoryImpl implements NettyClientStateRepositor
     @Override
     public Result<NettyClientState> remove(NettyClientState nettyClientState) {
         NettyClientStateDO nettyClientStateDO = NettyClientStateConverter.INSTANCE.fromNettyClientState(nettyClientState);
-          lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(nettyClientStateDO));
+        lazyLambdaStream.delete(LazyWrappers.lambdaWrapperBean(nettyClientStateDO));
         return ResultFactory.successOf();
     }
 

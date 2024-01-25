@@ -1,7 +1,5 @@
 package wu.framework.lazy.cloud.heartbeat.server.netty.socket;
 
-import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
-import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorPortContext;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -10,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorPortContext;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.server.netty.filter.VisitorFilter;
 
@@ -18,12 +18,11 @@ import wu.framework.lazy.cloud.heartbeat.server.netty.filter.VisitorFilter;
  */
 @Slf4j
 public class NettyVisitorSocket {
-    private final VisitorFilter visitorFilter;
-
     private static final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private static final EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private final VisitorFilter visitorFilter;
 
-    public NettyVisitorSocket(VisitorFilter visitorFilter ) {
+    public NettyVisitorSocket(VisitorFilter visitorFilter) {
         this.visitorFilter = visitorFilter;
     }
 
@@ -87,6 +86,10 @@ public class NettyVisitorSocket {
          */
         private ChannelFlowAdapter channelFlowAdapter;
 
+        public static NettyVisitorSocketBuilder builder() {
+            return new NettyVisitorSocketBuilder();
+        }
+
         /**
          * 填充客户端
          *
@@ -133,6 +136,7 @@ public class NettyVisitorSocket {
 
         /**
          * 绑定流量适配器
+         *
          * @param channelFlowAdapter 流量适配器
          * @return 当前对象
          */
@@ -150,10 +154,6 @@ public class NettyVisitorSocket {
         public NettyVisitorSocketBuilder builderVisitorId(String visitorId) {
             this.visitorId = visitorId;
             return this;
-        }
-
-        public static NettyVisitorSocketBuilder builder() {
-            return new NettyVisitorSocketBuilder();
         }
 
         public NettyVisitorSocket build() {
@@ -177,7 +177,7 @@ public class NettyVisitorSocket {
                     .visitorPort(visitorPort)
                     .visitorId(visitorId).build();
 
-            VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient,channelFlowAdapter);
+            VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient, channelFlowAdapter);
             return new NettyVisitorSocket(visitorFilter);
         }
 
