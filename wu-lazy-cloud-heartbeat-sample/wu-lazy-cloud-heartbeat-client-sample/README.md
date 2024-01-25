@@ -9,8 +9,8 @@ mvn native:build -Pnative
 ```
 ### 构建docker镜像
 ```shell
-docker build -t docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:middleground-2.4.2-native-SNAPSHOT_latest -f Native-Dockerfile .
-docker push docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:middleground-2.4.2-native-SNAPSHOT_latest
+docker build -t docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest -f Native-Dockerfile .
+docker push docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest
 ```
 
 
@@ -21,8 +21,8 @@ docker push docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-clie
 
 #docker login --username=1207537021@qq.com registry.cn-hangzhou.aliyuncs.com
 
-docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master .
-docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
+docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT .
+docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT
 
 ```
 

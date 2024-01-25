@@ -2,10 +2,10 @@
 
 ![logo](https://i.bmp.ovh/imgs/2021/08/f828888bb4064c64.png)
 
-# lazy-ui
+# wu-lazy-cloud-network
 
-**[<font color=#FF0000>✈ 国内加速链接</font>](https://gitee.com/asaasa/lazy-ui)**  
-**[<font color=#FF0000>✈ 效果预览</font>](https://lazy-ui.vercel.app/)**  
+**[<font color=#FF0000>✈ 国内加速链接</font>](https://gitee.com/asaasa/wu-lazy-cloud-network)**  
+**[<font color=#FF0000>✈ 效果预览</font>](https://wu-lazy-cloud-network.vercel.app/)**  
 **[<font color=#FF0000>✈ 效果预览(备用地址)</font>](http://asaasa.gitee.io/xujianhua)**  
 **走过路过的老铁,帮忙点个小 ⭐⭐⭐⭐⭐,🤝🤝🤝🤝🤝,🙏🙏🙏🙏🙏**
 

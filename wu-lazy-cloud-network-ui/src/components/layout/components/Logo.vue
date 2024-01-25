@@ -21,7 +21,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
 const opened = computed(() => store.getters.opened);
-const title = "lazy-ui";
+const title = "wu-lazy-cloud-network";
 </script>
 
 <style lang="scss" scoped>
