@@ -1,11 +1,13 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.persistence;
 
 
+import org.springframework.util.ObjectUtils;
 import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlow;
 import wu.framework.lazy.cloud.heartbeat.server.infrastructure.converter.VisitorPortFlowConverter;
 import wu.framework.lazy.cloud.heartbeat.server.domain.model.visitor.flow.VisitorPortFlowRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import com.wu.framework.inner.lazy.database.expand.database.persistence.stream.wrapper.LazyWrappers;
@@ -176,6 +178,9 @@ public class VisitorPortFlowRepositoryImpl implements VisitorPortFlowRepository 
      */
     @Override
     public List<VisitorPortFlow> findListByClientIds(List<String> clientIdList) {
+        if(ObjectUtils.isEmpty(clientIdList)){
+            return new ArrayList<>();
+        }
         return lazyLambdaStream.selectList(LazyWrappers.<VisitorPortFlowDO>lambdaWrapper()
                 .in(VisitorPortFlowDO::getClientId,clientIdList), VisitorPortFlow.class);
     }

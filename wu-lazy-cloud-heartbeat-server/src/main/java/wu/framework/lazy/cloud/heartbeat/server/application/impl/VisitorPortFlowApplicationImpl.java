@@ -1,6 +1,7 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.impl;
 
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyApplication;
+import org.springframework.util.ObjectUtils;
 import wu.framework.lazy.cloud.heartbeat.server.application.VisitorPortFlowApplication;
 import com.wu.framework.response.Result;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.VisitorPortFlowDTOAssembler;
@@ -165,12 +166,12 @@ public class VisitorPortFlowApplicationImpl implements VisitorPortFlowApplicatio
             Map<String/*客户端ID*/, Integer/*客户端进口流量*/> client_in_flow = visitorPortFlowDTOList.stream()
                     .collect(
                             Collectors.groupingBy(VisitorPortFlowDTO::getClientId,
-                                    Collectors.summingInt(VisitorPortFlowDTO::getInFlow)));
+                                    Collectors.summingInt(VisitorPortFlowDTO::getInFlowSize)));
 
             Map<String/*客户端ID*/, Integer/*客户端出口流量*/> client_out_flow = visitorPortFlowDTOList.stream()
                     .collect(
                             Collectors.groupingBy(VisitorPortFlowDTO::getClientId,
-                                    Collectors.summingInt(VisitorPortFlowDTO::getOutFlow)));
+                                    Collectors.summingInt(VisitorPortFlowDTO::getOutFlowSize)));
 
             return visitorPortFlowLazyPage.convert(visitorPortFlow1 -> {
                 String clientId = visitorPortFlow1.getClientId();

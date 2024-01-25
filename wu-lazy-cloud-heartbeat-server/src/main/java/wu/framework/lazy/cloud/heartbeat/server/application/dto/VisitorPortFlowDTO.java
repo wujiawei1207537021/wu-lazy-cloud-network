@@ -1,5 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.application.dto;
 
+import com.wu.framework.inner.layer.util.ByteSizeUtil;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -76,5 +77,20 @@ public class VisitorPortFlowDTO {
      */
     @Schema(description ="访客端口",name ="visitorPort",example = "")
     private Integer visitorPort;
+
+    public Integer getInFlowSize() {
+        return inFlow;
+    }
+
+    public Integer getOutFlowSize() {
+        return outFlow;
+    }
+    public String getInFlow() {
+        return ByteSizeUtil.convertSize(inFlow);
+    }
+
+    public String getOutFlow() {
+        return ByteSizeUtil.convertSize(outFlow);
+    }
 
 }
