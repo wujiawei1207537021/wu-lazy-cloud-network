@@ -61,16 +61,16 @@
             <el-table-column prop="inFlow" label="客户端进口流量">
             </el-table-column>
             <el-table-column fixed="right" label="操作">
-                <template v-slot:default="{ row }">
-                    <el-button
-                        v-permission="['offLine']"
-                        @click.prevent="handleOffLine(row.clientId)"
-                        type="danger"
-                        size="small"
-                    >
-                        {{ buttons.offLine.name }}
-                    </el-button>
-                </template>
+                <!--                <template v-slot:default="{ row }">-->
+                <!--                    <el-button-->
+                <!--                        v-permission="['offLine']"-->
+                <!--                        @click.prevent="handleOffLine(row.clientId)"-->
+                <!--                        type="danger"-->
+                <!--                        size="small"-->
+                <!--                    >-->
+                <!--                        {{ buttons.offLine.name }}-->
+                <!--                    </el-button>-->
+                <!--                </template>-->
             </el-table-column>
         </ve-table>
     </div>
