@@ -36,7 +36,25 @@
                 pageSize: size,
                 total: total,
             }"
+            @expand-change="expandChange"
         >
+            <el-table-column type="expand">
+                <template v-slot="scope">
+                    <el-table
+                        :data="scope.row.visitorPortFlowDTOList"
+                        size="mini"
+                        style="width: 95%; margin-left: 8%"
+                    >
+                        <el-table-column prop="clientId" label="客户端ID" />
+                        <el-table-column prop="visitorPort" label="访客端口" />
+                        <el-table-column
+                            prop="outFlow"
+                            label="客户端出口流量"
+                        />
+                        <el-table-column prop="inFlow" label="客户端进口流量" />
+                    </el-table>
+                </template>
+            </el-table-column>
             <el-table-column prop="clientId" label="客户端ID"></el-table-column>
             <el-table-column prop="outFlow" label="客户端出口流量">
             </el-table-column>
@@ -106,6 +124,10 @@ const params = reactive({
 });
 const { clientId, size, current, total } = toRefs(params);
 
+const expandChange = async () => {
+    // 设置当前行为选中行
+    // this.$refs.tableData.setCurrentRow(row);
+};
 /**
  * @description: 获取列表数据
  * @param {*}
