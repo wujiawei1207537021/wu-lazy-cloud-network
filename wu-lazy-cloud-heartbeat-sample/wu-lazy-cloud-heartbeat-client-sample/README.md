@@ -9,8 +9,8 @@ mvn native:build -Pnative
 ```
 ### 构建docker镜像
 ```shell
-docker build -t docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest -f Native-Dockerfile .
-docker push docker-registry.laihui.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest
+docker build -t docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest -f Native-Dockerfile .
+docker push docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest
 ```
 
 

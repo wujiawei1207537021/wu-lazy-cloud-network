@@ -12,6 +12,6 @@ spring:
     redis:
       host: 192.168.17.221
       port: 30553
-      password: laihui
+      password: wujiawei
       database: 2
 
