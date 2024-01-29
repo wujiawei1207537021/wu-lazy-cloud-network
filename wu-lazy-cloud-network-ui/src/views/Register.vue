@@ -5,7 +5,7 @@
                 <router-link style="float: right" :to="{ path: 'login' }"
                     >登录</router-link
                 >
-                <h1>Lazy-UI</h1>
+                <h1>wu-lazy-cloud-network-ui</h1>
                 <transition name="el-fade-in-linear">
                     <el-form
                         :model="form"

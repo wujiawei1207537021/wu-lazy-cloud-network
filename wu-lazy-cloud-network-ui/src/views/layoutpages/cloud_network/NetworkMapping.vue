@@ -71,6 +71,14 @@
                         {{ buttons.edit.name }}
                     </el-button>
                     <el-button
+                        v-permission="['view']"
+                        @click.prevent="href2VisitorPort(row)"
+                        type="primary"
+                        size="small"
+                    >
+                        {{ buttons.view.name }}
+                    </el-button>
+                    <el-button
                         v-permission="['del']"
                         @click.prevent="handleDel(row.visitorPort)"
                         type="danger"
@@ -102,7 +110,7 @@ export default {
             add: { name: "添加" },
             edit: { name: "编辑" },
             del: { name: "删除" },
-            export: { name: "导出用户" },
+            view: { name: "访客端口预览" },
         },
         // type 0:目录 1：菜单 2：按钮
         type: "1",
@@ -139,6 +147,23 @@ const params = reactive({
 });
 const { clientId, size, current, total } = toRefs(params);
 
+/**
+ * 跳转到访客端口
+ * @param row
+ */
+const href2VisitorPort = (row) => {
+    // window.location = "https://www.baidu.com";
+    console.log(window.location.hostname);
+    console.log(window.location.host);
+    window.open(
+        window.location.protocol +
+            "//" +
+            window.location.hostname +
+            ":" +
+            row.visitorPort,
+        "_blank",
+    ); // 第二个参数'_blank'表示在新窗口中打开链接
+};
 /**
  * @description: dialog事件
  * @param {*}
