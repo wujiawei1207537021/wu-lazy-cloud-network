@@ -5,12 +5,16 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyClientVisitorContext;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.common.advanced.server.AbstractHandleReportDisconnectTypeAdvanced;
 import wu.framework.lazy.cloud.heartbeat.server.application.ServerNettyConfigApplication;
+import wu.framework.lazy.cloud.heartbeat.server.netty.socket.NettyVisitorSocket;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -66,6 +70,18 @@ public class ServerHandleReportDisconnectTypeAdvanced extends AbstractHandleRepo
                 stagingNettyProxyMsg.setClientId(clientId);
                 channel.writeAndFlush(stagingNettyProxyMsg);
             }
+            // 关闭绑定的访客端口
+            List<NettyVisitorSocket> visitorSockets = NettyClientVisitorContext.getVisitorSockets(new String(clientId));
+            if (ObjectUtils.isEmpty(visitorSockets)) {
+                for (NettyVisitorSocket visitorSocket : visitorSockets) {
+                    try {
+                        visitorSocket.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
         }
     }
 

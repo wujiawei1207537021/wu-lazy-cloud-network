@@ -9,30 +9,38 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import wu.framework.lazy.cloud.heartbeat.common.InternalNetworkPenetrationRealClient;
+import wu.framework.lazy.cloud.heartbeat.common.NettyClientVisitorContext;
 import wu.framework.lazy.cloud.heartbeat.common.NettyVisitorPortContext;
 import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelFlowAdapter;
 import wu.framework.lazy.cloud.heartbeat.server.netty.filter.VisitorFilter;
 
+import java.io.IOException;
+
 /**
  * 访客链接socket
+ * @see NettyVisitorPortContext
+ * @see NettyClientVisitorContext
  */
 @Slf4j
 public class NettyVisitorSocket {
     private static final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private static final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private final VisitorFilter visitorFilter;
+    private final String clientId;
+    private final int visitorPort;
 
-    public NettyVisitorSocket(VisitorFilter visitorFilter) {
+    public NettyVisitorSocket(VisitorFilter visitorFilter, String clientId, int visitorPort) {
         this.visitorFilter = visitorFilter;
+        this.clientId = clientId;
+        this.visitorPort = visitorPort;
     }
 
     /**
      * 启动服务代理
      *
-     * @param visitorPort 访客代理端口
      * @throws Exception
      */
-    public void startServer(int visitorPort) throws Exception {
+    public void startServer() throws Exception {
 
         Channel visitor = NettyVisitorPortContext.getVisitor(visitorPort);
         if (visitor == null) {
@@ -42,17 +50,33 @@ public class NettyVisitorSocket {
             ChannelFuture sync = b.bind(visitorPort).sync();
             sync.addListener((ChannelFutureListener) future -> {
                 if (future.isSuccess()) {
-                    Channel channel = future.channel();
                     log.info("访客端口：{} 开启", visitorPort);
-                    NettyVisitorPortContext.pushVisitor(visitorPort, channel);
+                    NettyVisitorPortContext.pushVisitor(visitorPort, future);
+
+                } else {
+                    log.error("客户端:[{}]访客端口:[{}]绑定失败", clientId, visitorPort);
                 }
             });
-
+            NettyClientVisitorContext.pushVisitorSocket(clientId, this);
         } else {
             log.warn("访客端口:{} 重复启动", visitorPort);
         }
 
     }
+
+    public void close() throws IOException {
+        if ((bossGroup != null) && (!bossGroup.isShutdown())) {
+            bossGroup.shutdownGracefully();
+        }
+        if ((workerGroup != null) && (!workerGroup.isShutdown())) {
+            workerGroup.shutdownGracefully();
+        }
+        Channel visitor = NettyVisitorPortContext.getVisitor(visitorPort);
+        if (visitor != null) {
+            visitor.close();
+        }
+    }
+
 
     public static final class NettyVisitorSocketBuilder {
 
@@ -178,7 +202,7 @@ public class NettyVisitorSocket {
                     .visitorId(visitorId).build();
 
             VisitorFilter visitorFilter = new VisitorFilter(internalNetworkPenetrationRealClient, channelFlowAdapter);
-            return new NettyVisitorSocket(visitorFilter);
+            return new NettyVisitorSocket(visitorFilter, clientId, visitorPort);
         }
 
 

@@ -180,7 +180,7 @@ public class InternalNetworkPenetrationMappingApplicationImpl implements Interna
                                 .build();
 
                         try {
-                            nettyVisitorSocket.startServer(visitorPort);
+                            nettyVisitorSocket.startServer();
                         } catch (Exception e) {
                             log.error("客户端:{},网络端口:{},开放失败", clientId, visitorPort);
                         }

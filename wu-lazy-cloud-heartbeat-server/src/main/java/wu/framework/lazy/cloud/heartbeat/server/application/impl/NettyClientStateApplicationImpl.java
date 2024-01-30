@@ -7,8 +7,10 @@ import com.wu.framework.response.Result;
 import com.wu.framework.response.ResultFactory;
 import io.netty.channel.Channel;
 import jakarta.annotation.Resource;
+import org.springframework.util.ObjectUtils;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyClientVisitorContext;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import wu.framework.lazy.cloud.heartbeat.server.application.NettyClientStateApplication;
 import wu.framework.lazy.cloud.heartbeat.server.application.assembler.NettyClientStateDTOAssembler;
@@ -16,7 +18,9 @@ import wu.framework.lazy.cloud.heartbeat.server.application.command.netty.client
 import wu.framework.lazy.cloud.heartbeat.server.application.dto.NettyClientStateDTO;
 import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientState;
 import wu.framework.lazy.cloud.heartbeat.server.model.netty.client.state.NettyClientStateRepository;
+import wu.framework.lazy.cloud.heartbeat.server.netty.socket.NettyVisitorSocket;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -140,6 +144,17 @@ public class NettyClientStateApplicationImpl implements NettyClientStateApplicat
         String clientId = nettyClientStateRemoveCommand.getClientId();
         // 心跳关闭
         ChannelContext.clear(clientId);
+        // 关闭访客
+        List<NettyVisitorSocket> nettyVisitorSocketList = NettyClientVisitorContext.getVisitorSockets(clientId);
+        if(ObjectUtils.isEmpty(nettyVisitorSocketList)){
+            for (NettyVisitorSocket nettyVisitorSocket : nettyVisitorSocketList) {
+                try {
+                    nettyVisitorSocket.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
         return nettyClientStateRepository.remove(nettyClientState);
     }
 
