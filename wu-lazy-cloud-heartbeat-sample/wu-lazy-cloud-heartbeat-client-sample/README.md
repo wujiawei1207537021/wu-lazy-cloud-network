@@ -29,7 +29,7 @@ docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-cl
 
 ### run
 ```shell
-docker run -d -it --name client -e spring.middleground.netty.inet-host=124.222.48.62 -e spring.middleground.netty.inet-port=30676  -e spring.middleground.netty.client-id=node1   registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
+docker run -d -it --name client -e spring.lazy.netty.inet-host=124.222.48.62 -e spring.lazy.netty.inet-port=30676  -e spring.lazy.netty.client-id=node1   registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
 
 
 
