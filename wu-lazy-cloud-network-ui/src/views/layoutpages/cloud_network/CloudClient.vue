@@ -99,7 +99,7 @@ export default {
         },
         // type 0:目录 1：菜单 2：按钮
         type: "1",
-        icon: "Avatar",
+        icon: "LocationFilled",
         name: "客户端管理",
         parentMenu: cloudNetworkMenu,
     }),

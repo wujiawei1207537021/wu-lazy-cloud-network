@@ -114,7 +114,7 @@ export default {
         },
         // type 0:目录 1：菜单 2：按钮
         type: "1",
-        icon: "Avatar",
+        icon: "Connection",
         name: "网络映射管理",
         parentMenu: cloudNetworkMenu,
     }),

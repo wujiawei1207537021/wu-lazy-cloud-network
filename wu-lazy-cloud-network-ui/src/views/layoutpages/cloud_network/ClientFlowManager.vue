@@ -80,7 +80,7 @@ import cloudNetworkMenu from "@/views/layoutpages/cloud_network/components/Cloud
 
 export default {
     data: () => ({
-        description: "客户端流量管理",
+        description: "流量管理",
         buttons: {
             search: { name: "查询" },
             add: { name: "添加" },
@@ -91,8 +91,8 @@ export default {
         },
         // type 0:目录 1：菜单 2：按钮
         type: "1",
-        icon: "Avatar",
-        name: "客户端流量管理",
+        icon: "TrendCharts",
+        name: "流量管理",
         parentMenu: cloudNetworkMenu,
     }),
 };
