@@ -27,6 +27,10 @@
 #### 项目介绍
 wu-lazy-cloud-network 是一款基于（wu-framework-parent）孵化出的项目，内部使用Lazy ORM操作数据库，主要功能是网络穿透，对于没有公网IP的服务进行公网IP映射
 使用环境JDK17 Spring Boot 3.0.2
+### 功能
+    1.内网穿透
+    2.服务端自主下发数据到客户端
+    3.流量监控
 
 
 ### 项目结构
@@ -80,16 +84,18 @@ wu-lazy-cloud-network 是一款基于（wu-framework-parent）孵化出的项目
 ![img.png](init_role.png)
 为用户授权
 ![img.png](authRoe2User.png)
-刷新页面
-![img.png](main.png)
 
-客户端管理
+刷新页面
 ![img.png](cloud_client.png)
 
-网络映射管理
+客户端管理（客户端会自动注册）
+![img.png](cloud_client.png)
+
+网络映射管理（修改后者新增需要映射的客户端）
 ![img.png](mapping.png)
-访客端口开发管理
+
+访客端口池管理（服务器端需要开放的端口）
 ![img.png](visitor_port.png)
 
-客户端代理流量管理
+流量管理（每个客户端使用的流量）
 ![img.png](flow.png)
