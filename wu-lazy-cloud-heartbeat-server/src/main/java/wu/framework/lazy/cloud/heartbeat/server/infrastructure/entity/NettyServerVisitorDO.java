@@ -1,9 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity;
 
-import com.wu.framework.inner.lazy.stereotype.LazyFieldStrategy;
-import com.wu.framework.inner.lazy.stereotype.LazyTable;
-import com.wu.framework.inner.lazy.stereotype.LazyTableField;
-import com.wu.framework.inner.lazy.stereotype.LazyTableFieldId;
+import com.wu.framework.inner.lazy.stereotype.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -63,7 +60,7 @@ public class NettyServerVisitorDO {
      * 访客端口
      */
     @Schema(description = "访客端口", name = "visitorPort", example = "")
-    @LazyTableField(name = "visitor_port", comment = "访客端口", columnType = "int")
+    @LazyTableFieldUnique(name = "visitor_port", comment = "访客端口", columnType = "int")
     private Integer visitorPort;
 
 }

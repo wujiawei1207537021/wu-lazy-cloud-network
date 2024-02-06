@@ -40,7 +40,7 @@ public class NettyServerVisitorRepositoryImpl implements NettyServerVisitorRepos
     @Override
     public Result<NettyServerVisitor> story(NettyServerVisitor nettyServerVisitor) {
         NettyServerVisitorDO nettyServerVisitorDO = NettyServerVisitorConverter.INSTANCE.fromNettyServerVisitor(nettyServerVisitor);
-        lazyLambdaStream.upsert(nettyServerVisitorDO);
+        lazyLambdaStream.upsertRemoveNull(nettyServerVisitorDO);
         return ResultFactory.successOf();
     }
 
