@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://${MAIN_DB_HOST}/middleground_cloud_netty_server?allowMultiQueries=true&useUnicode=true&autoReconnect=true&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&databaseTerm=SCHEMA
-    username: middleground_cloud_netty_server
-    password: laihui
+    url: jdbc:mysql://${MAIN_DB_HOST}/wu_lazy_cloud_netty_server?allowMultiQueries=true&useUnicode=true&autoReconnect=true&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&databaseTerm=SCHEMA
+    username: root
+    password: wujiawei
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-bean-definition-overriding: true

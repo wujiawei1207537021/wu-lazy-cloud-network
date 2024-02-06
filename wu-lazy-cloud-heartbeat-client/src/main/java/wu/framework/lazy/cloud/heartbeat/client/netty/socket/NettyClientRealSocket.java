@@ -1,19 +1,18 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.socket;
 
 
-import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
-import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.lazy.cloud.heartbeat.common.*;
-import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
-import wu.framework.lazy.cloud.heartbeat.common.advanced.ChannelTypeAdvanced;
-import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
-import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientRealFilter;
-import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientVisitorRealFilter;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties;
+import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientRealFilter;
+import wu.framework.lazy.cloud.heartbeat.client.netty.filter.NettyClientVisitorRealFilter;
+import wu.framework.lazy.cloud.heartbeat.common.*;
+import wu.framework.lazy.cloud.heartbeat.common.adapter.ChannelTypeAdapter;
+import wu.framework.lazy.cloud.heartbeat.common.advanced.HandleChannelTypeAdvanced;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -33,9 +32,9 @@ public class NettyClientRealSocket {
      */
     public static void buildRealServer(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                        NettyServerProperties nettyServerProperties,
-                                       List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+                                       List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
 
-        buildNewRealServer(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+        buildNewRealServer(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
 
     }
 
@@ -45,10 +44,13 @@ public class NettyClientRealSocket {
      */
     private static void buildNewRealServer(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                            NettyServerProperties nettyServerProperties,
-                                           List<ChannelTypeAdvanced> channelTypeAdvancedList) {
+                                           List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) {
         try {
+            String clientId = internalNetworkPenetrationRealClient.getClientId();
             String clientTargetIp = internalNetworkPenetrationRealClient.getClientTargetIp();
             Integer clientTargetPort = internalNetworkPenetrationRealClient.getClientTargetPort();
+            Integer visitorPort = internalNetworkPenetrationRealClient.getVisitorPort();
+            String visitorId = internalNetworkPenetrationRealClient.getVisitorId();
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class)
                     .handler(new NettyClientRealFilter());
@@ -57,22 +59,19 @@ public class NettyClientRealSocket {
                     // 客户端链接真实服务成功 设置自动读写false 等待访客连接成功后设置成true
                     Channel realChannel = future.channel();
                     realChannel.config().setOption(ChannelOption.AUTO_READ, false);
-                    String clientId = internalNetworkPenetrationRealClient.getClientId();// 客户端ID
-                    String clientTargetIp1 = internalNetworkPenetrationRealClient.getClientTargetIp();
-                    Integer clientTargetPort1 = internalNetworkPenetrationRealClient.getClientTargetPort();
-                    Integer visitorPort = internalNetworkPenetrationRealClient.getVisitorPort();
-                    String visitorId = internalNetworkPenetrationRealClient.getVisitorId();
-                    log.info("访客通过 客户端:【{}】,绑定本地服务,IP:{},端口:{} 新建通道成功", clientId, clientTargetIp1, clientTargetPort1);
+
+                    log.info("访客通过 客户端:【{}】,绑定本地服务,IP:{},端口:{} 新建通道成功", clientId, clientTargetIp, clientTargetPort);
                     // 客户端真实通道
-                    NettyRealIdContext.pushVisitor(realChannel, visitorId);
+                    NettyRealIdContext.pushReal(realChannel, visitorId);
                     // 绑定访客ID到当前真实通道属性
                     ChannelAttributeKeyUtils.buildVisitorId(realChannel, visitorId);
                     ChannelAttributeKeyUtils.buildClientId(realChannel, clientId);
+                    ChannelAttributeKeyUtils.buildVisitorPort(realChannel, visitorPort);
                     // 通知服务端访客连接成功
 
 
                     // 新建一个通道处理
-                    newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+                    newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
 
                     // 是否等 服务端相应访客通道已经可以自动读写
 //                    realChannel.config().setOption(ChannelOption.AUTO_READ, true);
@@ -100,6 +99,8 @@ public class NettyClientRealSocket {
 //                        future.channel().attr(Constant.VID).set(internalNetworkPenetrationRealClient);
 //                        Constant.vrc.put(internalNetworkPenetrationRealClient, future.channel());
 //                        ProxySocket.connectProxyServer(internalNetworkPenetrationRealClient);
+                } else {
+                    log.error("客户：【{}】,无法连接当前网络内的目标IP：【{}】,目标端口:【{}】", clientId, clientTargetIp, clientTargetPort);
                 }
             });
         } catch (Exception e) {
@@ -113,16 +114,16 @@ public class NettyClientRealSocket {
      *
      * @param internalNetworkPenetrationRealClient 内网穿透信息
      * @param nettyServerProperties                服务端配置信息
-     * @param channelTypeAdvancedList              处理器适配器
+     * @param handleChannelTypeAdvancedList        处理器适配器
      * @throws InterruptedException 异常
      */
     protected static void newVisitorConnect2Server(InternalNetworkPenetrationRealClient internalNetworkPenetrationRealClient,
                                                    NettyServerProperties nettyServerProperties,
-                                                   List<ChannelTypeAdvanced> channelTypeAdvancedList) throws InterruptedException {
+                                                   List<HandleChannelTypeAdvanced> handleChannelTypeAdvancedList) throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(eventLoopGroup)
                 .channel(NioSocketChannel.class)
-                .handler(new NettyClientVisitorRealFilter(new ChannelTypeAdapter(channelTypeAdvancedList)))
+                .handler(new NettyClientVisitorRealFilter(new ChannelTypeAdapter(handleChannelTypeAdvancedList)))
         ;
 
         String inetHost = nettyServerProperties.getInetHost();
@@ -138,7 +139,7 @@ public class NettyClientRealSocket {
         log.info("客户端新建访客通道 连接服务端IP:{},连接服务端端口:{}", inetHost, inetPort);
         ChannelFuture future = bootstrap.connect(inetHost, inetPort);
 
-        log.info("使用的租户ID:" + clientId);
+        log.info("使用的客户端ID:" + clientId);
         future.addListener((ChannelFutureListener) futureListener -> {
             Channel channel = futureListener.channel();
             if (futureListener.isSuccess()) {
@@ -153,11 +154,11 @@ public class NettyClientRealSocket {
                 myMsg.setVisitorId(visitorId);
                 channel.writeAndFlush(myMsg);
                 // 绑定客户端真实通信通道
-                NettyCommunicationIdContext.pushVisitor(channel,visitorId);
+                NettyCommunicationIdContext.pushVisitor(channel, visitorId);
                 ChannelAttributeKeyUtils.buildVisitorId(channel, visitorId);
                 ChannelAttributeKeyUtils.buildClientId(channel, clientId);
                 // 客户端真实通道自动读写打开
-                Channel visitor = NettyRealIdContext.getVisitor(visitorId);
+                Channel visitor = NettyRealIdContext.getReal(visitorId);
                 visitor.config().setOption(ChannelOption.AUTO_READ, true);
 
 
@@ -166,7 +167,7 @@ public class NettyClientRealSocket {
                 // 离线
                 channel.eventLoop().schedule(() -> {
                     try {
-                        newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, channelTypeAdvancedList);
+                        newVisitorConnect2Server(internalNetworkPenetrationRealClient, nettyServerProperties, handleChannelTypeAdvancedList);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

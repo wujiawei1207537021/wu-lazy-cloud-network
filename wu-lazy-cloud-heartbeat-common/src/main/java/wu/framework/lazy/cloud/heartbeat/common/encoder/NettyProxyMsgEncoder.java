@@ -1,9 +1,9 @@
 package wu.framework.lazy.cloud.heartbeat.common.encoder;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 
 /**
  * @see NettyProxyMsg

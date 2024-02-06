@@ -1,7 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.server.controller;
 
 
-
 import com.wu.framework.inner.layer.web.EasyController;
 import com.wu.framework.response.Result;
 import com.wu.framework.response.ResultFactory;

@@ -1,3 +1,6 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-wu.framework.lazy.cloud.heartbeat.client.EnableHeartbeatClientAutoConfiguration
+wu.framework.lazy.cloud.heartbeat.client.EnableHeartbeatClientAutoConfiguration,\
+wu.framework.lazy.cloud.heartbeat.client.netty.config.NettyServerProperties,\
+wu.framework.lazy.cloud.heartbeat.client.netty.config.ClientAutoConfiguration,\
+wu.framework.lazy.cloud.heartbeat.client.netty.config.HeartbeatClientConfiguration

@@ -5,7 +5,6 @@ import io.netty.channel.ChannelId;
 import lombok.Data;
 
 
-
 /**
  * 客户端通道
  */

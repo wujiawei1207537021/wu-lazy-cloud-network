@@ -1,14 +1,15 @@
 package wu.framework.lazy.cloud.heartbeat.common.decoder;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import wu.framework.lazy.cloud.heartbeat.common.NettyMsg;
 
 /**
  * @see NettyMsg
  * NettyMsg 对象解码
  */
+@Deprecated
 public class NettyMsgDecoder extends LengthFieldBasedFrameDecoder {
 
     public NettyMsgDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength, int lengthAdjustment,

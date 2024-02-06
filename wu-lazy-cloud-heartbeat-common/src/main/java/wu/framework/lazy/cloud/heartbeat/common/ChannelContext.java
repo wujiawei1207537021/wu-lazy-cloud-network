@@ -5,7 +5,6 @@ import io.netty.channel.ChannelId;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,25 +16,27 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class ChannelContext {
 
-    private final static ConcurrentHashMap<ChannelId/*channelId*/, ClientChannelImpl/*通道*/>
+    private final static ConcurrentHashMap<String/*clientId*/, ClientChannelImpl/*通道*/>
             channelIdClientChannelDTOConcurrentHashMap = new ConcurrentHashMap<>();
 
     /**
      * 新增通道
      *
      * @param channel  通道
-     * @param nettyMsg 通道中的信息
+     * @param clientId 客户端ID
      */
-    public static void push(Channel channel, NettyProxyMsg nettyMsg) {
+    public static void push(Channel channel, String clientId) {
 
         ChannelId channelId = channel.id();
-        byte[] clientId = nettyMsg.getClientId();
-
         ClientChannelImpl clientChannelImpl = new ClientChannelImpl();
         clientChannelImpl.setChannelId(channelId);
         clientChannelImpl.setChannel(channel);
-        clientChannelImpl.setClientId(clientId);
-        channelIdClientChannelDTOConcurrentHashMap.put(channelId, clientChannelImpl);
+        clientChannelImpl.setClientId(clientId.getBytes(StandardCharsets.UTF_8));
+        // 如果客户端已经存在 移除
+        if (channelIdClientChannelDTOConcurrentHashMap.containsKey(clientId)) {
+//            clear(clientId);
+        }
+        channelIdClientChannelDTOConcurrentHashMap.put(clientId, clientChannelImpl);
 
     }
 
@@ -52,7 +53,7 @@ public class ChannelContext {
         clientChannelImpl.setChannelId(channelId);
         clientChannelImpl.setChannel(channel);
         clientChannelImpl.setClientId(clientId);
-        channelIdClientChannelDTOConcurrentHashMap.put(channelId, clientChannelImpl);
+        channelIdClientChannelDTOConcurrentHashMap.put(new String(clientId), clientChannelImpl);
 
     }
 
@@ -65,20 +66,6 @@ public class ChannelContext {
         return new ArrayList<>(channelIdClientChannelDTOConcurrentHashMap.values());
     }
 
-    /**
-     * 根据通道ID获取通道信息
-     *
-     * @param channelId 通道ID
-     * @return 通道信息
-     */
-    public static ClientChannel get(ChannelId channelId) {
-        if (channelIdClientChannelDTOConcurrentHashMap.containsKey(channelId)) {
-            return channelIdClientChannelDTOConcurrentHashMap.get(channelId);
-        } else {
-            log.error("无法通过通道ID[" + channelId + "]获取通道信息");
-            return null;
-        }
-    }
 
     /**
      * 根据通道ID获取通道信息
@@ -88,13 +75,9 @@ public class ChannelContext {
      */
     public static ClientChannel get(byte[] clientId) {
         if (channelIdClientChannelDTOConcurrentHashMap
-                .values().stream()
-                .anyMatch(clientChannelImpl -> new String(clientChannelImpl.getClientId()).equals(new String(clientId)))) {
+                .containsKey(new String(clientId))) {
             return channelIdClientChannelDTOConcurrentHashMap
-                    .values()
-                    .stream()
-                    .filter(clientChannelImpl -> new String(clientChannelImpl.getClientId()).equals(new String(clientId)))
-                    .findFirst().get();
+                    .get(new String(clientId));
         } else {
             log.error("无法通过客户端ID[" + new String(clientId) + "]获取通道信息");
             return null;
@@ -111,17 +94,23 @@ public class ChannelContext {
         return get(clientId.getBytes(StandardCharsets.UTF_8));
     }
 
+
     /**
-     * 通过客户端通道ID移除客户端通道
+     * 关闭通道
      *
-     * @param channelId 客户端通道ID
+     * @param clientId 客户端ID
      */
-    public static void remove(ChannelId channelId) {
-        if (channelIdClientChannelDTOConcurrentHashMap.containsKey(channelId)) {
-            channelIdClientChannelDTOConcurrentHashMap.remove(channelId);
+    public static void clear(String clientId) {
+        ClientChannel clientChannel = get(clientId);
+        if (clientChannel != null) {
+            remove(clientId);
+            Channel channel = clientChannel.getChannel();
+            if (channel != null && channel.isActive()) {
+                channel.close();
+            }
         } else {
             // log warm
-            log.warn("无法通过客户端通道ID:[{}]移除客户端", channelId);
+            log.warn("无法通过客户ID:[{}]移除客户端", clientId);
         }
     }
 
@@ -133,10 +122,25 @@ public class ChannelContext {
     public static void remove(byte[] clientId) {
         ClientChannel clientChannel = get(clientId);
         if (clientChannel != null) {
-            channelIdClientChannelDTOConcurrentHashMap.remove(clientChannel.getChannelId());
+            channelIdClientChannelDTOConcurrentHashMap.remove(new String(clientId));
         } else {
             // log warm
             log.warn("无法通过客户ID:[{}]移除客户端", new String(clientId));
+        }
+    }
+
+    /**
+     * 通过客户端ID移除客户端通道
+     *
+     * @param clientId 客户端ID
+     */
+    public static void remove(String clientId) {
+        ClientChannel clientChannel = get(clientId);
+        if (clientChannel != null) {
+            channelIdClientChannelDTOConcurrentHashMap.remove(clientId);
+        } else {
+            // log warm
+            log.warn("无法通过客户ID:[{}]移除客户端", clientId);
         }
     }
 

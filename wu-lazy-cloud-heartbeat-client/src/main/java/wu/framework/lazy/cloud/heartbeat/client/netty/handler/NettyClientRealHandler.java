@@ -1,15 +1,15 @@
 package wu.framework.lazy.cloud.heartbeat.client.netty.handler;
 
 
-import wu.framework.lazy.cloud.heartbeat.common.MessageType;
-import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.common.MessageType;
+import wu.framework.lazy.cloud.heartbeat.common.NettyCommunicationIdContext;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
+import wu.framework.lazy.cloud.heartbeat.common.utils.ChannelAttributeKeyUtils;
 
 /**
  * 来自客户端 真实服务器返回的数据请求
@@ -25,11 +25,15 @@ public class NettyClientRealHandler extends SimpleChannelInboundHandler<ByteBuf>
         buf.readBytes(bytes);
         log.debug("接收客户端真实服务数据:{}", new String(bytes));
         String visitorId = ChannelAttributeKeyUtils.getVisitorId(ctx.channel());
+        Integer visitorPort = ChannelAttributeKeyUtils.getVisitorPort(ctx.channel());
+        String clientId = ChannelAttributeKeyUtils.getClientId(ctx.channel());
         // 访客通信通道 上报服务端代理完成
         Channel visitorChannel = NettyCommunicationIdContext.getVisitor(visitorId);
         NettyProxyMsg returnMessage = new NettyProxyMsg();
         returnMessage.setType(MessageType.REPORT_CLIENT_TRANSFER);
         returnMessage.setVisitorId(visitorId);
+        returnMessage.setClientId(clientId);
+        returnMessage.setVisitorPort(visitorPort);
         returnMessage.setData(bytes);
 
         visitorChannel.writeAndFlush(returnMessage);

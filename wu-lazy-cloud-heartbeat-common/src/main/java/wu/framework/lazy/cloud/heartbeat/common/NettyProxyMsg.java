@@ -1,6 +1,7 @@
 package wu.framework.lazy.cloud.heartbeat.common;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.nio.charset.StandardCharsets;
@@ -8,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * netty 代理请求数据
  */
+@NoArgsConstructor
 @Setter
 @Getter
 public class NettyProxyMsg {

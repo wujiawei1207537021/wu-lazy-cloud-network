@@ -56,12 +56,24 @@ import java.util.concurrent.TimeUnit;
  * bootstrap.childHandler(new MyChannelInitializer());
  * ...
  * </pre>
+ *
  * @see WriteTimeoutHandler
  * @see IdleStateHandler
  */
 public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
     private static final long MIN_TIMEOUT_NANOS = TimeUnit.MILLISECONDS.toNanos(1);
-
+    private final boolean observeOutput;
+    private final long readerIdleTimeNanos;
+    private final long writerIdleTimeNanos;
+    private final long allIdleTimeNanos;
+    private Future<?> readerIdleTimeout;
+    private long lastReadTime;
+    private boolean firstReaderIdleEvent = true;
+    private Future<?> writerIdleTimeout;
+    private long lastWriteTime;
+    private boolean firstWriterIdleEvent = true;
+    private Future<?> allIdleTimeout;
+    private boolean firstAllIdleEvent = true;
     // Not create a new ChannelFutureListener per write operation to reduce GC pressure.
     private final ChannelFutureListener writeListener = new ChannelFutureListener() {
         @Override
@@ -70,23 +82,6 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
             firstWriterIdleEvent = firstAllIdleEvent = true;
         }
     };
-
-    private final boolean observeOutput;
-    private final long readerIdleTimeNanos;
-    private final long writerIdleTimeNanos;
-    private final long allIdleTimeNanos;
-
-    private Future<?> readerIdleTimeout;
-    private long lastReadTime;
-    private boolean firstReaderIdleEvent = true;
-
-    private Future<?> writerIdleTimeout;
-    private long lastWriteTime;
-    private boolean firstWriterIdleEvent = true;
-
-    private Future<?> allIdleTimeout;
-    private boolean firstAllIdleEvent = true;
-
     private byte state; // 0 - none, 1 - initialized, 2 - destroyed
     private boolean reading;
 
@@ -98,18 +93,15 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
     /**
      * Creates a new instance firing {@link IdleStateEvent}s.
      *
-     * @param readerIdleTimeSeconds
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#READER_IDLE}
-     *        will be triggered when no read was performed for the specified
-     *        period of time.  Specify {@code 0} to disable.
-     * @param writerIdleTimeSeconds
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#WRITER_IDLE}
-     *        will be triggered when no write was performed for the specified
-     *        period of time.  Specify {@code 0} to disable.
-     * @param allIdleTimeSeconds
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#ALL_IDLE}
-     *        will be triggered when neither read nor write was performed for
-     *        the specified period of time.  Specify {@code 0} to disable.
+     * @param readerIdleTimeSeconds an {@link IdleStateEvent} whose state is {@link IdleState#READER_IDLE}
+     *                              will be triggered when no read was performed for the specified
+     *                              period of time.  Specify {@code 0} to disable.
+     * @param writerIdleTimeSeconds an {@link IdleStateEvent} whose state is {@link IdleState#WRITER_IDLE}
+     *                              will be triggered when no write was performed for the specified
+     *                              period of time.  Specify {@code 0} to disable.
+     * @param allIdleTimeSeconds    an {@link IdleStateEvent} whose state is {@link IdleState#ALL_IDLE}
+     *                              will be triggered when neither read nor write was performed for
+     *                              the specified period of time.  Specify {@code 0} to disable.
      */
     public LazyServerIdleStateHandler(
             int readerIdleTimeSeconds,
@@ -132,28 +124,23 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
     /**
      * Creates a new instance firing {@link IdleStateEvent}s.
      *
-     * @param observeOutput
-     *        whether or not the consumption of {@code bytes} should be taken into
-     *        consideration when assessing write idleness. The default is {@code false}.
-     * @param readerIdleTime
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#READER_IDLE}
-     *        will be triggered when no read was performed for the specified
-     *        period of time.  Specify {@code 0} to disable.
-     * @param writerIdleTime
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#WRITER_IDLE}
-     *        will be triggered when no write was performed for the specified
-     *        period of time.  Specify {@code 0} to disable.
-     * @param allIdleTime
-     *        an {@link IdleStateEvent} whose state is {@link IdleState#ALL_IDLE}
-     *        will be triggered when neither read nor write was performed for
-     *        the specified period of time.  Specify {@code 0} to disable.
-     * @param unit
-     *        the {@link TimeUnit} of {@code readerIdleTime},
-     *        {@code writeIdleTime}, and {@code allIdleTime}
+     * @param observeOutput  whether or not the consumption of {@code bytes} should be taken into
+     *                       consideration when assessing write idleness. The default is {@code false}.
+     * @param readerIdleTime an {@link IdleStateEvent} whose state is {@link IdleState#READER_IDLE}
+     *                       will be triggered when no read was performed for the specified
+     *                       period of time.  Specify {@code 0} to disable.
+     * @param writerIdleTime an {@link IdleStateEvent} whose state is {@link IdleState#WRITER_IDLE}
+     *                       will be triggered when no write was performed for the specified
+     *                       period of time.  Specify {@code 0} to disable.
+     * @param allIdleTime    an {@link IdleStateEvent} whose state is {@link IdleState#ALL_IDLE}
+     *                       will be triggered when neither read nor write was performed for
+     *                       the specified period of time.  Specify {@code 0} to disable.
+     * @param unit           the {@link TimeUnit} of {@code readerIdleTime},
+     *                       {@code writeIdleTime}, and {@code allIdleTime}
      */
     public LazyServerIdleStateHandler(boolean observeOutput,
-                            long readerIdleTime, long writerIdleTime, long allIdleTime,
-                            TimeUnit unit) {
+                                      long readerIdleTime, long writerIdleTime, long allIdleTime,
+                                      TimeUnit unit) {
         ObjectUtil.checkNotNull(unit, "unit");
 
         this.observeOutput = observeOutput;
@@ -177,7 +164,6 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
 
     /**
      * Return the readerIdleTime that was given when instance this class in milliseconds.
-     *
      */
     public long getReaderIdleTimeInMillis() {
         return TimeUnit.NANOSECONDS.toMillis(readerIdleTimeNanos);
@@ -185,7 +171,6 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
 
     /**
      * Return the writerIdleTime that was given when instance this class in milliseconds.
-     *
      */
     public long getWriterIdleTimeInMillis() {
         return TimeUnit.NANOSECONDS.toMillis(writerIdleTimeNanos);
@@ -193,7 +178,6 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
 
     /**
      * Return the allIdleTime that was given when instance this class in milliseconds.
-     *
      */
     public long getAllIdleTimeInMillis() {
         return TimeUnit.NANOSECONDS.toMillis(allIdleTimeNanos);
@@ -376,7 +360,7 @@ public class LazyServerIdleStateHandler extends ChannelDuplexHandler {
      * Returns {@code true} if and only if the {@link IdleStateHandler} was constructed
      * with {@link #observeOutput} enabled and there has been an observed change in the
      * {@link ChannelOutboundBuffer} between two consecutive calls of this method.
-     *
+     * <p>
      * https://github.com/netty/netty/issues/6150
      */
     private boolean hasOutputChanged(ChannelHandlerContext ctx, boolean first) {

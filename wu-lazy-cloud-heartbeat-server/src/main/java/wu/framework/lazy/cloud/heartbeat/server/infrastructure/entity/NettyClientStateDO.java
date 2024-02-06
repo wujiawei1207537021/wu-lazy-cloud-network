@@ -1,10 +1,10 @@
 package wu.framework.lazy.cloud.heartbeat.server.infrastructure.entity;
 
-import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 import com.wu.framework.inner.lazy.stereotype.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import wu.framework.lazy.cloud.heartbeat.common.enums.NettyClientStatus;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  **/
 @Data
 @Accessors(chain = true)
-@LazyTable(tableName = "netty_client_state", schema = "middleground_cloud_netty_server", comment = "客户端状态")
+@LazyTable(tableName = "netty_client_state", comment = "客户端状态")
 @Schema(title = "netty_client_state", description = "客户端状态")
 public class NettyClientStateDO {
 
@@ -47,7 +47,7 @@ public class NettyClientStateDO {
      * 是否删除
      */
     @Schema(description = "是否删除", name = "isDeleted", example = "")
-    @LazyTableField(name = "is_deleted", comment = "是否删除",defaultValue = "'0'",columnType = "tinyint")
+    @LazyTableField(name = "is_deleted", comment = "是否删除", defaultValue = "'0'", columnType = "tinyint")
     private Boolean isDeleted;
 
     /**
@@ -61,7 +61,7 @@ public class NettyClientStateDO {
      * 暂存状态（开启、关闭）
      */
     @Schema(description = "暂存状态（开启、关闭）", name = "staging", example = "")
-    @LazyTableField(name = "staging", comment = "暂存状态（开启、关闭）", columnType = "varchar(255)")
+    @LazyTableField(name = "staging_state", comment = "暂存状态（开启、关闭）", columnType = "varchar(255)")
     private String stagingState;
 
     /**
@@ -70,5 +70,12 @@ public class NettyClientStateDO {
     @Schema(description = "修改时间", name = "updateTime", example = "")
     @LazyTableFieldUpdateTime
     private LocalDateTime updateTime;
+
+    /**
+     * 描述
+     */
+    @Schema(description = "描述", name = "describe", example = "")
+    @LazyTableField(comment = "描述")
+    private String describe;
 
 }

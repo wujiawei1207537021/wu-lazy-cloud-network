@@ -1,5 +1,6 @@
 package wu.framework.lazy.cloud.heartbeat.common;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,6 +10,7 @@ import lombok.experimental.Accessors;
  * @author Jia wei Wu
  * @date 2023/12/29 05:21 下午
  **/
+@Builder
 @Data
 @Accessors(chain = true)
 public class InternalNetworkPenetrationRealClient {

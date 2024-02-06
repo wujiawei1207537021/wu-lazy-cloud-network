@@ -1,12 +1,6 @@
 spring:
-  data:
-    redis:
-      host: 192.168.17.221
-      port: 30553
-      password: laihui
-      database: 2
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/middleground_cloud_netty_server?allowMultiQueries=true&useUnicode=true&autoReconnect=true&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&databaseTerm=SCHEMA
+    url: jdbc:mysql://124.222.48.62:30512/wu_lazy_cloud_netty_server?allowMultiQueries=true&useUnicode=true&autoReconnect=true&useAffectedRows=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&databaseTerm=SCHEMA
     username: root
     password: wujiawei
     driver-class-name: com.mysql.cj.jdbc.Driver

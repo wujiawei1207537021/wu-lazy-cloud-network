@@ -1,11 +1,11 @@
 package wu.framework.lazy.cloud.heartbeat.common.decoder;
 
-import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.TooLongFrameException;
+import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
 
 import java.nio.ByteOrder;
 

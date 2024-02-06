@@ -2,11 +2,11 @@
 
 #### 模块说明
 
-| 模块                                                                                     | 所属层级 | 描述                     | 端口                                                             |
-|----------------------------------------------------------------------------------------|------|------------------------|----------------------------------------------------------------|
-| [middleground-cloud-heartbeat-common](middleground-cloud-heartbeat-common)             | 基础模块 | 基于Netty数据解码、编码、通道处理器声明 | 无                                                              |
-| [middleground-on-cloud-heartbeat-server](middleground-on-cloud-heartbeat-server)       | 启动模块 | 内网穿透服务端                | http端口：6001、tcp端口:7001  (默认tcp端口=http端口+1000 如：6001+1000=7001) |
-| [middleground-under-cloud-heartbeat-client](middleground-under-cloud-heartbeat-client) | 启动模块 | 内网穿透客户端                | 6004                                                           |
+| 模块                                                               | 所属层级 | 描述                     | 端口                                                             |
+|------------------------------------------------------------------|------|------------------------|----------------------------------------------------------------|
+| [wu-lazy-cloud-heartbeat-common](wu-lazy-cloud-heartbeat-common) | 基础模块 | 基于Netty数据解码、编码、通道处理器声明 | 无                                                              |
+| [wu-lazy-cloud-heartbeat-server](wu-lazy-cloud-heartbeat-server) | 启动模块 | 内网穿透服务端                | http端口：6001、tcp端口:7001  (默认tcp端口=http端口+1000 如：6001+1000=7001) |
+| [wu-lazy-cloud-heartbeat-client](wu-lazy-cloud-heartbeat-client) | 启动模块 | 内网穿透客户端                | 6004                                                           |
 
 #### 功能
 
@@ -52,13 +52,13 @@ spring:
 如果云端需要部署云上暂存+内网穿透功能：需要部署 内网穿透服务端、暂存服务、内网穿透客户端、云上离线网关
 ```
 
-| 模块                                                                                     | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
-|----------------------------------------------------------------------------------------|------------|----------|---------------|
-| [middleground-on-cloud-heartbeat-server](middleground-on-cloud-heartbeat-server)       | 内网穿透+心跳服务端 | ☑️       | ☑️            |
-| [middleground-under-cloud-heartbeat-client](middleground-under-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ✖️       | ☑️            |
-| [middleground-cloud-staging-provider](middleground-cloud-staging-provider)             | 暂存服务       | ✖️       | ☑️            |
-| [middleground-on-cloud-central-gateway](middleground-on-cloud-central-gateway)         | 云上暂存网关     | ✖️       | ☑️            |
-| [middleground-under-cloud-central-gateway](middleground-under-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ✖️            |
+| 模块                                                               | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
+|------------------------------------------------------------------|------------|----------|---------------|
+| [wu-lazy-cloud-heartbeat-server](wu-lazy-cloud-heartbeat-server) | 内网穿透+心跳服务端 | ☑️       | ☑️            |
+| [wu-lazy-cloud-heartbeat-client](wu-lazy-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ✖️       | ☑️            |
+| [wu-lazy-cloud-staging-provider](wu-lazy-cloud-staging-provider) | 暂存服务       | ✖️       | ☑️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云上暂存网关     | ✖️       | ☑️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ✖️            |
 
 ##### 云网关部署
 
@@ -66,13 +66,13 @@ spring:
 云网关部署内网穿透客户端
 ```
 
-| 模块                                                                                     | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
-|----------------------------------------------------------------------------------------|------------|----------|---------------|
-| [middleground-on-cloud-heartbeat-server](middleground-on-cloud-heartbeat-server)       | 内网穿透+心跳服务端 | ✖️       | ✖️            |
-| [middleground-under-cloud-heartbeat-client](middleground-under-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ✖️       | ☑️            |
-| [middleground-cloud-staging-provider](middleground-cloud-staging-provider)             | 暂存服务       | ✖️       | ✖️            |
-| [middleground-on-cloud-central-gateway](middleground-on-cloud-central-gateway)         | 云上暂存网关     | ✖️       | ☑️            |
-| [middleground-under-cloud-central-gateway](middleground-under-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ✖️            |
+| 模块                                                               | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
+|------------------------------------------------------------------|------------|----------|---------------|
+| [wu-lazy-cloud-heartbeat-server](wu-lazy-cloud-heartbeat-server) | 内网穿透+心跳服务端 | ✖️       | ✖️            |
+| [wu-lazy-cloud-heartbeat-client](wu-lazy-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ✖️       | ☑️            |
+| [wu-lazy-cloud-staging-provider](wu-lazy-cloud-staging-provider) | 暂存服务       | ✖️       | ✖️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云上暂存网关     | ✖️       | ☑️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ✖️            |
 
 ##### 独立租户部署
 
@@ -81,12 +81,12 @@ spring:
 内网穿透+离线暂存能力: 需要部署内网穿透客户端、离线网关、离线暂存服务
 ```
 
-| 模块                                                                                     | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
-|----------------------------------------------------------------------------------------|------------|----------|---------------|
-| [middleground-on-cloud-heartbeat-server](middleground-on-cloud-heartbeat-server)       | 内网穿透+心跳服务端 | ✖️       | ✖️            |
-| [middleground-under-cloud-heartbeat-client](middleground-under-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ☑️       | ☑️            |
-| [middleground-cloud-staging-provider](middleground-cloud-staging-provider)             | 暂存服务       | ✖️       | ☑️            |
-| [middleground-on-cloud-central-gateway](middleground-on-cloud-central-gateway)         | 云上暂存网关     | ✖️       | ✖️            |
-| [middleground-under-cloud-central-gateway](middleground-under-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ☑️            |
+| 模块                                                               | 说明         | 部署内网穿透必须 | 部署内网穿透+云上暂存必须 |
+|------------------------------------------------------------------|------------|----------|---------------|
+| [wu-lazy-cloud-heartbeat-server](wu-lazy-cloud-heartbeat-server) | 内网穿透+心跳服务端 | ✖️       | ✖️            |
+| [wu-lazy-cloud-heartbeat-client](wu-lazy-cloud-heartbeat-client) | 内网穿透+心跳客户端 | ☑️       | ☑️            |
+| [wu-lazy-cloud-staging-provider](wu-lazy-cloud-staging-provider) | 暂存服务       | ✖️       | ☑️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云上暂存网关     | ✖️       | ✖️            |
+| [wu-lazy-cloud-central-gateway](wu-lazy-cloud-central-gateway)   | 云下暂存网关     | ✖️       | ☑️            |
 
 

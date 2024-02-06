@@ -8,13 +8,13 @@
     <parent>
         <artifactId>wu-framework-parent</artifactId>
         <groupId>top.wu2020</groupId>
-        <version>1.2.1-JDK17-SNAPSHOT</version>
+        <version>1.2.2-JDK17-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
     <artifactId>wu-lazy-cloud-network</artifactId>
     <packaging>pom</packaging>
-    <version>1.2.1-JDK17-SNAPSHOT</version>
+    <version>1.2.2-JDK17-SNAPSHOT</version>
     <description>云上云下</description>
 
 
@@ -70,7 +70,7 @@
             <dependency>
                 <groupId>top.wu2020</groupId>
                 <artifactId>wu-framework-dependencies</artifactId>
-                <version>1.2.1-JDK17-SNAPSHOT</version>
+                <version>1.2.2-JDK17-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -1,9 +1,9 @@
 package wu.framework.lazy.cloud.heartbeat.client.application.impl;
 
 
-import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyApplication;
 import lombok.extern.slf4j.Slf4j;
+import wu.framework.lazy.cloud.heartbeat.client.application.ClientNettyConfigApplication;
 
 @Slf4j
 @LazyApplication

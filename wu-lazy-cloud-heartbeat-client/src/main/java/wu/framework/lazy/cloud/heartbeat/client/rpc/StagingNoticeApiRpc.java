@@ -3,17 +3,16 @@ package wu.framework.lazy.cloud.heartbeat.client.rpc;
 import com.wu.framework.database.lazy.web.plus.stereotype.LazyRpc;
 import com.wu.framework.response.Result;
 import com.wu.framework.response.ResultFactory;
+import io.netty.channel.Channel;
 import wu.framework.lazy.cloud.heartbeat.common.ChannelContext;
 import wu.framework.lazy.cloud.heartbeat.common.MessageType;
 import wu.framework.lazy.cloud.heartbeat.common.NettyProxyMsg;
-
-import io.netty.channel.Channel;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @LazyRpc
-public class StagingNoticeApiRpc  {
+public class StagingNoticeApiRpc {
 
 
     /**
@@ -31,9 +30,9 @@ public class StagingNoticeApiRpc  {
 
             NettyProxyMsg nettyMsg = new NettyProxyMsg();
             nettyMsg.setType(MessageType.REPORT_CLIENT_STAGING_OPENED);
-            nettyMsg.setData((clientId.toString()
+            nettyMsg.setData((clientId
                     .getBytes(StandardCharsets.UTF_8)));
-            nettyMsg.setClientId((clientId.toString()
+            nettyMsg.setClientId((clientId
                     .getBytes(StandardCharsets.UTF_8)));
             channel.writeAndFlush(nettyMsg);
         }
@@ -54,9 +53,9 @@ public class StagingNoticeApiRpc  {
             Channel channel = clientChannel.getChannel();
             NettyProxyMsg nettyMsg = new NettyProxyMsg();
             nettyMsg.setType(MessageType.REPORT_CLIENT_STAGING_CLOSED);
-            nettyMsg.setData((clientId.toString()
+            nettyMsg.setData((clientId
                     .getBytes(StandardCharsets.UTF_8)));
-            nettyMsg.setClientId((clientId.toString()
+            nettyMsg.setClientId((clientId
                     .getBytes(StandardCharsets.UTF_8)));
             channel.writeAndFlush(nettyMsg);
         }

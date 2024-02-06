@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>top.wu2020</groupId>
         <artifactId>wu-lazy-cloud-network</artifactId>
-        <version>1.2.1-JDK17-SNAPSHOT</version>
+        <version>1.2.2-JDK17-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -25,9 +25,9 @@
         </dependency>
         <!--    通用心跳包    -->
         <dependency>
-               <groupId>top.wu2020</groupId>
+            <groupId>top.wu2020</groupId>
             <artifactId>wu-lazy-cloud-heartbeat-common</artifactId>
-            <version>1.2.1-JDK17-SNAPSHOT</version>
+            <version>1.2.2-JDK17-SNAPSHOT</version>
         </dependency>
         <!--    数据库    -->
         <dependency>
@@ -42,6 +42,16 @@
         <dependency>
             <groupId>top.wu2020</groupId>
             <artifactId>wu-database-lazy-plus-starter</artifactId>
+        </dependency>
+        <!--    授权平台    -->
+        <dependency>
+            <groupId>top.wu2020</groupId>
+            <artifactId>wu-authorization-server-platform-starter</artifactId>
+        </dependency>
+        <!--    jvm    -->
+        <dependency>
+            <groupId>top.wu2020</groupId>
+            <artifactId>wu-jvm-server-platform-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
