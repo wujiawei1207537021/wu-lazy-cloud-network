@@ -8,16 +8,16 @@
 		<version>1.2.2-JDK17-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>wu-lazy-cloud-heartbeat-sample</artifactId>
+	<artifactId>wu-lazy-cloud-heartbeat-start</artifactId>
 
-	<name>wu-lazy-cloud-heartbeat-sample</name>
-	<description>wu-lazy-cloud-heartbeat-sample</description>
+	<name>wu-lazy-cloud-heartbeat-start</name>
+	<description>wu-lazy-cloud-heartbeat-start</description>
 	<packaging>pom</packaging>
 
 	<modules>
 		<!--    样例    -->
-		<module>wu-lazy-cloud-heartbeat-client-sample</module>
-		<module>wu-lazy-cloud-heartbeat-server-sample</module>
+		<module>wu-lazy-cloud-heartbeat-client-start</module>
+		<module>wu-lazy-cloud-heartbeat-server-start</module>
 	</modules>
 	<properties>
 		<java.version>17</java.version>

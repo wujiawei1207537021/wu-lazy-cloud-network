@@ -9,8 +9,8 @@ mvn native:build -Pnative
 ```
 ### 构建docker镜像
 ```shell
-docker build -t docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest -f Native-Dockerfile .
-docker push docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest
+docker build -t docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client-start:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest -f Native-Dockerfile .
+docker push docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-client-start:1.2.2-JDK17-SNAPSHOT-native-SNAPSHOT_latest
 ```
 
 
@@ -21,8 +21,8 @@ docker push docker-registry.wujiawei.com/middleground/wu-lazy-cloud-heartbeat-cl
 
 #docker login --username=1207537021@qq.com registry.cn-hangzhou.aliyuncs.com
 
-docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT .
-docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:1.2.2-JDK17-SNAPSHOT
+docker build -t registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client-start:1.2.2-JDK17-SNAPSHOT .
+docker push registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client-start:1.2.2-JDK17-SNAPSHOT
 
 ```
 
@@ -49,7 +49,7 @@ mvn native:build
 ```
 
 ```RUN
-docker run  -d -it -p 18080:18080 --name wu-lazy-cloud-heartbeat-client registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client:server-jdk17-master
+docker run  -d -it -p 18080:18080 --name wu-lazy-cloud-heartbeat-client-start registry.cn-hangzhou.aliyuncs.com/wu-lazy/wu-lazy-cloud-heartbeat-client-start:server-jdk17-master
 
 http://127.0.0.1:18080/swagger-ui/index.html
 

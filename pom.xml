@@ -25,7 +25,7 @@
         <module>wu-lazy-cloud-heartbeat-common</module>
 
         <!--    样例    -->
-        <module>wu-lazy-cloud-heartbeat-sample</module>
+        <module>wu-lazy-cloud-heartbeat-start</module>
     </modules>
 
     <properties>
