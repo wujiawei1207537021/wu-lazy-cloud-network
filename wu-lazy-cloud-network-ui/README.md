@@ -258,7 +258,7 @@ module.exports = {
 
 ```js
 VE_API [ fileName ][ portName ] (params,[config])   //有全局loading
-VE_API [ fileName ][ portName ] (params,{Global:false)   //没有全局loading
+VE_API [ fileName ][ portName ] (params,{Global:false})   //没有全局loading
 ```
 
 ### 菜单配置
